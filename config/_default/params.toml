@@ -1,41 +1,58 @@
-colorScheme = "neon"
-defaultAppearance = "dark"
-autoSwitchAppearance = false
+theme = "dark"
+colorTheme = ""
 
-enableSearch = true
-enableCodeCopy = true
-enableImageLazyLoading = true
-enableImageWebp = true
+description = "Conseil et expertise en cybersécurité — audit, pentest, formation et accompagnement stratégique."
+author = "Def Intelligence"
+organization = "Def Intelligence"
+copyright = "Def Intelligence"
 
-[header]
-  layout = "hamburger"
-  showTitle = true
+[navigation]
+  anchor = true
+  logo = ""
+  color = "body"
+  fixed = true
+  offset = "5em"
+
+[main]
+  separator = false
+  endorCTA = true
+  favicon = "img/favicon.png"
+
+[home]
+  sections = ["blog"]
+  fullCover = true
+  centerHeadline = false
+  style = ""
 
 [footer]
-  showCopyright = true
-  showThemeAttribution = false
-  showAppearanceSwitcher = false
-  showScrollToTop = true
+  license = "none"
 
-[homepage]
-  layout = "custom"
-  showRecent = true
-  recentLimit = 3
+[sharing]
+  enabled = true
+  sort = "weight"
+  reverse = false
+  webshare = true
 
-[article]
-  showDate = true
-  showAuthor = true
-  showBreadcrumbs = true
-  showReadingTime = true
-  showTableOfContents = true
-  showPagination = true
-  showTaxonomies = true
-  sharingLinks = ["linkedin", "x-twitter", "email"]
+[[sharing.providers]]
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/sharing/share-offsite/?url={url}"
+  icon = "fab linkedin"
+  weight = 10
 
-[list]
-  showBreadcrumbs = true
-  showSummary = true
-  groupByYear = false
+[[sharing.providers]]
+  name = "Email"
+  url = "mailto:?subject={title}&body={url}"
+  icon = "fas envelope"
+  weight = 30
 
-[sitemap]
-  excludedKinds = ["taxonomy", "term"]
+[docs]
+  github = "https://github.com/DefenceIntelligence/defintelligence.fr"
+  release = ""
+  checkVersion = false
+
+[schema]
+  type = "Organization"
+  name = "Def Intelligence"
+  locale = "fr-FR"
+  github = "https://github.com/DefenceIntelligence"
+  email = "contact@defintelligence.fr"

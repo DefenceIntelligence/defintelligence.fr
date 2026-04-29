@@ -1,0 +1,9 @@
+[fr]
+  label = "Français"
+  direction = "ltr"
+  contentDir = "content"
+  weight = 1
+
+  [fr.params]
+    description = "Conseil et expertise en cybersécurité — audit, pentest, formation et accompagnement stratégique."
+    copyright = "Def Intelligence"

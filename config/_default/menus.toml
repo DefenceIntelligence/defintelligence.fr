@@ -1,0 +1,19 @@
+[[main]]
+  name = "Services"
+  url = "/services/"
+  weight = 10
+
+[[main]]
+  name = "Produits"
+  url = "/produits/"
+  weight = 20
+
+[[main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 30
+
+[[main]]
+  name = "Contact"
+  url = "/contact/"
+  weight = 40

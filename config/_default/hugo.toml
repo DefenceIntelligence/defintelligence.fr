@@ -1,19 +1,22 @@
-theme = "congo"
-defaultContentLanguage = "fr"
 title = "Def Intelligence"
 baseURL = "https://defintelligence.fr/"
-
+defaultContentLanguage = "fr"
 enableRobotsTXT = true
 summaryLength = 30
 
-[pagination]
-  pagerSize = 10
+[build]
+  writeStats = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.120.0"
+  [[module.imports]]
+    path = "github.com/gethinode/hinode"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON", "SITEMAP"]
 
-[privacy]
-  [privacy.vimeo]
-    enableDNT = true
-  [privacy.youTube]
-    privacyEnhanced = true
+[taxonomies]
+  tag = "tags"
+  category = "categories"

@@ -1,0 +1,13 @@
+{
+  "name": "defintelligence",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "hugo server --bind=0.0.0.0 --disableFastRender -D",
+    "build": "hugo --minify",
+    "build:cache": "npm run -s prebuild && hugo --minify",
+    "prebuild": "npx -y @gethinode/hinode/prebuild.js 2>/dev/null || true"
+  },
+  "dependencies": {
+    "@gethinode/hinode": "^0.27.0"
+  }
+}

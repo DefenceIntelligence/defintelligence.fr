@@ -1,69 +1,131 @@
 {{ define "main" }}
 
-<!-- Hero -->
-<section class="mt-8 mb-16 text-center">
-  <h1 class="text-4xl font-bold mb-4 text-neutral-100">
-    Sécurisez votre organisation.<br>
-    <span class="text-primary-400">Anticipez les menaces.</span>
-  </h1>
-  <p class="text-xl text-neutral-400 max-w-2xl mx-auto mb-8">
-    Conseil indépendant en cybersécurité — audit, pentest, gestion des risques et formation pour les PME et ETI.
-  </p>
-  <div class="flex gap-4 justify-center flex-wrap">
-    <a href="/services/" class="px-6 py-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-lg transition">
-      Nos services
-    </a>
-    <a href="/contact/" class="px-6 py-3 border border-neutral-600 hover:border-primary-400 text-neutral-200 font-semibold rounded-lg transition">
-      Prendre contact
-    </a>
+<!-- HERO -->
+<div class="bg-dark border-bottom border-1 border-secondary py-5 mb-5">
+  <div class="container-xxl px-4">
+    <div class="row align-items-center g-5 py-4">
+      <div class="col-lg-7">
+        <div class="badge bg-danger text-uppercase mb-3 px-3 py-2 rounded-pill" style="letter-spacing:.08em;font-size:.75rem">
+          Cybersécurité · Auto-entrepreneur
+        </div>
+        <h1 class="display-5 fw-bold text-white lh-sm mb-4">
+          Sécurisez votre organisation.<br>
+          <span style="color:#f97316">Anticipez les menaces.</span>
+        </h1>
+        <p class="lead text-secondary mb-4">
+          Conseil indépendant en cybersécurité — audit, pentest, gestion des risques et formation pour les PME et ETI.
+        </p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="/services/" class="btn btn-danger px-4 py-2 fw-semibold">Nos services</a>
+          <a href="/contact/" class="btn btn-outline-light px-4 py-2 fw-semibold">Prendre contact</a>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center d-none d-lg-block">
+        <div style="font-size:9rem;line-height:1;filter:drop-shadow(0 0 40px rgba(249,115,22,.35))">🛡️</div>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- Services overview -->
-<section class="mb-16">
-  <h2 class="text-2xl font-bold mb-8 text-center text-neutral-100">Ce que nous faisons</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-    {{ range hugo.Data.services }}
-    <div class="p-6 border border-neutral-700 rounded-xl hover:border-primary-500 transition">
-      <div class="text-3xl mb-3">{{ .icon }}</div>
-      <h3 class="font-bold text-neutral-100 mb-2">{{ .title }}</h3>
-      <p class="text-sm text-neutral-400">{{ .summary }}</p>
+<!-- SERVICES -->
+<div class="container-xxl px-4 mb-5">
+  <h2 class="fw-bold mb-4 text-white">Ce que nous faisons</h2>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-3">
+      <a href="/services/audit-pentest/" class="text-decoration-none">
+        <div class="card bg-dark border-secondary h-100 p-4" style="transition:border-color .2s" onmouseover="this.style.borderColor='#f97316'" onmouseout="this.style.borderColor=''">
+          <div style="font-size:2.2rem;margin-bottom:.75rem">🔍</div>
+          <h5 class="fw-bold text-white mb-2">Audit &amp; Pentest</h5>
+          <p class="text-secondary small mb-0">Tests d'intrusion, audit de configuration, revue de code sécurité.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <a href="/services/gestion-risques/" class="text-decoration-none">
+        <div class="card bg-dark border-secondary h-100 p-4" style="transition:border-color .2s" onmouseover="this.style.borderColor='#f97316'" onmouseout="this.style.borderColor=''">
+          <div style="font-size:2.2rem;margin-bottom:.75rem">🛡️</div>
+          <h5 class="fw-bold text-white mb-2">Gestion des risques</h5>
+          <p class="text-secondary small mb-0">Analyse ISO 27001, EBIOS RM, politique de sécurité.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <a href="/services/formation/" class="text-decoration-none">
+        <div class="card bg-dark border-secondary h-100 p-4" style="transition:border-color .2s" onmouseover="this.style.borderColor='#f97316'" onmouseout="this.style.borderColor=''">
+          <div style="font-size:2.2rem;margin-bottom:.75rem">🎓</div>
+          <h5 class="fw-bold text-white mb-2">Formation</h5>
+          <p class="text-secondary small mb-0">Sensibilisation équipes, formation technique, exercices de crise.</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <a href="/services/rssi-externalise/" class="text-decoration-none">
+        <div class="card bg-dark border-secondary h-100 p-4" style="transition:border-color .2s" onmouseover="this.style.borderColor='#f97316'" onmouseout="this.style.borderColor=''">
+          <div style="font-size:2.2rem;margin-bottom:.75rem">📊</div>
+          <h5 class="fw-bold text-white mb-2">RSSI Externalisé</h5>
+          <p class="text-secondary small mb-0">Gouvernance, conformité RGPD et NIS2, pilotage sécurité.</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+  <div class="mt-4">
+    <a href="/services/" class="text-decoration-none fw-semibold" style="color:#f97316">Voir tous nos services →</a>
+  </div>
+</div>
+
+<!-- PRODUIT ARGOS -->
+<div class="container-xxl px-4 mb-5">
+  <div class="card bg-dark border-secondary p-4 p-lg-5">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-8">
+        <div class="badge bg-warning text-dark mb-2 px-2 py-1 rounded" style="font-size:.7rem">PRODUIT</div>
+        <h3 class="fw-bold text-white mb-2">ARGOS — Attack Surface Monitor</h3>
+        <p class="text-secondary mb-3">Surveillance continue de votre exposition externe : sous-domaines, IPs, certificats, vulnérabilités. Vision claire, alertes en temps réel.</p>
+        <a href="/produits/argos/" class="btn btn-outline-warning px-4">Découvrir ARGOS</a>
+      </div>
+      <div class="col-lg-4 text-center d-none d-lg-block">
+        <div style="font-size:5rem;filter:drop-shadow(0 0 20px rgba(234,179,8,.3))">🔭</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG RÉCENT -->
+{{ $posts := where .Site.RegularPages "Section" "blog" }}
+{{ if $posts }}
+<div class="container-xxl px-4 mb-5">
+  <h2 class="fw-bold mb-4 text-white">Derniers articles</h2>
+  <div class="row g-4">
+    {{ range first 3 $posts }}
+    <div class="col-md-4">
+      <div class="card bg-dark border-secondary h-100 p-4">
+        <p class="text-secondary small mb-2">{{ .Date.Format "02 Jan 2006" }}</p>
+        <h5 class="fw-bold mb-2">
+          <a href="{{ .RelPermalink }}" class="text-white text-decoration-none">{{ .Title }}</a>
+        </h5>
+        <p class="text-secondary small mb-0">{{ .Summary | truncate 120 }}</p>
+      </div>
     </div>
     {{ end }}
   </div>
-  <div class="text-center mt-8">
-    <a href="/services/" class="text-primary-400 hover:text-primary-300 font-semibold">Voir tous nos services →</a>
+  <div class="mt-4">
+    <a href="/blog/" class="text-decoration-none fw-semibold" style="color:#f97316">Tous les articles →</a>
   </div>
-</section>
-
-<!-- Recent blog posts -->
-{{ if .Site.Params.homepage.showRecent }}
-<section class="mb-16">
-  <h2 class="text-2xl font-bold mb-8 text-center text-neutral-100">Derniers articles</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    {{ range first (.Site.Params.homepage.recentLimit | default 3) (where .Site.RegularPages "Section" "blog") }}
-    <article class="border border-neutral-700 rounded-xl p-6 hover:border-primary-500 transition">
-      <p class="text-xs text-neutral-500 mb-2">{{ .Date.Format "02 Jan 2006" }}</p>
-      <h3 class="font-bold text-neutral-100 mb-2">
-        <a href="{{ .RelPermalink }}" class="hover:text-primary-400 transition">{{ .Title }}</a>
-      </h3>
-      <p class="text-sm text-neutral-400">{{ .Summary }}</p>
-    </article>
-    {{ end }}
-  </div>
-  <div class="text-center mt-8">
-    <a href="/blog/" class="text-primary-400 hover:text-primary-300 font-semibold">Tous les articles →</a>
-  </div>
-</section>
+</div>
 {{ end }}
 
-<!-- CTA contact -->
-<section class="text-center py-12 border border-neutral-700 rounded-2xl">
-  <h2 class="text-2xl font-bold text-neutral-100 mb-4">Un projet ? Une question ?</h2>
-  <p class="text-neutral-400 mb-6">Échangeons sur vos enjeux de cybersécurité.</p>
-  <a href="/contact/" class="px-8 py-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-lg transition">
-    Contactez-nous
-  </a>
-</section>
+<!-- CTA CONTACT -->
+<div class="container-xxl px-4 mb-5">
+  <div class="text-center py-5 px-4 border border-secondary rounded-3 bg-dark">
+    <h2 class="fw-bold text-white mb-3">Un projet ? Une question ?</h2>
+    <p class="text-secondary lead mb-4">Échangeons sur vos enjeux de cybersécurité.</p>
+    <a href="/contact/" class="btn btn-danger btn-lg px-5 fw-semibold">Contactez-nous</a>
+  </div>
+</div>
 
 {{ end }}
