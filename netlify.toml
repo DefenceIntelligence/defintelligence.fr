@@ -1,10 +1,11 @@
 [build]
   publish = "public"
-  command = "hugo --minify"
+  command = "npm ci && hugo --minify"
 
 [build.environment]
   HUGO_VERSION = "0.161.0"
-  HUGO_ENV = "production"
+  HUGO_ENVIRONMENT = "production"
+  NODE_VERSION = "20"
 
 [[headers]]
   for = "/*"
@@ -13,15 +14,11 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:"
 
 [[redirects]]
   from = "/contact"
   to = "/contact/"
   status = 301
 
-[context.production]
-  command = "hugo --minify"
-
 [context.deploy-preview]
-  command = "hugo --minify --buildFuture -b $DEPLOY_PRIME_URL"
+  command = "npm ci && hugo --minify --buildFuture -b $DEPLOY_PRIME_URL"
