@@ -1,0 +1,5 @@
+{{ if $.Attributes.class }}
+    <div class="{{ $.Attributes.class | safeHTMLAttr }}">{{ transform.ToMath .Inner (dict "displayMode" true) }}</div>
+{{ else }}
+    {{ transform.ToMath .Inner (dict "displayMode" true) }}
+{{ end }}
