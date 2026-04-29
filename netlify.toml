@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "npm ci && hugo --minify"
+  command = "npm ci && curl -fsSL https://github.com/gohugoio/hugo/releases/download/v0.161.0/hugo_extended_0.161.0_linux-amd64.tar.gz | tar xz && ./hugo --minify"
 
 [build.environment]
   HUGO_VERSION = "0.161.0"
@@ -21,4 +21,4 @@
   status = 301
 
 [context.deploy-preview]
-  command = "npm ci && hugo --minify --buildFuture -b $DEPLOY_PRIME_URL"
+  command = "npm ci && curl -fsSL https://github.com/gohugoio/hugo/releases/download/v0.161.0/hugo_extended_0.161.0_linux-amd64.tar.gz | tar xz && ./hugo --minify --buildFuture -b $DEPLOY_PRIME_URL"
