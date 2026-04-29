@@ -17,3 +17,13 @@
   name = "Contact"
   url = "/contact/"
   weight = 40
+
+[[footer]]
+  name = "Mentions légales"
+  url = "/mentions-legales/"
+  weight = 10
+
+[[footer]]
+  name = "Contact"
+  url = "/contact/"
+  weight = 20
