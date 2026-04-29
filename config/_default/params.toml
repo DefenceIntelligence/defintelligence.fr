@@ -8,7 +8,7 @@ copyright = "Def Intelligence"
 
 [navigation]
   anchor = true
-  logo = ""
+  logo = "/img/logo.jpg"
   color = "body"
   fixed = true
   offset = "5em"
