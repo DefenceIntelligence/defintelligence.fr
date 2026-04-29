@@ -1,0 +1,69 @@
+{{ define "main" }}
+
+<!-- Hero -->
+<section class="mt-8 mb-16 text-center">
+  <h1 class="text-4xl font-bold mb-4 text-neutral-100">
+    Sécurisez votre organisation.<br>
+    <span class="text-primary-400">Anticipez les menaces.</span>
+  </h1>
+  <p class="text-xl text-neutral-400 max-w-2xl mx-auto mb-8">
+    Conseil indépendant en cybersécurité — audit, pentest, gestion des risques et formation pour les PME et ETI.
+  </p>
+  <div class="flex gap-4 justify-center flex-wrap">
+    <a href="/services/" class="px-6 py-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-lg transition">
+      Nos services
+    </a>
+    <a href="/contact/" class="px-6 py-3 border border-neutral-600 hover:border-primary-400 text-neutral-200 font-semibold rounded-lg transition">
+      Prendre contact
+    </a>
+  </div>
+</section>
+
+<!-- Services overview -->
+<section class="mb-16">
+  <h2 class="text-2xl font-bold mb-8 text-center text-neutral-100">Ce que nous faisons</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    {{ range hugo.Data.services }}
+    <div class="p-6 border border-neutral-700 rounded-xl hover:border-primary-500 transition">
+      <div class="text-3xl mb-3">{{ .icon }}</div>
+      <h3 class="font-bold text-neutral-100 mb-2">{{ .title }}</h3>
+      <p class="text-sm text-neutral-400">{{ .summary }}</p>
+    </div>
+    {{ end }}
+  </div>
+  <div class="text-center mt-8">
+    <a href="/services/" class="text-primary-400 hover:text-primary-300 font-semibold">Voir tous nos services →</a>
+  </div>
+</section>
+
+<!-- Recent blog posts -->
+{{ if .Site.Params.homepage.showRecent }}
+<section class="mb-16">
+  <h2 class="text-2xl font-bold mb-8 text-center text-neutral-100">Derniers articles</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {{ range first (.Site.Params.homepage.recentLimit | default 3) (where .Site.RegularPages "Section" "blog") }}
+    <article class="border border-neutral-700 rounded-xl p-6 hover:border-primary-500 transition">
+      <p class="text-xs text-neutral-500 mb-2">{{ .Date.Format "02 Jan 2006" }}</p>
+      <h3 class="font-bold text-neutral-100 mb-2">
+        <a href="{{ .RelPermalink }}" class="hover:text-primary-400 transition">{{ .Title }}</a>
+      </h3>
+      <p class="text-sm text-neutral-400">{{ .Summary }}</p>
+    </article>
+    {{ end }}
+  </div>
+  <div class="text-center mt-8">
+    <a href="/blog/" class="text-primary-400 hover:text-primary-300 font-semibold">Tous les articles →</a>
+  </div>
+</section>
+{{ end }}
+
+<!-- CTA contact -->
+<section class="text-center py-12 border border-neutral-700 rounded-2xl">
+  <h2 class="text-2xl font-bold text-neutral-100 mb-4">Un projet ? Une question ?</h2>
+  <p class="text-neutral-400 mb-6">Échangeons sur vos enjeux de cybersécurité.</p>
+  <a href="/contact/" class="px-8 py-3 bg-primary-600 hover:bg-primary-500 text-white font-semibold rounded-lg transition">
+    Contactez-nous
+  </a>
+</section>
+
+{{ end }}

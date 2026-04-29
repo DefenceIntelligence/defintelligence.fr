@@ -1,0 +1,19 @@
+theme = "congo"
+defaultContentLanguage = "fr"
+title = "Def Intelligence"
+baseURL = "https://defintelligence.fr/"
+
+enableRobotsTXT = true
+summaryLength = 30
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[privacy]
+  [privacy.vimeo]
+    enableDNT = true
+  [privacy.youTube]
+    privacyEnhanced = true

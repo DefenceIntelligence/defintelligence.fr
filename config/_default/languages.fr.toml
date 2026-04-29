@@ -1,0 +1,22 @@
+locale = "fr-FR"
+label = "Français"
+direction = "ltr"
+weight = 1
+
+title = "Def Intelligence"
+copyright = "&copy; 2026 Def Intelligence"
+
+[params]
+  dateFormat = "2 January 2006"
+  description = "Conseil et expertise en cybersécurité — audit, pentest, formation et accompagnement stratégique."
+  mainSections = ["blog"]
+
+[params.author]
+  name = "Def Intelligence"
+  headline = "Cybersécurité & Renseignement"
+  bio = "Conseil indépendant en cybersécurité : audit, pentest, gestion des risques et formation pour les PME et ETI."
+  links = [
+    { linkedin = "https://linkedin.com/company/defintelligence" },
+    { github = "https://github.com/DefenceIntelligence" },
+    { email = "mailto:contact@defintelligence.fr" },
+  ]

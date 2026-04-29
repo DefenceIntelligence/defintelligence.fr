@@ -1,0 +1,41 @@
+colorScheme = "neon"
+defaultAppearance = "dark"
+autoSwitchAppearance = false
+
+enableSearch = true
+enableCodeCopy = true
+enableImageLazyLoading = true
+enableImageWebp = true
+
+[header]
+  layout = "hamburger"
+  showTitle = true
+
+[footer]
+  showCopyright = true
+  showThemeAttribution = false
+  showAppearanceSwitcher = false
+  showScrollToTop = true
+
+[homepage]
+  layout = "custom"
+  showRecent = true
+  recentLimit = 3
+
+[article]
+  showDate = true
+  showAuthor = true
+  showBreadcrumbs = true
+  showReadingTime = true
+  showTableOfContents = true
+  showPagination = true
+  showTaxonomies = true
+  sharingLinks = ["linkedin", "x-twitter", "email"]
+
+[list]
+  showBreadcrumbs = true
+  showSummary = true
+  groupByYear = false
+
+[sitemap]
+  excludedKinds = ["taxonomy", "term"]
