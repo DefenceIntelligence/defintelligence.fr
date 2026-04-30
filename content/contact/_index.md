@@ -7,7 +7,7 @@ Décrivez votre projet ou votre besoin, nous vous répondons sous 48h.
 
 ---
 
-<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:flex;flex-direction:column;gap:1.2rem;max-width:600px">
+<form name="contact" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field" style="display:flex;flex-direction:column;gap:1.2rem;max-width:600px">
   <input type="hidden" name="form-name" value="contact" />
   <p style="display:none"><label>Ne pas remplir : <input name="bot-field" /></label></p>
 
