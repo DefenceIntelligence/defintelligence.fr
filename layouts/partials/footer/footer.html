@@ -1,0 +1,35 @@
+<footer class="container-fluid footer text-center p-3">
+    <div class="container-xxl text-center">
+        <small>
+            {{- $copyright := printf "%s © %s %s %s." (T "copyright") (dateFormat "2006" now) .Site.Title (T "rights") }}
+            {{ cond (gt (len .Site.Copyright) 0) .Site.Copyright $copyright }}
+            {{ .Site.Params.footer.license | safeHTML }} |
+            {{ if .Site.Params.main.endorse }}
+                {{ $link := partial "assets/link.html" (dict "destination" (index site.Params.links "hinode") "text" "Hinode" "class" "link-bg-footer" "page" .Page) }}
+                {{ T "poweredBy" $link | safeHTML }}
+            {{ end }}
+        </small>
+    </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var brand = document.querySelector("a.navbar-brand");
+    if (!brand) return;
+    var img = brand.querySelector("img");
+    if (!img) return;
+    img.style.height = "42px";
+    img.style.width = "auto";
+    var wrap = document.createElement("div");
+    wrap.style.cssText = "display:flex;flex-direction:column;justify-content:center;margin-left:.6rem;line-height:1";
+    var name = document.createElement("span");
+    name.textContent = "Defence Intelligence";
+    name.style.cssText = "font-weight:700;font-size:.95rem;color:#fff;letter-spacing:.02em";
+    var slogan = document.createElement("span");
+    slogan.textContent = "Cybersécurité & Renseignement";
+    slogan.style.cssText = "font-size:.58rem;color:#00c97a;letter-spacing:.1em;text-transform:uppercase;margin-top:3px";
+    wrap.appendChild(name);
+    wrap.appendChild(slogan);
+    brand.appendChild(wrap);
+});
+</script>
