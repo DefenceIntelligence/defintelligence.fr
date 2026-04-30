@@ -13,9 +13,10 @@
 </footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+function diSetupBrand() {
     var brand = document.querySelector("a.navbar-brand");
-    if (!brand) return;
+    if (!brand || brand.dataset.diDone) return;
+    brand.dataset.diDone = "1";
     brand.innerHTML = "";
     brand.style.cssText = "display:flex;align-items:center;gap:.6rem;text-decoration:none";
     var logo = document.createElement("img");
@@ -34,5 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
     wrap.appendChild(slogan);
     brand.appendChild(logo);
     brand.appendChild(wrap);
-});
+}
+diSetupBrand();
+document.addEventListener("DOMContentLoaded", diSetupBrand);
+window.addEventListener("load", diSetupBrand);
 </script>
