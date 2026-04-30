@@ -16,12 +16,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     var brand = document.querySelector("a.navbar-brand");
     if (!brand) return;
-    var img = brand.querySelector("img");
-    if (!img) return;
-    img.style.height = "42px";
-    img.style.width = "auto";
+    brand.innerHTML = "";
+    brand.style.cssText = "display:flex;align-items:center;gap:.6rem;text-decoration:none";
+    var logo = document.createElement("img");
+    logo.src = "/img/logo.png";
+    logo.alt = "Defence Intelligence";
+    logo.style.cssText = "height:42px;width:auto";
     var wrap = document.createElement("div");
-    wrap.style.cssText = "display:flex;flex-direction:column;justify-content:center;margin-left:.6rem;line-height:1";
+    wrap.style.cssText = "display:flex;flex-direction:column;justify-content:center;line-height:1";
     var name = document.createElement("span");
     name.textContent = "Defence Intelligence";
     name.style.cssText = "font-weight:700;font-size:.95rem;color:#fff;letter-spacing:.02em";
@@ -30,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     slogan.style.cssText = "font-size:.58rem;color:#00c97a;letter-spacing:.1em;text-transform:uppercase;margin-top:3px";
     wrap.appendChild(name);
     wrap.appendChild(slogan);
+    brand.appendChild(logo);
     brand.appendChild(wrap);
 });
 </script>
