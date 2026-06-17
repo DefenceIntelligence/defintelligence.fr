@@ -1,4 +1,9 @@
 [[main]]
+  name = "À propos"
+  url = "/a-propos/"
+  weight = 5
+
+[[main]]
   name = "Services"
   url = "/services/"
   weight = 10

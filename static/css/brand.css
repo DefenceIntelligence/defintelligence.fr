@@ -1,0 +1,67 @@
+/* Defence Intelligence — brand colors */
+/* Accent vert #00c97a — remplace l'orange Hinode par défaut */
+
+:root {
+  --bs-primary: #00c97a;
+  --bs-primary-rgb: 0, 201, 122;
+  --bs-link-color: #00c97a;
+  --bs-link-color-rgb: 0, 201, 122;
+  --bs-link-hover-color: #00a862;
+  --bs-link-hover-color-rgb: 0, 168, 98;
+  /* Variable Hinode utilisée dans certains composants */
+  --color-primary-600: #00c97a;
+}
+
+/* Boutons primaires */
+.btn-primary {
+  --bs-btn-bg: #00c97a;
+  --bs-btn-border-color: #00c97a;
+  --bs-btn-hover-bg: #00a862;
+  --bs-btn-hover-border-color: #00a862;
+  --bs-btn-active-bg: #009558;
+  --bs-btn-active-border-color: #009558;
+  --bs-btn-color: #000;
+  --bs-btn-hover-color: #000;
+  --bs-btn-active-color: #000;
+}
+
+/* Outline boutons primaires */
+.btn-outline-primary {
+  --bs-btn-color: #00c97a;
+  --bs-btn-border-color: #00c97a;
+  --bs-btn-hover-bg: #00c97a;
+  --bs-btn-hover-border-color: #00c97a;
+  --bs-btn-hover-color: #000;
+  --bs-btn-active-bg: #00a862;
+  --bs-btn-active-color: #000;
+}
+
+/* Badges / tags */
+.badge.bg-primary,
+.badge.text-bg-primary {
+  background-color: #00c97a !important;
+  color: #000 !important;
+}
+
+/* Liens actifs nav */
+.nav-link.active,
+.navbar-nav .nav-link.active,
+.navbar-nav .show > .nav-link {
+  color: #00c97a !important;
+}
+
+/* Breadcrumb liens */
+.breadcrumb-item a {
+  color: #00c97a;
+}
+
+/* Tags Hinode (badges outline sur les articles) */
+.btn-outline-secondary.rounded-pill,
+a.badge {
+  border-color: #00c97a;
+  color: #00c97a;
+}
+a.badge:hover {
+  background-color: #00c97a;
+  color: #000;
+}

@@ -2,9 +2,9 @@ theme = "dark"
 colorTheme = ""
 
 description = "Conseil et expertise en cybersécurité — audit, pentest, formation et accompagnement stratégique."
-author = "Def Intelligence"
-organization = "Def Intelligence"
-copyright = "Def Intelligence"
+author = "Defence Intelligence"
+organization = "Defence Intelligence"
+copyright = "Defence Intelligence"
 
 [navigation]
   anchor = true
@@ -17,6 +17,7 @@ copyright = "Def Intelligence"
   separator = false
   endorCTA = true
   favicon = "img/favicon.png"
+  customCSS = ["css/brand.css"]
 
 [home]
   sections = ["blog"]
@@ -52,7 +53,7 @@ copyright = "Def Intelligence"
 
 [schema]
   type = "Organization"
-  name = "Def Intelligence"
+  name = "Defence Intelligence"
   locale = "fr-FR"
   github = "https://github.com/DefenceIntelligence"
   email = "contact@defintelligence.fr"
