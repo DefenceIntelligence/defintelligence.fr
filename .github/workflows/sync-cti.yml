@@ -38,12 +38,12 @@ jobs:
             '---' \
             "title: \"CTI Digest — ${TITLE_DATE}\"" \
             "date: ${DATE}" \
-            'description: "Veille cyber et threat intelligence quotidienne — Defence Intelligence."' \
             'tags: ["cti", "veille", "threat-intelligence"]' \
             '---' \
             '' > "$OUTFILE"
 
-          cat /tmp/digest_raw.md >> "$OUTFILE"
+          # Strip the first H1 du digest (titre redondant avec le titre Hugo)
+          sed '0,/^#[[:space:]]/{/^#[[:space:]]/d}' /tmp/digest_raw.md >> "$OUTFILE"
           echo "Written: $OUTFILE"
 
       - name: Commit and push
