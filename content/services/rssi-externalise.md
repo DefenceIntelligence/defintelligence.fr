@@ -2,6 +2,9 @@
 title: "RSSI Externalisé"
 description: "Responsable de la Sécurité SI externalisé"
 weight: 4
+_build:
+  list: never
+  render: always
 ---
 
 ## La sécurité pilotée, sans embauche à temps plein

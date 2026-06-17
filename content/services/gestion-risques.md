@@ -2,6 +2,9 @@
 title: "Gestion des risques"
 description: "Analyse de risques et gouvernance de la sécurité"
 weight: 2
+_build:
+  list: never
+  render: always
 ---
 
 ## Piloter votre sécurité par les risques

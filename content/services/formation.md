@@ -2,6 +2,9 @@
 title: "Formation & Sensibilisation"
 description: "Former vos équipes à la cybersécurité"
 weight: 3
+_build:
+  list: never
+  render: always
 ---
 
 ## L'humain reste le premier rempart
