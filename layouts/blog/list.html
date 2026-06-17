@@ -1,0 +1,36 @@
+{{- define "main" -}}
+<div class="container-xxl p-4 px-xxl-0">
+    {{ if site.Params.navigation.breadcrumb }}
+        <div>{{ partial "assets/breadcrumb.html" (dict "page" .) }}</div>
+    {{ end }}
+
+    <p class="display-4 mt-4 mb-1">{{ .Title }}</p>
+    <p style="color:var(--bs-secondary-color);margin-bottom:2.5rem">{{ .Description }}</p>
+
+    {{ $pages := .RegularPages.ByDate.Reverse }}
+    {{ if $pages }}
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.25rem">
+        {{ range $pages }}
+        <a href="{{ .RelPermalink }}" style="text-decoration:none;color:inherit">
+            <div style="border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1.6rem;height:100%;transition:border-color .2s" onmouseover="this.style.borderColor='#00c97a'" onmouseout="this.style.borderColor='var(--bs-border-color)'">
+                <div style="font-size:.75rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem">
+                    {{ .Date.Format "02 Jan 2006" }}
+                    {{ with .Params.tags }}· {{ index . 0 }}{{ end }}
+                </div>
+                <p style="font-weight:700;font-size:1.05rem;margin-bottom:.6rem;line-height:1.3">{{ .Title }}</p>
+                {{ with .Description }}
+                <p style="font-size:.875rem;color:var(--bs-secondary-color);margin:0;line-height:1.5">{{ . | truncate 120 }}</p>
+                {{ else }}
+                <p style="font-size:.875rem;color:var(--bs-secondary-color);margin:0;line-height:1.5">{{ .Summary | truncate 120 }}</p>
+                {{ end }}
+                <p style="margin-top:1rem;font-size:.85rem;color:#00c97a;font-weight:600">Lire →</p>
+            </div>
+        </a>
+        {{ end }}
+    </div>
+    {{ else }}
+    <p style="color:var(--bs-secondary-color)">Aucun article publié pour le moment.</p>
+    {{ end }}
+</div>
+<div class="container-fluid flex-fill"></div>
+{{- end -}}
