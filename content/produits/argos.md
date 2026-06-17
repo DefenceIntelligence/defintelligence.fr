@@ -1,6 +1,9 @@
 ---
 title: "ARGOS — Attack Surface Management"
 description: "Cartographiez, surveillez et notez votre exposition externe en continu, à partir d'un simple nom de domaine."
+build:
+  list: never
+  render: always
 ---
 
 ## Vous ne pouvez pas protéger ce que vous ne voyez pas
