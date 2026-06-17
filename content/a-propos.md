@@ -107,4 +107,11 @@ Développé pour répondre à un besoin réel constaté sur le terrain, **ARGOS*
 <a href="/contact/" class="btn btn-outline-primary mt-1">Prendre contact →</a>
 <a href="https://www.linkedin.com/in/stephane-desmets/" target="_blank" rel="noopener" class="btn btn-outline-secondary mt-1 ms-2">LinkedIn →</a>
 
+
+---
+
+<p style="color:var(--bs-secondary-color);font-size:.85rem;margin-top:2rem">
+🗓 Quand je ne surveille pas des surfaces d'attaque, je compte les jours avec <a href="https://almostly.app" target="_blank" rel="noopener" style="color:var(--bs-secondary-color);text-decoration:underline dotted">Almostly</a> — tes dates, avec personnalité.
+</p>
+
 </section>
