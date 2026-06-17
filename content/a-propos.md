@@ -59,11 +59,11 @@ Mon parcours couvre l'ensemble de la chaîne : de la gouvernance SSI à la répo
 
 <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin:1.2rem 0">
 
-<span style="padding:.4rem .9rem;border:1px solid #00c97a;border-radius:2rem;font-size:.85rem;color:#00c97a">ISO/IEC 27001 Lead Implementer (PECB)</span>
-<span style="padding:.4rem .9rem;border:1px solid #00c97a;border-radius:2rem;font-size:.85rem;color:#00c97a">ISO/IEC 27005 Risk Manager (PECB)</span>
-<span style="padding:.4rem .9rem;border:1px solid #00c97a;border-radius:2rem;font-size:.85rem;color:#00c97a">Lead Cybersecurity Manager (PECB)</span>
-<span style="padding:.4rem .9rem;border:1px solid var(--bs-border-color);border-radius:2rem;font-size:.85rem">ITIL v3 Foundation & PPO</span>
-<span style="padding:.4rem .9rem;border:1px solid var(--bs-border-color);border-radius:2rem;font-size:.85rem">ScrumMaster (ScrumAlliance)</span>
+<span style="padding:.4rem .9rem;border:1px solid #00c97a;border-radius:2rem;font-size:.85rem;color:#00c97a;white-space:nowrap">ISO/IEC 27001 Lead Implementer (PECB)</span>
+<span style="padding:.4rem .9rem;border:1px solid #00c97a;border-radius:2rem;font-size:.85rem;color:#00c97a;white-space:nowrap">ISO/IEC 27005 Risk Manager (PECB)</span>
+<span style="padding:.4rem .9rem;border:1px solid #00c97a;border-radius:2rem;font-size:.85rem;color:#00c97a;white-space:nowrap">Lead Cybersecurity Manager (PECB)</span>
+<span style="padding:.4rem .9rem;border:1px solid var(--bs-border-color);border-radius:2rem;font-size:.85rem;white-space:nowrap">ITIL v3 Foundation & PPO</span>
+<span style="padding:.4rem .9rem;border:1px solid var(--bs-border-color);border-radius:2rem;font-size:.85rem;white-space:nowrap">ScrumMaster (ScrumAlliance)</span>
 
 </div>
 
