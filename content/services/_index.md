@@ -17,7 +17,7 @@ Un accompagnement sur-mesure ancré dans l'expérience opérationnelle — de la
 <!-- ASM -->
 <div style="border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1.8rem;transition:border-color .2s" onmouseover="this.style.borderColor='#00c97a'" onmouseout="this.style.borderColor='var(--bs-border-color)'">
 <div style="font-size:2rem;margin-bottom:.75rem">🛡️</div>
-<h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Attack Surface Management</h3>
+<p style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem;line-height:1.2">Attack Surface Management</p>
 <p style="color:var(--bs-secondary-color);font-size:.9rem;margin-bottom:1rem">Cartographie continue de votre exposition externe. Sous-domaines oubliés, IPs exposées, certificats expirés, secrets sur GitHub, domaines de filiales — ARGOS détecte et note tout.</p>
 <ul style="color:var(--bs-secondary-color);font-size:.85rem;margin-bottom:1.2rem;padding-left:1.2rem">
 <li>Découverte automatique des actifs exposés</li>
@@ -31,7 +31,7 @@ Un accompagnement sur-mesure ancré dans l'expérience opérationnelle — de la
 <!-- CTI -->
 <div style="border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1.8rem;transition:border-color .2s" onmouseover="this.style.borderColor='#00c97a'" onmouseout="this.style.borderColor='var(--bs-border-color)'">
 <div style="font-size:2rem;margin-bottom:.75rem">📡</div>
-<h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Threat Intelligence</h3>
+<p style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem;line-height:1.2">Threat Intelligence</p>
 <p style="color:var(--bs-secondary-color);font-size:.9rem;margin-bottom:1rem">Surveillance des menaces ciblant votre organisation. Groupes ransomware, credentials leaks, typosquatting de votre marque, IOCs — veille continue et alertes en temps réel.</p>
 <ul style="color:var(--bs-secondary-color);font-size:.85rem;margin-bottom:1.2rem;padding-left:1.2rem">
 <li>Monitoring des groupes ransomware actifs</li>
@@ -45,7 +45,7 @@ Un accompagnement sur-mesure ancré dans l'expérience opérationnelle — de la
 <!-- Gouvernance -->
 <div style="border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1.8rem;transition:border-color .2s" onmouseover="this.style.borderColor='#00c97a'" onmouseout="this.style.borderColor='var(--bs-border-color)'">
 <div style="font-size:2rem;margin-bottom:.75rem">📋</div>
-<h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem">Gouvernance & Conformité</h3>
+<p style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem;line-height:1.2">Gouvernance & Conformité</p>
 <p style="color:var(--bs-secondary-color);font-size:.9rem;margin-bottom:1rem">Mise en place de SMSI, analyse de risques et accompagnement à la conformité réglementaire. Méthodes éprouvées sur de grands groupes internationaux.</p>
 <ul style="color:var(--bs-secondary-color);font-size:.85rem;margin-bottom:1.2rem;padding-left:1.2rem">
 <li>Analyse de risques EBIOS Risk Manager (ANSSI)</li>
@@ -59,7 +59,7 @@ Un accompagnement sur-mesure ancré dans l'expérience opérationnelle — de la
 <!-- RSSI -->
 <div style="border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1.8rem;transition:border-color .2s" onmouseover="this.style.borderColor='#00c97a'" onmouseout="this.style.borderColor='var(--bs-border-color)'">
 <div style="font-size:2rem;margin-bottom:.75rem">👔</div>
-<h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem">RSSI Externalisé</h3>
+<p style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem;line-height:1.2">RSSI Externalisé</p>
 <p style="color:var(--bs-secondary-color);font-size:.9rem;margin-bottom:1rem">Votre interlocuteur sécurité dédié, sans les coûts d'un recrutement. Pilotage SSI, politique de sécurité, gestion de crise cyber et sensibilisation des collaborateurs.</p>
 <ul style="color:var(--bs-secondary-color);font-size:.85rem;margin-bottom:1.2rem;padding-left:1.2rem">
 <li>Politique de sécurité (PSSI) et procédures</li>
