@@ -68,10 +68,37 @@ a:not(.btn):not(.nav-link):not(.navbar-brand):not(.badge):hover {
 /* Tags Hinode (badges outline sur les articles) */
 .btn-outline-secondary.rounded-pill,
 a.badge {
-  border-color: #00c97a;
-  color: #00c97a;
+  border-color: #00c97a !important;
+  color: #00c97a !important;
 }
 a.badge:hover {
-  background-color: #00c97a;
-  color: #000;
+  background-color: #00c97a !important;
+  color: #000 !important;
+}
+
+/* Liens dans les headings (titres d'articles CTI/blog) */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #00c97a !important;
+}
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+  color: #00a862 !important;
+}
+
+/* Tags pills sur les pages d'articles */
+.btn-outline-primary.rounded-pill,
+a.btn-outline-primary.rounded-pill {
+  border-color: #00c97a !important;
+  color: #00c97a !important;
+}
+a.btn-outline-primary.rounded-pill:hover {
+  background-color: #00c97a !important;
+  color: #000 !important;
+}
+
+/* Sidebar TOC liens */
+.toc a, #TableOfContents a {
+  color: var(--bs-secondary-color) !important;
+}
+.toc a:hover, #TableOfContents a:hover {
+  color: #00c97a !important;
 }
