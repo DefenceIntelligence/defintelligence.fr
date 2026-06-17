@@ -2,7 +2,7 @@
 title: "Gestion des risques"
 description: "Analyse de risques et gouvernance de la sécurité"
 weight: 2
-_build:
+build:
   list: never
   render: always
 ---

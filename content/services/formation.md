@@ -2,7 +2,7 @@
 title: "Formation & Sensibilisation"
 description: "Former vos équipes à la cybersécurité"
 weight: 3
-_build:
+build:
   list: never
   render: always
 ---

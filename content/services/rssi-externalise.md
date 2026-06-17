@@ -2,7 +2,7 @@
 title: "RSSI Externalisé"
 description: "Responsable de la Sécurité SI externalisé"
 weight: 4
-_build:
+build:
   list: never
   render: always
 ---
