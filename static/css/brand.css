@@ -51,8 +51,18 @@
 }
 
 /* Breadcrumb liens */
-.breadcrumb-item a {
+.breadcrumb-item a,
+.breadcrumb-item a:link,
+.breadcrumb-item a:visited {
+  color: #00c97a !important;
+}
+
+/* Tous les liens inline (Hinode compile le primary SCSS en dur) */
+a:not(.btn):not(.nav-link):not(.navbar-brand):not(.badge) {
   color: #00c97a;
+}
+a:not(.btn):not(.nav-link):not(.navbar-brand):not(.badge):hover {
+  color: #00a862;
 }
 
 /* Tags Hinode (badges outline sur les articles) */
