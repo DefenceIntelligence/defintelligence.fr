@@ -7,7 +7,7 @@ showToc: false
 <section style="max-width:820px;margin:0 auto">
 
 <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap">
-  <img src="/img/logo.png" alt="Defence Intelligence" style="height:80px;width:auto" />
+  <img src="/img/avatar.jpg" alt="Stéphane Desmets" style="width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid #00c97a" />
   <div>
     <p style="margin:0 0 .3rem;font-size:1.6rem;font-weight:700;line-height:1.2">Stéphane Desmets</p>
     <p style="margin:0 0 .2rem;font-weight:600;color:#00c97a">Fondateur — Defence Intelligence</p>
