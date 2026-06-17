@@ -9,7 +9,7 @@ showToc: false
 <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap">
   <img src="/img/logo.png" alt="Defence Intelligence" style="height:80px;width:auto" />
   <div>
-    <h2 style="margin:0 0 .3rem;font-size:1.6rem">Stéphane Desmets</h2>
+    <p style="margin:0 0 .3rem;font-size:1.6rem;font-weight:700;line-height:1.2">Stéphane Desmets</p>
     <p style="margin:0 0 .2rem;font-weight:600;color:#00c97a">Fondateur — Defence Intelligence</p>
     <p style="margin:0;color:var(--bs-secondary-color);font-size:.9rem">RSSI · Head of Cyber Defence · Consultant indépendant</p>
   </div>
