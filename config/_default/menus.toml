@@ -19,7 +19,7 @@
   weight = 30
 
 [[main]]
-  name = "CTI Digest"
+  name = "CTI"
   url = "/cti/"
   weight = 35
 
