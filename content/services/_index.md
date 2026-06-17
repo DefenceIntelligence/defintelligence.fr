@@ -2,6 +2,8 @@
 title: "Services"
 description: "Accompagnement en cybersécurité — Attack Surface Management, Threat Intelligence, gouvernance et RSSI externalisé."
 showToc: false
+showCards: false
+layout: "single"
 ---
 
 <section style="max-width:860px;margin:0 auto">
