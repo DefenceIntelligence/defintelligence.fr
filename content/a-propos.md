@@ -1,6 +1,7 @@
 ---
 title: "À propos"
 description: "Stéphane Desmets — 30 ans d'expérience IT, expert en cybersécurité, Attack Surface Management et Threat Intelligence. Fondateur de Defence Intelligence et d'ARGOS."
+showToc: false
 ---
 
 <section style="max-width:820px;margin:0 auto">
