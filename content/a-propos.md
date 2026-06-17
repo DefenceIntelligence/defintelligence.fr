@@ -57,15 +57,13 @@ Mon parcours couvre l'ensemble de la chaîne : de la gouvernance SSI à la répo
 
 ## Certifications
 
-<div style="display:flex;flex-wrap:wrap;gap:.75rem;margin:1.2rem 0">
-
-<span style="padding:.4rem .9rem;border:1px solid #00c97a;border-radius:2rem;font-size:.85rem;color:#00c97a;white-space:nowrap">ISO/IEC 27001 Lead Implementer (PECB)</span>
-<span style="padding:.4rem .9rem;border:1px solid #00c97a;border-radius:2rem;font-size:.85rem;color:#00c97a;white-space:nowrap">ISO/IEC 27005 Risk Manager (PECB)</span>
-<span style="padding:.4rem .9rem;border:1px solid #00c97a;border-radius:2rem;font-size:.85rem;color:#00c97a;white-space:nowrap">Lead Cybersecurity Manager (PECB)</span>
-<span style="padding:.4rem .9rem;border:1px solid var(--bs-border-color);border-radius:2rem;font-size:.85rem;white-space:nowrap">ITIL v3 Foundation & PPO</span>
-<span style="padding:.4rem .9rem;border:1px solid var(--bs-border-color);border-radius:2rem;font-size:.85rem;white-space:nowrap">ScrumMaster (ScrumAlliance)</span>
-
-</div>
+<table style="margin:1.2rem 0;border-collapse:collapse;width:100%">
+<tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">ISO/IEC 27001 Lead Implementer (PECB) — 2021</td></tr>
+<tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">ISO/IEC 27005 Risk Manager (PECB) — 2021</td></tr>
+<tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">Lead Cybersecurity Manager (PECB) — 2024</td></tr>
+<tr><td style="padding:.4rem .6rem;color:var(--bs-secondary-color);font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">ITIL v3 Foundation & PPO</td></tr>
+<tr><td style="padding:.4rem .6rem;color:var(--bs-secondary-color);font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">ScrumMaster (ScrumAlliance)</td></tr>
+</table>
 
 ---
 
