@@ -16,7 +16,7 @@ description: "Stéphane Desmets — 30 ans d'expérience IT, expert en cyberséc
 
 ## Expertise au service de votre sécurité
 
-Fort de **30 ans d'expérience en informatique** dont plus de 7 ans à la tête de programmes de cybersécurité dans un groupe industriel international, je mets cette expérience opérationnelle au service des organisations qui veulent comprendre et réduire leur exposition cyber réelle.
+Fort de **30 ans d'expérience en informatique** dont plus de 7 ans à la tête de programmes de cybersécurité au sein du groupe DEKRA (périmètre monde), je mets cette expérience opérationnelle au service des organisations qui veulent comprendre et réduire leur exposition cyber réelle.
 
 Mon parcours couvre l'ensemble de la chaîne : de la gouvernance SSI à la réponse à incident, en passant par la Threat Intelligence, l'Attack Surface Management et les tests d'intrusion — avec toujours la même exigence : des résultats concrets, priorisés par risque métier.
 
@@ -28,7 +28,7 @@ Mon parcours couvre l'ensemble de la chaîne : de la gouvernance SSI à la répo
 
 <div style="margin-bottom:1.8rem">
 <p style="margin:0;font-size:.8rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.05em">Depuis 2021</p>
-<strong>Head of Global Cyber Defence</strong> — Groupe industriel international (45 000 collaborateurs, périmètre monde)<br/>
+<strong>Head of Global Cyber Defence</strong> — DEKRA SE (45 000 collaborateurs, périmètre monde)<br/>
 <small>Management d'une équipe internationale de 7 personnes. Attack Surface Management, Threat Intelligence, Brand & Data Leak Monitoring, Red Team, réponse à incidents, ISO 27001 & TISAX.</small>
 </div>
 
