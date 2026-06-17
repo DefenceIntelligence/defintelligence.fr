@@ -58,9 +58,12 @@ Mon parcours couvre l'ensemble de la chaîne : de la gouvernance SSI à la répo
 ## Certifications
 
 <table style="margin:1.2rem 0;border-collapse:collapse;width:100%">
+<tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">ISO/IEC 27001 Lead Auditor (PECB) — mai 2025</td></tr>
+<tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">Intelligence Research I — Scoping (Mandiant / Google Cloud) — oct. 2024</td></tr>
+<tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">Certified Lead Cybersecurity Manager (PECB) — août 2024</td></tr>
+<tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">Lead Incident Manager ISO 27035 (PECB)</td></tr>
 <tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">ISO/IEC 27001 Lead Implementer (PECB) — 2021</td></tr>
 <tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">ISO/IEC 27005 Risk Manager (PECB) — 2021</td></tr>
-<tr><td style="padding:.4rem .6rem;color:#00c97a;font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">Lead Cybersecurity Manager (PECB) — 2024</td></tr>
 <tr><td style="padding:.4rem .6rem;color:var(--bs-secondary-color);font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">ITIL v3 Foundation & PPO</td></tr>
 <tr><td style="padding:.4rem .6rem;color:var(--bs-secondary-color);font-size:1.1rem">✓</td><td style="padding:.4rem .6rem">ScrumMaster (ScrumAlliance)</td></tr>
 </table>
