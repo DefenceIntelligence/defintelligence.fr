@@ -7,9 +7,9 @@ Décrivez votre projet ou votre besoin, nous vous répondons sous 48h.
 
 ---
 
-<form name="contact" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field" style="display:flex;flex-direction:column;gap:1.2rem;max-width:600px">
-  <input type="hidden" name="form-name" value="contact" />
-  <p style="display:none"><label>Ne pas remplir : <input name="bot-field" /></label></p>
+<form method="POST" action="https://formspree.io/f/mdarlzqp" style="display:flex;flex-direction:column;gap:1.2rem;max-width:600px">
+  <input type="hidden" name="_next" value="https://defintelligence.fr/merci/" />
+  <input type="hidden" name="_subject" value="Nouveau message — defintelligence.fr" />
 
   <div>
     <label for="name" style="display:block;margin-bottom:.3rem;font-weight:600">Nom / Société</label>
