@@ -16,8 +16,11 @@ copyright = "Defence Intelligence"
 [main]
   separator = false
   endorCTA = true
-  favicon = "img/favicon.png"
   customCSS = ["css/brand.css"]
+
+[favicon]
+  logo = "img/favicon.png"
+  sizes = [16, 32, 48]
 
 [home]
   sections = ["blog"]
