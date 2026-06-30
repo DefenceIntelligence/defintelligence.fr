@@ -9,11 +9,11 @@ description: "Mentions légales — Def Intelligence"
 Entrepreneur individuel  
 SIRET : en cours d'immatriculation  
 Adresse : France  
-Email : [contact@defintelligence.fr](mailto:contact@defintelligence.fr)
+Email : [definitelligence@proton.me](mailto:definitelligence@proton.me)
 
 ## Directeur de la publication
 
-Stéphane — contact@defintelligence.fr
+Stéphane — definitelligence@proton.me
 
 ## Hébergement
 
@@ -29,7 +29,7 @@ L'ensemble du contenu de ce site (textes, images, logos) est la propriété excl
 ## Données personnelles (RGPD)
 
 ### Responsable du traitement
-Def Intelligence — contact@defintelligence.fr
+Def Intelligence — definitelligence@proton.me
 
 ### Données collectées
 Le formulaire de contact collecte : nom/société, adresse email, objet et message. Ces données sont utilisées uniquement pour répondre à votre demande.
@@ -41,7 +41,7 @@ Intérêt légitime (traitement d'une demande de contact).
 Les données sont conservées 3 ans à compter du dernier contact.
 
 ### Vos droits
-Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement, de limitation et d'opposition. Pour exercer ces droits : [contact@defintelligence.fr](mailto:contact@defintelligence.fr)
+Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement, de limitation et d'opposition. Pour exercer ces droits : [definitelligence@proton.me](mailto:definitelligence@proton.me)
 
 ### Hébergeur des formulaires
 Les soumissions du formulaire de contact sont traitées par Netlify, Inc. (voir leur [politique de confidentialité](https://www.netlify.com/privacy/)).

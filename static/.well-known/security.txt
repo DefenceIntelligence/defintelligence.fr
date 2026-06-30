@@ -1,4 +1,4 @@
-Contact: mailto:defintelligence@proton.me
+Contact: mailto:definitelligence@proton.me
 Expires: 2027-06-30T00:00:00.000Z
 Preferred-Languages: fr, en
 Canonical: https://defintelligence.fr/.well-known/security.txt

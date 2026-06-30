@@ -45,4 +45,4 @@ Décrivez votre projet ou votre besoin, nous vous répondons sous 48h.
 
 ---
 
-📧 [contact@defintelligence.fr](mailto:contact@defintelligence.fr)
+📧 [definitelligence@proton.me](mailto:definitelligence@proton.me)
