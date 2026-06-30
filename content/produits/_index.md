@@ -32,18 +32,18 @@ Partez d'un simple nom de domaine — ARGOS reconstitue automatiquement l'intég
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin-bottom:1.5rem">
 
 <div style="padding:.9rem 1rem;border:1px solid var(--bs-border-color);border-radius:.5rem">
-<p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">🔍 24 modules de scan</p>
+<p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">🔍 27 modules de scan</p>
 <p style="margin:0;font-size:.82rem;color:var(--bs-secondary-color)">Sous-domaines, IPs, TLS, GitHub, brand, TLD…</p>
 </div>
 
 <div style="padding:.9rem 1rem;border:1px solid var(--bs-border-color);border-radius:.5rem">
-<p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">🎯 90 détecteurs</p>
+<p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">🎯 108 détecteurs</p>
 <p style="margin:0;font-size:.82rem;color:var(--bs-secondary-color)">SPF/DKIM/DMARC, CVE, takeover, WAF, Azure AD…</p>
 </div>
 
 <div style="padding:.9rem 1rem;border:1px solid var(--bs-border-color);border-radius:.5rem">
 <p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">📊 Score A–F</p>
-<p style="margin:0;font-size:.82rem;color:var(--bs-secondary-color)">Par actif et par organisation, aligné BitSight.</p>
+<p style="margin:0;font-size:.82rem;color:var(--bs-secondary-color)">Par actif et par organisation, priorisé par risque métier.</p>
 </div>
 
 <div style="padding:.9rem 1rem;border:1px solid var(--bs-border-color);border-radius:.5rem">

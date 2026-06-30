@@ -21,21 +21,21 @@ Sous-domaines oubliés, certificats expirés, serveurs de test exposés, identif
 ## Ce qu'ARGOS fait pour vous
 
 ### 🔍 Découverte automatique des actifs
-Un pipeline de **24 modules de scan** enchaînés reconstruit votre périmètre externe :
+Un pipeline de **27 modules de scan** enchaînés reconstruit votre périmètre externe :
 - Sous-domaines, IPs, plages réseau, applications web, certificats TLS, applications mobiles
 - Variantes de TLD (`.fr`, `.de`, `.co.uk`…) et filiales détectées par mot-clé de marque
 - Fuites de code et de secrets dans les dépôts GitHub publics
 - **Score de confiance** par actif (HIGH / MEDIUM / LOW) selon le nombre de sources indépendantes — pour distinguer le vrai positif du bruit
 
 ### 🎯 Moteur de findings de sécurité
-**90 détecteurs** répartis en 12 catégories : sécurité email (SPF/DKIM/DMARC), TLS & certificats, en-têtes HTTP, exposition réseau, mauvaises configurations DNS, fichiers sensibles (`.env`, `.git`), composants vulnérables (CVE), Azure AD / Entra ID, WAF, prise de contrôle de sous-domaine…
+**108 détecteurs** répartis en 12 catégories : sécurité email (SPF/DKIM/DMARC), TLS & certificats, en-têtes HTTP, exposition réseau, mauvaises configurations DNS, fichiers sensibles (`.env`, `.git`), composants vulnérables (CVE), Azure AD / Entra ID, WAF, prise de contrôle de sous-domaine…
 - **CVE qualifiées par exploitabilité** : EXPOSÉ / POTENTIEL / vecteur local — fini les listes de CVE théoriques ingérables
 - **Détection de subdomain takeover** (21 signatures : GitHub Pages, Azure, S3, Heroku, Vercel…)
 - Enrichissement CVSS / EPSS / KEV directement dans chaque finding
 
 ### 📊 Scoring clair et actionnable
 - Note **0–100 et grade A–F** par actif et par organisation
-- Plafonnement automatique par sévérité (1 vulnérabilité critique → grade D maximum), aligné sur les standards type BitSight / SecurityScorecard
+- Plafonnement automatique par sévérité (1 vulnérabilité critique → grade D maximum), priorisé par risque métier
 - Vision priorisée : on traite d'abord ce qui compte vraiment
 
 ### 🛰️ Renseignement sur la menace (CTI) intégré

@@ -98,13 +98,13 @@ Mon parcours couvre l'ensemble de la chaîne : de la gouvernance SSI à la répo
 
 Développé pour répondre à un besoin réel constaté sur le terrain, **ARGOS** est notre plateforme d'Attack Surface Management. Elle automatise la découverte des actifs exposés sur Internet, détecte les vulnérabilités en continu et génère des rapports exploitables directement par les équipes IT et la direction.
 
-<a href="/produits/" class="btn btn-primary mt-2" style="color:#000">Découvrir ARGOS →</a>
+<a href="/produits/" class="btn mt-2" style="background:#00c97a;color:#000;border:none;font-weight:700">Découvrir ARGOS →</a>
 
 ---
 
 ## Discutons de votre projet
 
-<a href="/contact/" class="btn btn-outline-primary mt-1">Prendre contact →</a>
+<a href="/contact/" class="btn mt-1" style="border:1px solid #00c97a;color:#00c97a;font-weight:600">Prendre contact →</a>
 <a href="https://www.linkedin.com/in/stephane-desmets/" target="_blank" rel="noopener" class="btn btn-outline-secondary mt-1 ms-2">LinkedIn →</a>
 
 
