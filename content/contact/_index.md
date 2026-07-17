@@ -24,7 +24,7 @@ Décrivez votre projet ou votre besoin, nous vous répondons sous 48h.
   <div>
     <label for="subject" style="display:block;margin-bottom:.3rem;font-weight:600">Sujet</label>
     <select id="subject" name="subject" style="width:100%;padding:.6rem .8rem;background:var(--color-neutral-700,#374151);border:1px solid var(--color-neutral-600,#4b5563);border-radius:.5rem;color:inherit;font-size:1rem">
-      <option value="audit">Audit / Pentest</option>
+      <option value="audit">Audit de sécurité / ASM</option>
       <option value="risques">Gestion des risques</option>
       <option value="formation">Formation</option>
       <option value="rssi">RSSI externalisé</option>

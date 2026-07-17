@@ -19,7 +19,7 @@ showToc: false
 
 Fort de **30 ans d'expérience en informatique** dont plus de 7 ans à la tête de programmes de cybersécurité au sein du groupe DEKRA (périmètre monde), je mets cette expérience opérationnelle au service des organisations qui veulent comprendre et réduire leur exposition cyber réelle.
 
-Mon parcours couvre l'ensemble de la chaîne : de la gouvernance SSI à la réponse à incident, en passant par la Threat Intelligence, l'Attack Surface Management et les tests d'intrusion — avec toujours la même exigence : des résultats concrets, priorisés par risque métier.
+Mon parcours couvre l'ensemble de la chaîne : de la gouvernance SSI à la réponse à incident, en passant par la Threat Intelligence, l'Attack Surface Management et l'audit de sécurité — avec toujours la même exigence : des résultats concrets, priorisés par risque métier.
 
 ---
 

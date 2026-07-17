@@ -65,7 +65,7 @@ Partez d'un simple nom de domaine — ARGOS reconstitue automatiquement l'intég
 <div style="padding:1.5rem;border:1px solid var(--bs-border-color);border-radius:.75rem;background:rgba(255,255,255,.02)">
 <p style="margin:0 0 1rem;font-weight:700;color:var(--bs-secondary-color);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em">En développement</p>
 <div style="display:flex;gap:1rem;flex-wrap:wrap">
-  <span style="padding:.35rem .8rem;border:1px dashed var(--bs-border-color);border-radius:2rem;font-size:.82rem;color:var(--bs-secondary-color)">🔐 Module pentest automatisé</span>
+  <span style="padding:.35rem .8rem;border:1px dashed var(--bs-border-color);border-radius:2rem;font-size:.82rem;color:var(--bs-secondary-color)">🔐 Module de scan de vulnérabilités</span>
   <span style="padding:.35rem .8rem;border:1px dashed var(--bs-border-color);border-radius:2rem;font-size:.82rem;color:var(--bs-secondary-color)">📋 Conformité NIS2 / ISO 27001</span>
   <span style="padding:.35rem .8rem;border:1px dashed var(--bs-border-color);border-radius:2rem;font-size:.82rem;color:var(--bs-secondary-color)">🤝 API partenaires MSSP</span>
 </div>
