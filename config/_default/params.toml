@@ -66,6 +66,7 @@ copyright = "Defence Intelligence"
 
 [schema]
   type = "Organization"
+  linkedin = "https://www.linkedin.com/in/stephane-desmets/"
   name = "Defence Intelligence"
   locale = "fr-FR"
   github = "https://github.com/DefenceIntelligence"
