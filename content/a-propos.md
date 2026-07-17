@@ -111,7 +111,7 @@ Développé pour répondre à un besoin réel constaté sur le terrain, **ARGOS*
 ---
 
 <p style="color:var(--bs-secondary-color);font-size:.85rem;margin-top:2rem">
-🗓 Quand je ne surveille pas des surfaces d'attaque, je compte les jours avec <a href="https://almostly.app" target="_blank" rel="noopener" style="color:var(--bs-secondary-color);text-decoration:underline dotted">Almostly</a> — tes dates, avec personnalité.
+🗓 En dehors de la cybersécurité, je conçois des apps iPhone sous le studio <a href="https://yayayoo.app" target="_blank" rel="noopener" style="color:var(--bs-secondary-color);text-decoration:underline dotted">yayayoo</a> — des apps simples et soignées, faites avec soin.
 </p>
 
 </section>

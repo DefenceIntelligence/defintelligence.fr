@@ -1,6 +1,6 @@
 ---
-title: "Gestion des risques"
-description: "Analyse de risques et gouvernance de la sécurité"
+title: "Gestion des risques cyber"
+description: "Analyse de risques, gouvernance et mise en conformité (ISO 27001, NIS2) : cartographiez vos risques cyber et priorisez vos actions de sécurité."
 weight: 2
 build:
   list: always

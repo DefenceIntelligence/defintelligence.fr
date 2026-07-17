@@ -1,6 +1,6 @@
 ---
-title: "Formation & Sensibilisation"
-description: "Former vos équipes à la cybersécurité"
+title: "Formation & sensibilisation cybersécurité"
+description: "Formation et sensibilisation à la cybersécurité pour vos équipes : phishing, hygiène numérique et bonnes pratiques. Sessions adaptées aux PME et ETI."
 weight: 3
 build:
   list: always

@@ -14,7 +14,7 @@ copyright = "Defence Intelligence"
   offset = "5em"
 
 [main]
-  separator = false
+  separator = "·"
   endorCTA = true
   customCSS = ["css/brand.css"]
 

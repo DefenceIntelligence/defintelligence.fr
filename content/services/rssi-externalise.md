@@ -1,6 +1,6 @@
 ---
 title: "RSSI Externalisé"
-description: "Responsable de la Sécurité SI externalisé"
+description: "RSSI externalisé (à temps partagé) : pilotez votre sécurité sans recruter. Politique de sécurité, conformité, gestion des risques et accompagnement de la direction."
 weight: 4
 build:
   list: always

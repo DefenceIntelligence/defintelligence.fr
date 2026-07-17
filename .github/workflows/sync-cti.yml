@@ -37,6 +37,7 @@ jobs:
           printf '%s\n' \
             '---' \
             "title: \"CTI Digest — ${TITLE_DATE}\"" \
+            "description: \"Veille cybersécurité du ${TITLE_DATE} : vulnérabilités critiques (CVE), campagnes actives et ransomware analysés par Defence Intelligence.\"" \
             "date: ${DATE}" \
             'tags: ["cti", "veille", "threat-intelligence"]' \
             '---' \
