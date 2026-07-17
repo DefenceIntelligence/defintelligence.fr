@@ -15,7 +15,7 @@ summaryLength = 30
     path = "github.com/gethinode/hinode"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON", "SITEMAP"]
+  home = ["HTML", "RSS", "JSON"]
 
 [taxonomies]
   tag = "tags"
