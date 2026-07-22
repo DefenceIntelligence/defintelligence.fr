@@ -71,3 +71,7 @@ copyright = "Defence Intelligence"
   locale = "fr-FR"
   github = "https://github.com/DefenceIntelligence"
   email = "defintelligence@proton.me"
+  [schema.image]
+    url = "img/og.png"
+    width = 1200
+    height = 630
