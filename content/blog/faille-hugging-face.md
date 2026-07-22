@@ -3,12 +3,13 @@ title: "La faille Hugging Face : quand une IA autonome orchestre l'attaque"
 date: 2026-07-22
 description: "Juillet 2026 : Hugging Face victime d'une intrusion orchestrée par un agent IA autonome. Analyse de l'attaque, de la défense forensic par IA, et de ce que révèle cet incident sur la supply chain IA et la cybersécurité à la vitesse des machines."
 tags: ["cybersécurité", "IA", "supply chain", "threat intelligence"]
+thumbnail: img/og-hugging-face.png
 draft: false
 ---
 
 En juillet 2026, **Hugging Face** — plateforme de référence de l'écosystème IA — a été victime d'une intrusion d'un genre nouveau : une attaque **orchestrée par un agent IA autonome**. Au-delà de l'incident lui-même, c'est un signal d'alarme pour toute la filière.
 
-{{< youtube id="hQEcFsZWPdE" >}}
+{{< youtube id="hQEcFsZWPdE" title="La faille Hugging Face — analyse vidéo" >}}
 
 ## Une intrusion orchestrée par une IA autonome
 
