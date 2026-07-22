@@ -1,13 +1,13 @@
 ---
 title: "Services"
-description: "Accompagnement en cybersécurité — Attack Surface Management, Threat Intelligence, gouvernance et RSSI externalisé."
+description: "Accompagnement en cybersécurité : Attack Surface Management, Threat Intelligence, gouvernance et RSSI externalisé."
 showToc: false
 ---
 
 <section style="max-width:860px;margin:0 auto">
 
 <p style="font-size:1.1rem;color:var(--bs-secondary-color);margin-bottom:3rem">
-Un accompagnement sur-mesure ancré dans l'expérience opérationnelle — de la cartographie de votre exposition externe à la mise en conformité réglementaire.
+Un accompagnement sur-mesure ancré dans l'expérience opérationnelle, de la cartographie de votre exposition externe à la mise en conformité réglementaire.
 </p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:1.5rem;margin-bottom:3rem">
@@ -16,10 +16,10 @@ Un accompagnement sur-mesure ancré dans l'expérience opérationnelle — de la
 <div style="border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1.8rem;transition:border-color .2s" onmouseover="this.style.borderColor='#00c97a'" onmouseout="this.style.borderColor='var(--bs-border-color)'">
 <div style="font-size:2rem;margin-bottom:.75rem">🛡️</div>
 <p style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem;line-height:1.2">Attack Surface Management</p>
-<p style="color:var(--bs-secondary-color);font-size:.9rem;margin-bottom:1rem">Cartographie continue de votre exposition externe. Sous-domaines oubliés, IPs exposées, certificats expirés, secrets sur GitHub, domaines de filiales — ARGOS détecte et note tout.</p>
+<p style="color:var(--bs-secondary-color);font-size:.9rem;margin-bottom:1rem">Cartographie continue de votre exposition externe. Sous-domaines oubliés, IPs exposées, certificats expirés, secrets sur GitHub, domaines de filiales, ARGOS détecte et note tout.</p>
 <ul style="color:var(--bs-secondary-color);font-size:.85rem;margin-bottom:1.2rem;padding-left:1.2rem">
 <li>Découverte automatique des actifs exposés</li>
-<li>Scoring A–F par actif et par organisation</li>
+<li>Scoring A, F par actif et par organisation</li>
 <li>90 détecteurs de vulnérabilités et mauvaises configurations</li>
 <li>Rapports livrables direction et technique</li>
 </ul>
@@ -30,11 +30,11 @@ Un accompagnement sur-mesure ancré dans l'expérience opérationnelle — de la
 <div style="border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1.8rem;transition:border-color .2s" onmouseover="this.style.borderColor='#00c97a'" onmouseout="this.style.borderColor='var(--bs-border-color)'">
 <div style="font-size:2rem;margin-bottom:.75rem">📡</div>
 <p style="font-size:1.15rem;font-weight:700;margin-bottom:.5rem;line-height:1.2">Threat Intelligence</p>
-<p style="color:var(--bs-secondary-color);font-size:.9rem;margin-bottom:1rem">Surveillance des menaces ciblant votre organisation. Groupes ransomware, credentials leaks, typosquatting de votre marque, IOCs — veille continue et alertes en temps réel.</p>
+<p style="color:var(--bs-secondary-color);font-size:.9rem;margin-bottom:1rem">Surveillance des menaces ciblant votre organisation. Groupes ransomware, credentials leaks, typosquatting de votre marque, IOCs, veille continue et alertes en temps réel.</p>
 <ul style="color:var(--bs-secondary-color);font-size:.85rem;margin-bottom:1.2rem;padding-left:1.2rem">
 <li>Monitoring des groupes ransomware actifs</li>
 <li>Détection de fuite de credentials (Telegram, combolists)</li>
-<li>Brand Monitor — domaines frauduleux imitant votre marque</li>
+<li>Brand Monitor : domaines frauduleux imitant votre marque</li>
 <li>Digest CTI quotidien et rapports de menace</li>
 </ul>
 <a href="/contact/" style="color:#00c97a;font-weight:600;font-size:.9rem;text-decoration:none">En savoir plus →</a>

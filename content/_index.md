@@ -1,5 +1,5 @@
 ---
-title: "Defence Intelligence — Audit de sécurité, ASM & Threat Intelligence"
+title: "Defence Intelligence : audit de sécurité, ASM & Threat Intelligence"
 description: "Conseil indépendant en cybersécurité pour PME et ETI : audit de sécurité, Attack Surface Management (ASM), Cyber Threat Intelligence (CTI), RSSI externalisé et gestion des risques. Basé en France, intervention nationale."
 ---
 

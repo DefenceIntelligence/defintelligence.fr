@@ -32,6 +32,6 @@ Le RSSI externalisé vous donne accès à l'expertise d'un Responsable de la Sé
 
 Idéal pour les PME et ETI qui n'ont pas encore les moyens d'un RSSI interne, ou pour les entreprises en phase de structuration de leur sécurité.
 
-**Engagement flexible** — forfait mensuel sans durée minimale imposée.
+**Engagement flexible** : forfait mensuel sans durée minimale imposée.
 
 [Nous contacter](/contact/)

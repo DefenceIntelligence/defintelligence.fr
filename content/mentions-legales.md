@@ -1,6 +1,6 @@
 ---
 title: "Mentions légales"
-description: "Mentions légales — Def Intelligence"
+description: "Mentions légales, Def Intelligence"
 ---
 
 ## Éditeur du site
@@ -13,13 +13,13 @@ Email : [defintelligence@proton.me](mailto:defintelligence@proton.me)
 
 ## Directeur de la publication
 
-Stéphane — defintelligence@proton.me
+Stéphane, defintelligence@proton.me
 
 ## Hébergement
 
 **Netlify, Inc.**  
 2325 3rd Street, Suite 296  
-San Francisco, CA 94107 — États-Unis  
+San Francisco, CA 94107, États-Unis  
 [netlify.com](https://www.netlify.com)
 
 ## Propriété intellectuelle
@@ -29,7 +29,7 @@ L'ensemble du contenu de ce site (textes, images, logos) est la propriété excl
 ## Données personnelles (RGPD)
 
 ### Responsable du traitement
-Def Intelligence — defintelligence@proton.me
+Def Intelligence, defintelligence@proton.me
 
 ### Données collectées
 Le formulaire de contact collecte : nom/société, adresse email, objet et message. Ces données sont utilisées uniquement pour répondre à votre demande.

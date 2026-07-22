@@ -1,13 +1,13 @@
 ---
 title: "Produits"
-description: "ARGOS — plateforme de gestion de la surface d'attaque externe développée par Defence Intelligence."
+description: "ARGOS, plateforme de gestion de la surface d'attaque externe développée par Defence Intelligence."
 showToc: false
 ---
 
 <section style="max-width:860px;margin:0 auto">
 
 <p style="font-size:1.1rem;color:var(--bs-secondary-color);margin-bottom:3rem">
-Des outils conçus sur le terrain, pour les équipes sécurité et les RSSI qui veulent une vision réelle — pas théorique — de leur exposition externe.
+Des outils conçus sur le terrain, pour les équipes sécurité et les RSSI qui veulent une vision réelle, pas théorique, de leur exposition externe.
 </p>
 
 <!-- ARGOS -->
@@ -26,7 +26,7 @@ Des outils conçus sur le terrain, pour les équipes sécurité et les RSSI qui 
 
 <div style="padding:1.5rem 2rem">
 <p style="color:var(--bs-secondary-color);margin-bottom:1.5rem">
-Partez d'un simple nom de domaine — ARGOS reconstitue automatiquement l'intégralité de votre exposition Internet : actifs, vulnérabilités, fuites et menaces. Noté, priorisé, actionnable.
+Partez d'un simple nom de domaine, ARGOS reconstitue automatiquement l'intégralité de votre exposition Internet : actifs, vulnérabilités, fuites et menaces. Noté, priorisé, actionnable.
 </p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin-bottom:1.5rem">
@@ -42,7 +42,7 @@ Partez d'un simple nom de domaine — ARGOS reconstitue automatiquement l'intég
 </div>
 
 <div style="padding:.9rem 1rem;border:1px solid var(--bs-border-color);border-radius:.5rem">
-<p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">📊 Score A–F</p>
+<p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">📊 Score A, F</p>
 <p style="margin:0;font-size:.82rem;color:var(--bs-secondary-color)">Par actif et par organisation, priorisé par risque métier.</p>
 </div>
 

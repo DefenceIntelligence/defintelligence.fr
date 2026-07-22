@@ -36,7 +36,7 @@ jobs:
 
           printf '%s\n' \
             '---' \
-            "title: \"CTI Digest — ${TITLE_DATE}\"" \
+            "title: \"CTI Digest du ${TITLE_DATE}\"" \
             "description: \"Veille cybersécurité du ${TITLE_DATE} : vulnérabilités critiques (CVE), campagnes actives et ransomware analysés par Defence Intelligence.\"" \
             "date: ${DATE}" \
             'tags: ["cti", "veille", "threat-intelligence"]' \
@@ -46,6 +46,9 @@ jobs:
           # Strip the first H1 du digest (titre redondant avec le titre Hugo)
           sed '0,/^#[[:space:]]/{/^#[[:space:]]/d}' /tmp/digest_raw.md >> "$OUTFILE"
           echo "Written: $OUTFILE"
+
+          # Pas de quadratin dans les textes : quadratin/demi-cadratin -> virgule
+          perl -i -CSD -pe 's/\s*[\x{2014}\x{2013}]\s*/, /g' "$OUTFILE"
 
       - name: Commit and push
         run: |

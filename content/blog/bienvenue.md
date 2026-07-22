@@ -10,10 +10,10 @@ Ce blog est un espace de partage sur la cybersécurité, à destination des déc
 
 ## Ce que vous trouverez ici
 
-- **Analyses de vulnérabilités** — décryptage des CVE critiques et de leur impact réel
-- **Retours terrain** — ce qu'on observe lors de nos missions d'audit de sécurité et de veille (CTI)
-- **Veille réglementaire** — NIS2, RGPD, évolutions ANSSI
-- **Bonnes pratiques** — conseils concrets et actionnables
+- **Analyses de vulnérabilités**, décryptage des CVE critiques et de leur impact réel
+- **Retours terrain**, ce qu'on observe lors de nos missions d'audit de sécurité et de veille (CTI)
+- **Veille réglementaire**, NIS2, RGPD, évolutions ANSSI
+- **Bonnes pratiques**, conseils concrets et actionnables
 
 ## Notre philosophie
 

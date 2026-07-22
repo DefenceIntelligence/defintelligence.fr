@@ -7,9 +7,9 @@ thumbnail: img/og-hugging-face.png
 draft: false
 ---
 
-En juillet 2026, **Hugging Face** — plateforme de référence de l'écosystème IA — a été victime d'une intrusion d'un genre nouveau : une attaque **orchestrée par un agent IA autonome**. Au-delà de l'incident lui-même, c'est un signal d'alarme pour toute la filière.
+En juillet 2026, **Hugging Face**, plateforme de référence de l'écosystème IA, a été victime d'une intrusion d'un genre nouveau : une attaque **orchestrée par un agent IA autonome**. Au-delà de l'incident lui-même, c'est un signal d'alarme pour toute la filière.
 
-{{< youtube id="hQEcFsZWPdE" title="La faille Hugging Face — analyse vidéo" >}}
+{{< youtube id="hQEcFsZWPdE" title="La faille Hugging Face : analyse vidéo" >}}
 
 ## Une intrusion orchestrée par une IA autonome
 
@@ -37,11 +37,11 @@ Les **outils offensifs basés sur l'IA** sont passés de la théorie à la réal
 
 - L'**IA offensive autonome** change l'échelle et la vitesse des attaques.
 - La **supply chain IA** (modèles, jeux de données, plateformes) devient une surface d'attaque à part entière.
-- Les stratégies défensives doivent intégrer la **détection et la réponse à la vitesse des machines** — et anticiper que les garde-fous des IA commerciales ne sont pas toujours des alliés en situation de crise.
+- Les stratégies défensives doivent intégrer la **détection et la réponse à la vitesse des machines**, et anticiper que les garde-fous des IA commerciales ne sont pas toujours des alliés en situation de crise.
 
 ---
 
 ## Sources
 
-- [Hugging Face — Security incident, July 2026](https://huggingface.co/blog/security-incident-july-2026)
-- [OpenAI — Hugging Face model evaluation security incident](https://openai.com/index/hugging-face-model-evaluation-security-incident/)
+- [Hugging Face : Security incident, July 2026](https://huggingface.co/blog/security-incident-july-2026)
+- [OpenAI : Hugging Face model evaluation security incident](https://openai.com/index/hugging-face-model-evaluation-security-incident/)
