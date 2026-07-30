@@ -5,22 +5,23 @@ description: "Mentions légales, Def Intelligence"
 
 ## Éditeur du site
 
-**Def Intelligence**  
-Entrepreneur individuel  
-SIRET : en cours d'immatriculation  
-Adresse : France  
+**Defence Intelligence** est une marque de :
+
+**Stéphane Desmets**  
+Entrepreneur individuel (EI)  
+SIREN : 993 562 446  
 Email : [defintelligence@proton.me](mailto:defintelligence@proton.me)
 
 ## Directeur de la publication
 
-Stéphane, defintelligence@proton.me
+Stéphane Desmets — [defintelligence@proton.me](mailto:defintelligence@proton.me)
 
 ## Hébergement
 
-**Netlify, Inc.**  
-2325 3rd Street, Suite 296  
-San Francisco, CA 94107, États-Unis  
-[netlify.com](https://www.netlify.com)
+**GitHub, Inc.**  
+88 Colin P Kelly Jr St  
+San Francisco, CA 94107 — États-Unis  
+[github.com](https://github.com)
 
 ## Propriété intellectuelle
 
@@ -44,7 +45,7 @@ Les données sont conservées 3 ans à compter du dernier contact.
 Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement, de limitation et d'opposition. Pour exercer ces droits : [defintelligence@proton.me](mailto:defintelligence@proton.me)
 
 ### Hébergeur des formulaires
-Les soumissions du formulaire de contact sont traitées par Netlify, Inc. (voir leur [politique de confidentialité](https://www.netlify.com/privacy/)).
+Les soumissions du formulaire de contact sont traitées par Formspree, Inc. (voir leur [politique de confidentialité](https://formspree.io/legal/privacy-policy/)).
 
 ## Cookies
 
