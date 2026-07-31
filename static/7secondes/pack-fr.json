@@ -1,0 +1,1644 @@
+{
+  "locale": "fr-FR",
+  "version": 9,
+  "updated": "2026-07-31",
+  "name": "7 SECONDES — pack de production fr-FR",
+  "schema_version": "1.1",
+  "note": "Pack de production consolidé. Conforme à 7secondes-schema-pack-v1.1.json.",
+  "universe": {
+    "victim_company": "Groupe Meridiar",
+    "victim_domain": "meridiar.fr",
+    "third_parties": [
+      "NOVA Workspace",
+      "Colidia",
+      "Banque du Littoral",
+      "Cabinet Maresco",
+      "SignaDoc",
+      "Hôtel Bellevue"
+    ]
+  },
+  "rules": {
+    "round_size": 10,
+    "difficulty_curve": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3
+    ],
+    "decision_seconds": 7,
+    "grace_ms": 400,
+    "call_sheet_delay_ms": 600,
+    "max_per_template": {
+      "call": 1,
+      "situation": 2
+    },
+    "no_consecutive_same_template": true,
+    "no_same_scenario_twice_per_round": true,
+    "avoid_seen_within_last_rounds": 2,
+    "shuffle_choices": true
+  },
+  "assets": [
+    {
+      "name": "colis_palier",
+      "alt": "Un colis en carton posé devant une porte d'appartement"
+    },
+    {
+      "name": "colis_camion",
+      "alt": "Des colis empilés dans un véhicule de livraison"
+    },
+    {
+      "name": "recu_virement",
+      "alt": "Capture d'écran d'un ordre de virement affiché comme exécuté"
+    },
+    {
+      "name": "facture_papier",
+      "alt": "Une facture imprimée posée sur un bureau"
+    },
+    {
+      "name": "badge_visiteur",
+      "alt": "Un badge visiteur accroché à un cordon"
+    },
+    {
+      "name": "ecran_alerte",
+      "alt": "Capture d'écran d'une fenêtre d'alerte de sécurité"
+    },
+    {
+      "name": "cle_usb_table",
+      "alt": "Une clé USB posée sur une table de réunion"
+    },
+    {
+      "name": "borne_paiement",
+      "alt": "Un horodateur de stationnement avec un autocollant collé dessus"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "mail-quota-boite",
+      "template": "mail",
+      "difficulty": 1,
+      "tags": [
+        "phishing",
+        "prétexte administratif"
+      ],
+      "choices": [
+        {
+          "id": "click",
+          "label": "Je clique : je reçois beaucoup de pièces jointes",
+          "safe": false
+        },
+        {
+          "id": "check_then",
+          "label": "Je clique et je vérifie l'adresse avant de me connecter",
+          "safe": false
+        },
+        {
+          "id": "own_tool",
+          "label": "Je vérifie mon quota depuis ma messagerie déjà ouverte",
+          "safe": true
+        }
+      ],
+      "debrief": "Ni urgence ni menace : un simple message d'intendance, donc peu suspect. Vérifier l'adresse après avoir cliqué arrive trop tard. L'information existe déjà dans l'outil que vous avez sous les yeux.",
+      "variants": [
+        {
+          "scene": {
+            "from_name": "Administration NOVA",
+            "from_addr": "no-reply@nova-workspace.notifs-mail.co",
+            "time": "04:02",
+            "subject": "Votre boîte atteint sa limite de stockage",
+            "body": "Bonjour,\n\nVotre boîte de réception a atteint 97 % de sa capacité. Libérez de l'espace pour continuer à recevoir vos messages.\n\nGérer mon stockage"
+          },
+          "clues": {
+            "free": "time_odd",
+            "costly": "addr_subdomain"
+          }
+        },
+        {
+          "scene": {
+            "from_name": "Support NOVA Workspace",
+            "from_addr": "support@nova-workspaсe.com",
+            "time": "11:38",
+            "subject": "Action requise : espace de stockage saturé",
+            "body": "Bonjour,\n\nSans intervention de votre part sous 24 h, la réception de nouveaux messages sera suspendue.\n\nLibérer de l'espace"
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "addr_homoglyph"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mail-mot-de-passe-expire",
+      "template": "mail",
+      "difficulty": 1,
+      "tags": [
+        "phishing",
+        "vol d'identifiants",
+        "prétexte administratif"
+      ],
+      "choices": [
+        {
+          "id": "renew",
+          "label": "Je renouvelle depuis le lien, ça prend deux minutes",
+          "safe": false
+        },
+        {
+          "id": "later",
+          "label": "Je le garde de côté et je m'en occupe plus tard",
+          "safe": false
+        },
+        {
+          "id": "own_settings",
+          "label": "Je change mon mot de passe depuis les réglages de l'outil",
+          "safe": true
+        }
+      ],
+      "debrief": "Une expiration de mot de passe est une routine crédible, donc peu questionnée. Le reporter ne fait que laisser le message actif dans votre boîte. Un changement de mot de passe se fait toujours depuis l'outil lui-même, jamais depuis un lien reçu.",
+      "variants": [
+        {
+          "scene": {
+            "from_name": "Sécurité NOVA",
+            "from_addr": "securite@nova-workspace-id.com",
+            "time": "06:11",
+            "subject": "Votre mot de passe expire dans 2 jours",
+            "body": "Bonjour,\n\nConformément à la politique de sécurité, votre mot de passe doit être renouvelé avant le 25/07.\n\nRenouveler maintenant"
+          },
+          "clues": {
+            "free": "time_odd",
+            "costly": "addr_lookalike"
+          }
+        },
+        {
+          "scene": {
+            "from_name": "Service informatique",
+            "from_addr": "it@groupe-merıdiar.fr",
+            "time": "15:47",
+            "subject": "Renouvellement obligatoire de vos accès",
+            "body": "Bonjour,\n\nUne mise à jour de nos règles d'accès impose le renouvellement de votre mot de passe. Sans action de votre part, votre compte sera temporairement désactivé.\n\nMettre à jour"
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "addr_homoglyph"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-livraison-frais",
+      "template": "message",
+      "difficulty": 1,
+      "tags": [
+        "smishing",
+        "appât",
+        "micro-paiement"
+      ],
+      "choices": [
+        {
+          "id": "pay",
+          "label": "Je paie, ce n'est que 2 €",
+          "safe": false
+        },
+        {
+          "id": "look",
+          "label": "J'ouvre le lien pour voir de quel colis il s'agit",
+          "safe": false
+        },
+        {
+          "id": "official",
+          "label": "Je vérifie le suivi depuis le site du transporteur",
+          "safe": true
+        }
+      ],
+      "debrief": "Le micro-montant désarme la vigilance : on ne se méfie pas de 2 €. Le but n'est pas la somme, c'est la saisie de votre carte. Un transporteur ne réclame jamais de frais par SMS.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "COLIDIA",
+            "sender_note": "expéditeur non enregistré",
+            "thread": [
+              {
+                "text": "Votre colis CY-4471 est arrivé au centre de tri.",
+                "time": "Hier 09:12",
+                "legit": true
+              }
+            ],
+            "text": "Frais de douane de 1,95 € restant dus. Régularisez pour permettre la livraison :",
+            "time": "07:58",
+            "link_display": "colidia-suivi.fr/r",
+            "link_real": "http://colidia-suivi.fr.track-id88.top/pay"
+          },
+          "clues": {
+            "free": "sender_unknown",
+            "costly": "link_real"
+          }
+        },
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "+33 6 12 44 07 91",
+            "sender_note": "numéro inconnu",
+            "thread": [],
+            "text": "Votre colis n'a pas pu être livré, une adresse incomplète est signalée. Complétez sous 48h :",
+            "time": "13:22",
+            "link_display": "bit.ly/cs-4471",
+            "link_real": "http://redir.cs-livraison.ru/form"
+          },
+          "clues": {
+            "free": "link_shortened",
+            "costly": "link_real"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-abonnement-suspendu",
+      "template": "message",
+      "difficulty": 1,
+      "tags": [
+        "smishing",
+        "moyen de paiement",
+        "prétexte administratif"
+      ],
+      "choices": [
+        {
+          "id": "update",
+          "label": "Je mets à jour ma carte via le lien pour ne pas perdre le service",
+          "safe": false
+        },
+        {
+          "id": "reply",
+          "label": "Je réponds pour demander de quel abonnement il s'agit",
+          "safe": false
+        },
+        {
+          "id": "own_account",
+          "label": "Je vérifie depuis mon compte, sur le site que je connais",
+          "safe": true
+        }
+      ],
+      "debrief": "La menace de suspension pousse à agir vite sur un sujet banal. Répondre confirme surtout que votre numéro est actif. Un moyen de paiement se met à jour depuis son propre compte, jamais depuis un lien reçu.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "NOVA",
+            "sender_note": "expéditeur non enregistré",
+            "thread": [],
+            "text": "Votre paiement a été refusé, votre abonnement sera suspendu sous 24h. Mettez à jour votre moyen de paiement :",
+            "time": "20:14",
+            "link_display": "nova-facturation.fr",
+            "link_real": "http://nova-facturation.fr.billing-id.cc/update"
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "link_real"
+          }
+        },
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "+33 7 55 21 88 40",
+            "sender_note": "numéro inconnu",
+            "thread": [],
+            "text": "Régularisation nécessaire sur votre dossier client. Sans action, l'accès à vos services sera interrompu :",
+            "time": "12:06",
+            "link_display": "bit.ly/nv-reg",
+            "link_real": "http://client-regul.nv-services.ru/step"
+          },
+          "clues": {
+            "free": "link_shortened",
+            "costly": "link_real"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mail-piece-jointe-macro",
+      "template": "mail",
+      "difficulty": 2,
+      "tags": [
+        "macro",
+        "pièce jointe",
+        "compromission interne"
+      ],
+      "choices": [
+        {
+          "id": "open",
+          "label": "J'ouvre : un compte-rendu, c'est banal",
+          "safe": false
+        },
+        {
+          "id": "reply",
+          "label": "Je lui écris pour vérifier qu'elle l'a bien envoyé",
+          "safe": false
+        },
+        {
+          "id": "verify",
+          "label": "Je vérifie de vive voix avant d'ouvrir",
+          "safe": true
+        }
+      ],
+      "debrief": "L'extension change tout, pas le sujet : ces formats portent des macros. Répondre à l'email interroge la boîte, pas la personne — si elle est compromise, l'attaquant confirme.",
+      "variants": [
+        {
+          "scene": {
+            "from_name": "Pauline M.",
+            "from_addr": "p.martin@groupe-merıdiar.fr",
+            "time": "03:14",
+            "subject": "CR réunion du 14 — relecture avant diffusion",
+            "body": "Bonjour,\n\nCi-joint le compte-rendu de la réunion de jeudi. Peux-tu relire la partie qui te concerne avant que je le diffuse au comité ?\n\nMerci d'avance.",
+            "attachment": {
+              "filename": "CR_reunion_14.docm",
+              "size": "84 Ko",
+              "kind": "DOCM"
+            }
+          },
+          "clues": {
+            "free": "time_odd",
+            "costly": "addr_homoglyph"
+          }
+        },
+        {
+          "scene": {
+            "from_name": "Karim B.",
+            "from_addr": "k.benali@meridiar-rh.fr",
+            "time": "09:26",
+            "subject": "Note de frais à valider avant vendredi",
+            "body": "Salut,\n\nTu peux valider la note de frais du déplacement de juin ? Le fichier est en pièce jointe, il faut que ça parte à la compta vendredi.\n\nMerci !",
+            "attachment": {
+              "filename": "NDF_juin.xlsm",
+              "size": "112 Ko",
+              "kind": "XLSM"
+            }
+          },
+          "clues": {
+            "free": "attachment_ext",
+            "costly": "addr_lookalike"
+          }
+        },
+        {
+          "scene": {
+            "from_name": "Céline R.",
+            "from_addr": "c.roux@mail.meridiar.fr.docs-share.co",
+            "time": "22:47",
+            "subject": "Planning congés — mise à jour S31",
+            "body": "Bonsoir,\n\nLe planning a bougé pour la semaine 31. Merci de vérifier vos dates dans le document joint et de me signaler toute erreur.\n\nBonne soirée.",
+            "attachment": {
+              "filename": "Conges_S31.docm",
+              "size": "67 Ko",
+              "kind": "DOCM"
+            }
+          },
+          "clues": {
+            "free": "time_odd",
+            "costly": "addr_subdomain"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-banque-fil",
+      "template": "message",
+      "difficulty": 2,
+      "tags": [
+        "smishing",
+        "spoofing d'expéditeur"
+      ],
+      "choices": [
+        {
+          "id": "click",
+          "label": "Je clique pour bloquer, c'est urgent",
+          "safe": false
+        },
+        {
+          "id": "reply",
+          "label": "Je réponds au SMS pour savoir qui écrit",
+          "safe": false
+        },
+        {
+          "id": "own_app",
+          "label": "J'ouvre mon app bancaire moi-même",
+          "safe": true
+        }
+      ],
+      "debrief": "Le fil des vrais SMS ne prouve rien : le nom d'expéditeur est usurpé, l'application regroupe. Répondre confirme surtout que votre numéro est actif. Le vrai domaine est à la fin de l'URL, pas au début.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "BDL",
+            "sender_note": "expéditeur non enregistré",
+            "thread": [
+              {
+                "text": "Votre code de connexion : 481 902. Ne le communiquez à personne.",
+                "time": "Hier 14:22",
+                "legit": true
+              },
+              {
+                "text": "Virement de 1 240,00 € exécuté le 22/07. Solde mis à jour.",
+                "time": "Hier 17:05",
+                "legit": true
+              }
+            ],
+            "text": "Connexion suspecte détectée sur votre espace. Bloquez l'accès :",
+            "time": "08:41",
+            "link_display": "bdl-verif.com/s",
+            "link_real": "http://secure-login.bdl-verif.com.session-id4471.ru/auth"
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "link_real"
+          }
+        },
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "BDL",
+            "sender_note": "expéditeur non enregistré",
+            "thread": [
+              {
+                "text": "Votre relevé de juillet est disponible dans votre espace client.",
+                "time": "Lundi 08:03",
+                "legit": true
+              }
+            ],
+            "text": "Un nouveau bénéficiaire a été ajouté à votre compte. Si vous n'êtes pas à l'origine de cette action :",
+            "time": "21:16",
+            "link_display": "littoral-securite.fr",
+            "link_real": "http://littoral-securite.fr.auth-check.cc/annuler"
+          },
+          "clues": {
+            "free": "sender_unknown",
+            "costly": "link_real"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-teams-utilisateur-externe",
+      "template": "message",
+      "difficulty": 2,
+      "tags": [
+        "messagerie d'entreprise",
+        "utilisateur externe",
+        "prise en main à distance"
+      ],
+      "choices": [
+        {
+          "id": "accept",
+          "label": "J'accepte : c'est le support, et c'est dans notre outil interne",
+          "safe": false
+        },
+        {
+          "id": "ask_identity",
+          "label": "Je demande son nom et son service avant d'accepter",
+          "safe": false
+        },
+        {
+          "id": "internal_directory",
+          "label": "Je ferme et je contacte l'IT par l'annuaire interne",
+          "safe": true
+        }
+      ],
+      "debrief": "Un message reçu dans l'outil interne porte la confiance de l'outil — mais ces plateformes acceptent par défaut les messages d'organisations extérieures. La mention « Externe » est le seul garde-fou, et elle est minuscule. Demander un nom ne coûte rien à l'attaquant : il en donnera un.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "teams",
+            "sender": "Support Informatique",
+            "sender_note": "cette personne est extérieure à votre organisation",
+            "avatar_note": "initiales génériques sur fond gris",
+            "presence": "disponible",
+            "external_tag": "EXTERNE",
+            "thread": [],
+            "text": "Bonjour, une alerte de sécurité est remontée sur votre poste ce matin. Je vous envoie un lien de prise en main pour intervenir tout de suite, ça prend deux minutes.",
+            "time": "10:26",
+            "profile_details": "Domaine de l'organisation : it-support-desk.onmicrosoft.com — sans rapport avec meridiar.fr. Compte créé il y a 3 jours.",
+            "link_display": "assist-remote.co/session",
+            "link_real": "https://assist-remote.co/session/join?id=88214"
+          },
+          "clues": {
+            "free": "external_tag",
+            "costly": "tenant_details"
+          }
+        },
+        {
+          "scene": {
+            "channel": "teams",
+            "sender": "Assistance NOVA Workspace",
+            "sender_note": "cette personne est extérieure à votre organisation",
+            "avatar_note": "logo NOVA, image de qualité médiocre",
+            "presence": "disponible",
+            "external_tag": "EXTERNE",
+            "thread": [],
+            "text": "Votre licence arrive à expiration sous 24 h et vos documents partagés vont être suspendus. Confirmez votre compte pour prolonger l'accès.",
+            "time": "16:03",
+            "profile_details": "Organisation : nova-licences.onmicrosoft.com. Aucun échange antérieur. Compte créé cette semaine.",
+            "link_display": "nova-licences.co/renew",
+            "link_real": "https://nova-licences.co/renew/auth?u=meridiar"
+          },
+          "clues": {
+            "free": "external_tag",
+            "costly": "tenant_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-photo-colis-frais",
+      "template": "message",
+      "difficulty": 2,
+      "tags": [
+        "smishing",
+        "caution visuelle",
+        "micro-paiement"
+      ],
+      "choices": [
+        {
+          "id": "pay",
+          "label": "Je paie : la photo montre bien mon colis devant chez moi",
+          "safe": false
+        },
+        {
+          "id": "zoom",
+          "label": "J'agrandis la photo pour reconnaître ma porte",
+          "safe": false
+        },
+        {
+          "id": "official",
+          "label": "Je vérifie le suivi depuis le site du transporteur",
+          "safe": true
+        }
+      ],
+      "debrief": "Une photo ne prouve rien : elle peut être authentique et sans aucun rapport avec vous. Elle ne sert qu'à faire monter la confiance d'un cran avant la demande de paiement. Chercher à l'analyser vous fait entrer dans le récit de l'attaquant au lieu d'en sortir.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "COLIDIA",
+            "sender_note": "expéditeur non enregistré",
+            "thread": [],
+            "text": "Votre colis n'a pas pu être remis, il est en attente au dépôt. Frais de réexpédition : 2,10 €.",
+            "time": "09:04",
+            "image": {
+              "asset": "colis_palier",
+              "alt": "Un colis en carton posé devant une porte d'appartement",
+              "caption": null
+            },
+            "link_display": "colidia-reexpedition.fr",
+            "link_real": "http://colidia-reexpedition.fr.pay-track.top/frais"
+          },
+          "clues": {
+            "free": "sender_unknown",
+            "costly": "link_real"
+          }
+        },
+        {
+          "scene": {
+            "channel": "whatsapp",
+            "sender": "+33 6 88 12 44 09",
+            "sender_note": "ce numéro n'est pas dans vos contacts",
+            "avatar_note": "logo de livraison générique, image de mauvaise qualité",
+            "presence": "en ligne",
+            "external_tag": null,
+            "thread": [],
+            "text": "Bonjour, je suis votre livreur. Votre colis est dans le camion mais l'adresse est incomplète, je ne peux pas le déposer. Confirmez ici pour une livraison aujourd'hui :",
+            "time": "14:41",
+            "image": {
+              "asset": "colis_camion",
+              "alt": "Des colis empilés dans un véhicule de livraison",
+              "caption": null
+            },
+            "profile_details": "Numéro enregistré sur ce service il y a 2 jours. Aucun contact commun.",
+            "link_display": "livraison-confirm.fr/adr",
+            "link_real": "http://livraison-confirm.fr.adr-form.cc/step1"
+          },
+          "clues": {
+            "free": "new_number",
+            "costly": "profile_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "web-portail-wifi",
+      "template": "web",
+      "difficulty": 2,
+      "tags": [
+        "evil twin",
+        "wifi public",
+        "réutilisation de mot de passe"
+      ],
+      "choices": [
+        {
+          "id": "pro_creds",
+          "label": "Je saisis mes identifiants pro, c'est le portail de l'hôtel",
+          "safe": false
+        },
+        {
+          "id": "same_pwd",
+          "label": "Je crée un compte avec mon mot de passe habituel",
+          "safe": false
+        },
+        {
+          "id": "tethering",
+          "label": "Je passe par le partage de connexion de mon téléphone",
+          "safe": true
+        }
+      ],
+      "debrief": "Un point d'accès jumeau se monte en quelques minutes et imite le portail à l'identique. Le mot de passe réutilisé devient la clé de vos comptes professionnels. En mobilité, le partage de connexion coûte moins cher qu'un compte compromis.",
+      "variants": [
+        {
+          "scene": {
+            "url_display": "portail.bellevue-invites.net",
+            "url_full": "http://portail.bellevue-invites.net/login",
+            "secure_badge": false,
+            "page": {
+              "brand": "HÔTEL BELLEVUE",
+              "title": "Accès Wi-Fi invités",
+              "sub": "Identifiez-vous pour ouvrir votre session Internet.",
+              "fields": [
+                {
+                  "label": "EMAIL PROFESSIONNEL",
+                  "value": "",
+                  "masked": false
+                },
+                {
+                  "label": "MOT DE PASSE",
+                  "value": "",
+                  "masked": true
+                }
+              ],
+              "cta": "SE CONNECTER"
+            }
+          },
+          "clues": {
+            "free": "context_odd",
+            "costly": "url_full"
+          }
+        },
+        {
+          "scene": {
+            "url_display": "wifi-gare-connect.fr",
+            "url_full": "http://wifi-gare-connect.fr/auth?redirect=hotspot",
+            "secure_badge": false,
+            "page": {
+              "brand": "WIFI VOYAGEURS",
+              "title": "Connexion au réseau gratuit",
+              "sub": "30 minutes offertes après identification.",
+              "fields": [
+                {
+                  "label": "EMAIL PROFESSIONNEL",
+                  "value": "",
+                  "masked": false
+                },
+                {
+                  "label": "MOT DE PASSE",
+                  "value": "",
+                  "masked": true
+                }
+              ],
+              "cta": "ACTIVER MON ACCÈS"
+            }
+          },
+          "clues": {
+            "free": "context_odd",
+            "costly": "url_full"
+          }
+        }
+      ]
+    },
+    {
+      "id": "situation-usb-salle",
+      "template": "situation",
+      "difficulty": 2,
+      "tags": [
+        "usb",
+        "baiting",
+        "prestataire"
+      ],
+      "choices": [
+        {
+          "id": "plug",
+          "label": "Je la branche pour voir à qui elle appartient",
+          "safe": false
+        },
+        {
+          "id": "drawer",
+          "label": "Je la garde dans mon tiroir en attendant qu'on la réclame",
+          "safe": false
+        },
+        {
+          "id": "to_it",
+          "label": "Je la remets à l'IT en disant d'où elle vient",
+          "safe": true
+        }
+      ],
+      "debrief": "Une clé sans étiquette dans un contexte plausible est plus dangereuse qu'une clé « confidentielle » : rien n'alerte. La garder au tiroir ne fait que reporter le branchement, et personne ne trace l'incident. Un support inconnu peut agir dès la connexion.",
+      "variants": [
+        {
+          "scene": {
+            "place": "SALLE DE RÉUNION",
+            "time": "16:40",
+            "lines": [
+              "Le prestataire vient de partir.",
+              "Sur la table, une clé USB.",
+              "Personne d'autre dans la pièce."
+            ],
+            "observation": {
+              "button": "OBSERVER LA CLÉ",
+              "items": [
+                "Aucune étiquette, aucun marquage.",
+                "Le capuchon manque, le connecteur est usé.",
+                "Elle n'était pas là ce matin."
+              ]
+            }
+          },
+          "clues": {
+            "free": "context_odd",
+            "costly": "observation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-colis-vocal-photo",
+      "template": "message",
+      "difficulty": 2,
+      "tags": [
+        "smishing",
+        "caution visuelle",
+        "faux vocal",
+        "hors périmètre"
+      ],
+      "choices": [
+        {
+          "id": "listen_click",
+          "label": "J'écoute le vocal et j'ouvre le lien pour ma livraison",
+          "safe": false
+        },
+        {
+          "id": "reply",
+          "label": "Je réponds pour demander à quel colis ça correspond",
+          "safe": false
+        },
+        {
+          "id": "official",
+          "label": "Je vérifie mes livraisons en cours sur les sites officiels que je connais",
+          "safe": true
+        }
+      ],
+      "debrief": "La photo et le message vocal empilent deux fausses preuves : ni l'un ni l'autre ne prouve qu'un colis vous attend. Le vocal n'est qu'un fichier joint, la photo est un entrepôt quelconque. Répondre confirme surtout que votre numéro est actif. On repart toujours du transporteur officiel.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "+33 7 65 33 15 76",
+            "sender_note": "numéro inconnu",
+            "thread": [],
+            "text": "Bonjour, je n'ai pas pu déposer votre colis ce matin. J'ai laissé un message vocal avec les détails. Reprogrammez la livraison ici :",
+            "time": "11:45",
+            "image": {
+              "asset": "colis_camion",
+              "alt": "Des colis empilés dans un véhicule de livraison",
+              "caption": "message vocal · 85 Ko"
+            },
+            "link_display": "votre-nom.livraison-suivi.pro",
+            "link_real": "https://votre-nom.t7xkqpzwv.pro/redelivery"
+          },
+          "clues": {
+            "free": "sender_unknown",
+            "costly": "link_real"
+          }
+        },
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "+33 6 41 20 88 07",
+            "sender_note": "numéro inconnu",
+            "thread": [],
+            "text": "Votre livreur a tenté de vous joindre. Un enregistrement vocal détaille le point de retrait. Confirmez votre créneau :",
+            "time": "08:19",
+            "image": {
+              "asset": "colis_camion",
+              "alt": "Des colis empilés dans un véhicule de livraison",
+              "caption": "vocal_livreur · 92 Ko"
+            },
+            "link_display": "suivi-colis-express.pro",
+            "link_real": "https://suivi-colis-express.pro.track-9f2.top/step"
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "link_real"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mail-facture-rib-modifie",
+      "template": "mail",
+      "difficulty": 3,
+      "tags": [
+        "BEC",
+        "fraude au virement",
+        "IBAN"
+      ],
+      "choices": [
+        {
+          "id": "pay",
+          "label": "Je règle : c'est la facture habituelle",
+          "safe": false
+        },
+        {
+          "id": "forward",
+          "label": "Je transmets à la compta pour contrôle avant paiement",
+          "safe": false
+        },
+        {
+          "id": "call_known",
+          "label": "J'appelle le prestataire sur son numéro connu avant tout paiement",
+          "safe": true
+        }
+      ],
+      "debrief": "Deux caractères d'IBAN ne se voient pas à la relecture. Transmettre à la compta semble prudent, mais la compta valide sur pièces — et la pièce est parfaite. Seul un contact vocal hors messagerie casse la chaîne.",
+      "variants": [
+        {
+          "scene": {
+            "from_name": "Colidia — Facturation",
+            "from_addr": "facturation@colidia-fr.net",
+            "time": "10:04",
+            "subject": "Facture 2026-0714 — nouvelles coordonnées bancaires",
+            "body": "Bonjour,\n\nSuite à un changement d'établissement bancaire, merci de régler la facture ci-jointe sur nos nouvelles coordonnées.\n\nLe RIB figure en bas du document.",
+            "attachment": {
+              "filename": "FA_2026-0714.pdf",
+              "size": "148 Ko",
+              "kind": "PDF"
+            }
+          },
+          "clues": {
+            "free": "sender_unknown",
+            "costly": "addr_lookalike"
+          }
+        },
+        {
+          "scene": {
+            "from_name": "Cabinet Maresco",
+            "from_addr": "compta@cabinet-maresco.fr.docs-verify.co",
+            "time": "18:52",
+            "subject": "Honoraires T2 — régularisation",
+            "body": "Bonjour,\n\nVous trouverez ci-joint la note d'honoraires du trimestre. Notre compte a changé le mois dernier, merci d'utiliser l'IBAN indiqué sur ce document et non celui de vos règlements précédents.",
+            "attachment": {
+              "filename": "Honoraires_T2.pdf",
+              "size": "96 Ko",
+              "kind": "PDF"
+            }
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "addr_subdomain"
+          }
+        },
+        {
+          "scene": {
+            "from_name": "SignaDoc Facturation",
+            "from_addr": "billing@sıgnadoc.fr",
+            "time": "02:41",
+            "subject": "Renouvellement annuel — RIB mis à jour",
+            "body": "Bonjour,\n\nVotre abonnement arrive à échéance. Le règlement est à effectuer sur le compte indiqué en pièce jointe, nos coordonnées ayant été mises à jour.",
+            "attachment": {
+              "filename": "Renouvellement_2026.pdf",
+              "size": "121 Ko",
+              "kind": "PDF"
+            }
+          },
+          "clues": {
+            "free": "time_odd",
+            "costly": "addr_homoglyph"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-mfa-push",
+      "template": "message",
+      "difficulty": 3,
+      "tags": [
+        "mfa",
+        "compromission",
+        "signalement"
+      ],
+      "choices": [
+        {
+          "id": "approve",
+          "label": "J'approuve, ça correspond sûrement à ma connexion",
+          "safe": false
+        },
+        {
+          "id": "ignore",
+          "label": "J'ignore : si c'était moi, je réessaierai",
+          "safe": false
+        },
+        {
+          "id": "deny_report",
+          "label": "Je refuse explicitement et je signale le doute à l'IT",
+          "safe": true
+        }
+      ],
+      "debrief": "Une notification que vous n'avez pas déclenchée signale une compromission en cours : le mot de passe est déjà connu. Ignorer ne laisse aucune trace et l'attaquant retentera. Le refus explicite, lui, remonte un signal exploitable.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "NOVA Workspace",
+            "sender_note": "notification d'authentification",
+            "thread": [],
+            "text": "Demande d'approbation de connexion — 6e tentative. Localisation indiquée : hors de votre pays.",
+            "time": "22:47",
+            "profile_details": "Aucune session ouverte de votre côté depuis 19:12. Tentatives émises depuis un appareil non enregistré."
+          },
+          "clues": {
+            "free": "time_odd",
+            "costly": "profile_details"
+          }
+        },
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "NOVA Workspace",
+            "sender_note": "notification d'authentification",
+            "thread": [],
+            "text": "Approuvez-vous la connexion en cours ? Vous venez d'ouvrir plusieurs outils, la demande peut correspondre à votre session.",
+            "time": "14:09",
+            "profile_details": "Demande émise depuis un appareil que vous n'avez jamais utilisé. Deux tentatives échouées dans l'heure."
+          },
+          "clues": {
+            "free": "context_odd",
+            "costly": "profile_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-whatsapp-nouveau-numero",
+      "template": "message",
+      "difficulty": 3,
+      "tags": [
+        "fraude au président",
+        "usurpation",
+        "hors périmètre"
+      ],
+      "choices": [
+        {
+          "id": "reply",
+          "label": "Je réponds : le dirigeant a changé de numéro, c'est courant",
+          "safe": false
+        },
+        {
+          "id": "test_question",
+          "label": "Je lui pose une question dont seul lui connaît la réponse",
+          "safe": false
+        },
+        {
+          "id": "known_number",
+          "label": "J'appelle son numéro habituel avant de répondre",
+          "safe": true
+        }
+      ],
+      "debrief": "Le changement de numéro est l'ouverture standard : il explique d'avance pourquoi le contact est inconnu. La question-piège se contourne — les réponses traînent sur les réseaux ou dans une boîte déjà compromise — et surtout elle vous maintient sur le canal de l'attaquant. Une photo de profil se copie en un clic.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "whatsapp",
+            "sender": "+33 7 58 44 21 04",
+            "sender_note": "ce numéro n'est pas dans vos contacts",
+            "avatar_note": "photo du dirigeant, prise lors d'une conférence publique",
+            "presence": "en ligne",
+            "external_tag": null,
+            "thread": [],
+            "text": "Bonjour, c'est moi. J'ai changé de numéro, l'ancien ne fonctionne plus. Tu es dispo là ? J'ai besoin de toi sur un dossier confidentiel, n'en parle à personne pour l'instant.",
+            "time": "08:12",
+            "profile_details": "Numéro enregistré sur ce service aujourd'hui. Aucun groupe en commun. Photo de profil publiée il y a 2 heures."
+          },
+          "clues": {
+            "free": "new_number",
+            "costly": "profile_details"
+          }
+        },
+        {
+          "scene": {
+            "channel": "whatsapp",
+            "sender": "+33 6 41 09 77 12",
+            "sender_note": "ce numéro n'est pas dans vos contacts",
+            "avatar_note": "photo de la directrice financière, reprise de son profil professionnel public",
+            "presence": "en train d'écrire…",
+            "external_tag": null,
+            "thread": [],
+            "text": "Je suis en déplacement, réseau pourri, je passe par ici. Le règlement du prestataire doit partir aujourd'hui, tu peux me confirmer que tu as bien les nouvelles coordonnées ?",
+            "time": "17:38",
+            "profile_details": "Numéro actif sur ce service depuis 3 jours. Aucun contact commun. Aucune conversation antérieure."
+          },
+          "clues": {
+            "free": "no_shared_history",
+            "costly": "profile_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-collegue-compte-compromis",
+      "template": "message",
+      "difficulty": 3,
+      "tags": [
+        "compte compromis",
+        "confiance interne",
+        "latéralisation"
+      ],
+      "choices": [
+        {
+          "id": "send",
+          "label": "J'envoie : c'est bien son compte, on échange tous les jours",
+          "safe": false
+        },
+        {
+          "id": "voice_note",
+          "label": "Je lui demande de confirmer par message vocal",
+          "safe": false
+        },
+        {
+          "id": "call_mobile",
+          "label": "Je l'appelle sur son portable avant d'envoyer quoi que ce soit",
+          "safe": true
+        }
+      ],
+      "debrief": "Ici l'identité n'est pas usurpée : le compte est authentique, c'est lui qui est compromis. L'historique de conversation ne prouve donc plus rien — c'est ce qui rend cette attaque plus dure que toutes les autres. Et un message vocal se clone, tout en restant sur le canal que l'attaquant contrôle.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "slack",
+            "sender": "Karim B.",
+            "sender_note": "message direct",
+            "avatar_note": "sa photo habituelle",
+            "presence": "actif",
+            "external_tag": null,
+            "thread": [
+              {
+                "text": "ok merci, je regarde ça cet aprem",
+                "time": "Mardi 15:41",
+                "legit": true
+              },
+              {
+                "text": "c'est bon pour le planning, j'ai validé",
+                "time": "Hier 09:18",
+                "legit": true
+              }
+            ],
+            "text": "Salut, je suis en clientèle et j'ai plus mes accès. Tu peux me renvoyer le lien du dossier RH avec le mot de passe ? C'est urgent, j'ai un rendez-vous dans 10 min.",
+            "time": "11:47",
+            "profile_details": "Connexion depuis un nouvel appareil il y a 40 minutes, depuis une adresse inhabituelle. Statut modifié aujourd'hui."
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "profile_details"
+          }
+        },
+        {
+          "scene": {
+            "channel": "teams",
+            "sender": "Céline R.",
+            "sender_note": "message direct · membre de votre organisation",
+            "avatar_note": "sa photo habituelle",
+            "presence": "en train d'écrire…",
+            "external_tag": null,
+            "thread": [
+              {
+                "text": "je te renvoie le CR dès qu'il est relu",
+                "time": "Lundi 17:02",
+                "legit": true
+              }
+            ],
+            "text": "Tu peux valider la demande d'authentification que je viens de déclencher sur ton téléphone ? Je dois récupérer un fichier partagé et le système demande une double validation.",
+            "time": "14:22",
+            "profile_details": "Session ouverte depuis un appareil non enregistré. Deux tentatives de connexion échouées ce matin."
+          },
+          "clues": {
+            "free": "context_odd",
+            "costly": "profile_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-fausse-preuve-virement",
+      "template": "message",
+      "difficulty": 3,
+      "tags": [
+        "fraude commerciale",
+        "fausse preuve",
+        "capture d'écran"
+      ],
+      "choices": [
+        {
+          "id": "release",
+          "label": "Je débloque la commande : la preuve de virement est là",
+          "safe": false
+        },
+        {
+          "id": "forward",
+          "label": "Je transmets la capture à la compta pour qu'elle valide",
+          "safe": false
+        },
+        {
+          "id": "check_account",
+          "label": "Je vérifie l'encaissement réel sur notre compte avant de débloquer",
+          "safe": true
+        }
+      ],
+      "debrief": "Une capture d'écran se fabrique en deux minutes, et un ordre affiché comme exécuté n'est pas un encaissement. Transmettre l'image à la compta ne change rien : elle regardera la même image. Seul le relevé de votre propre banque fait foi.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "whatsapp",
+            "sender": "+33 7 12 55 08 34",
+            "sender_note": "ce numéro n'est pas dans vos contacts",
+            "avatar_note": "photo d'un logo d'entreprise, image compressée",
+            "presence": "en ligne",
+            "external_tag": null,
+            "thread": [],
+            "text": "Bonjour, le règlement est parti ce matin comme convenu, voici la preuve. Vous pouvez libérer la commande, mon transporteur passe en fin de journée.",
+            "time": "11:19",
+            "image": {
+              "asset": "recu_virement",
+              "alt": "Capture d'écran d'un ordre de virement affiché comme exécuté",
+              "caption": "Virement exécuté — 8 420,00 €"
+            },
+            "profile_details": "Numéro actif sur ce service depuis 4 jours. Aucune conversation antérieure."
+          },
+          "clues": {
+            "free": "new_number",
+            "costly": "profile_details"
+          }
+        },
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "+33 6 45 90 12 07",
+            "sender_note": "numéro inconnu",
+            "thread": [],
+            "text": "Le virement a bien été passé hier soir, il devrait apparaître sous 24h. Je vous envoie la confirmation, merci de ne pas bloquer la livraison pour ça.",
+            "time": "08:33",
+            "image": {
+              "asset": "recu_virement",
+              "alt": "Capture d'écran d'un ordre de virement affiché comme exécuté",
+              "caption": "Confirmation d'opération"
+            },
+            "profile_details": "Numéro jamais utilisé dans vos échanges avec ce client. Aucun historique."
+          },
+          "clues": {
+            "free": "sender_unknown",
+            "costly": "profile_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-texte-dans-image",
+      "template": "message",
+      "difficulty": 3,
+      "tags": [
+        "contournement de filtre",
+        "texte en image",
+        "alerte fabriquée"
+      ],
+      "choices": [
+        {
+          "id": "retype",
+          "label": "Je recopie l'adresse affichée sur l'image dans mon navigateur",
+          "safe": false
+        },
+        {
+          "id": "call_number",
+          "label": "J'appelle le numéro d'assistance indiqué sur l'image",
+          "safe": false
+        },
+        {
+          "id": "internal_it",
+          "label": "Je transmets à l'IT par l'annuaire interne sans rien saisir",
+          "safe": true
+        }
+      ],
+      "debrief": "Le message ne contient aucun lien cliquable : tout est dans l'image, précisément pour échapper aux analyses de contenu. Recopier l'adresse à la main fait le travail du filtre contourné. Et le numéro d'assistance affiché mène à l'attaquant, pas à un support.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "SECURITE-INFO",
+            "sender_note": "expéditeur non enregistré",
+            "thread": [],
+            "text": "",
+            "time": "07:52",
+            "image": {
+              "asset": "ecran_alerte",
+              "alt": "Capture d'écran d'une fenêtre d'alerte de sécurité indiquant un compte suspendu, avec une adresse web et un numéro d'assistance",
+              "caption": null
+            },
+            "profile_details": "Expéditeur jamais utilisé par votre organisation. Aucun message antérieur."
+          },
+          "clues": {
+            "free": "sender_unknown",
+            "costly": "profile_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "web-session-expiree",
+      "template": "web",
+      "difficulty": 3,
+      "tags": [
+        "domaine sosie",
+        "homoglyphe",
+        "vol d'identifiants"
+      ],
+      "choices": [
+        {
+          "id": "login",
+          "label": "Je me reconnecte, la session a dû expirer",
+          "safe": false
+        },
+        {
+          "id": "padlock",
+          "label": "Je vérifie le cadenas puis je me connecte",
+          "safe": false
+        },
+        {
+          "id": "bookmark",
+          "label": "Je ferme et je rouvre l'outil depuis mon signet",
+          "safe": true
+        }
+      ],
+      "debrief": "Le cadenas ne certifie que le chiffrement, jamais l'honnêteté du site : une page de collecte est en HTTPS comme les autres. Dans une barre d'adresse tronquée, deux caractères suffisent à tromper l'œil. Le seul geste fiable est de repartir de son propre signet.",
+      "variants": [
+        {
+          "scene": {
+            "url_display": "nova-vvorkspace.com",
+            "url_full": "https://login.nova-vvorkspace.com/session/renew",
+            "secure_badge": true,
+            "page": {
+              "brand": "NOVA",
+              "title": "Votre session a expiré",
+              "sub": "Reconnectez-vous pour reprendre là où vous en étiez.",
+              "fields": [
+                {
+                  "label": "ADRESSE PROFESSIONNELLE",
+                  "value": "s.durand@meridiar.fr",
+                  "masked": false
+                },
+                {
+                  "label": "MOT DE PASSE",
+                  "value": "",
+                  "masked": true
+                }
+              ],
+              "cta": "SE RECONNECTER"
+            }
+          },
+          "clues": {
+            "free": "padlock_decoy",
+            "costly": "url_full"
+          }
+        },
+        {
+          "scene": {
+            "url_display": "signadoc.fr",
+            "url_full": "https://signadoc.fr.doc-verify.co/sign/48192",
+            "secure_badge": true,
+            "page": {
+              "brand": "SIGNADOC",
+              "title": "Document en attente de signature",
+              "sub": "Identifiez-vous pour accéder au document.",
+              "fields": [
+                {
+                  "label": "ADRESSE PROFESSIONNELLE",
+                  "value": "s.durand@meridiar.fr",
+                  "masked": false
+                },
+                {
+                  "label": "MOT DE PASSE",
+                  "value": "",
+                  "masked": true
+                }
+              ],
+              "cta": "ACCÉDER AU DOCUMENT"
+            }
+          },
+          "clues": {
+            "free": "padlock_decoy",
+            "costly": "url_full"
+          }
+        }
+      ]
+    },
+    {
+      "id": "call-cabinet-comptable",
+      "template": "call",
+      "difficulty": 3,
+      "tags": [
+        "vishing",
+        "prétexte",
+        "reconnaissance"
+      ],
+      "choices": [
+        {
+          "id": "send",
+          "label": "J'envoie : la demande colle à la clôture",
+          "safe": false
+        },
+        {
+          "id": "partial",
+          "label": "J'envoie une version partielle, par prudence",
+          "safe": false
+        },
+        {
+          "id": "call_back",
+          "label": "Je rappelle le cabinet au numéro que j'ai déjà",
+          "safe": true
+        }
+      ],
+      "debrief": "Le prétexte s'appuie sur un calendrier réel : la clôture rend la demande attendue. La version partielle livre quand même l'IBAN et la structure des flux. Le nom affiché ne vient pas de votre répertoire — n'importe qui peut l'annoncer.",
+      "variants": [
+        {
+          "scene": {
+            "caller_name": "Cabinet Maresco",
+            "number": "+33 5 •• •• •• 18",
+            "details": "Numéro non enregistré dans vos contacts. Le nom affiché provient du message d'accueil de l'appelant, pas de votre répertoire.",
+            "lines": [
+              {
+                "text": "— Bonjour, Sophie du cabinet Maresco, on boucle votre clôture cette semaine.",
+                "delay_ms": 0
+              },
+              {
+                "text": "— Il me manque juste le relevé du compte courant pour terminer.",
+                "delay_ms": 2200
+              },
+              {
+                "text": "— Vous pouvez me l'envoyer maintenant ? Je suis dessus là, sinon ça repart à la semaine prochaine.",
+                "delay_ms": 4600
+              },
+              {
+                "text": "[silence]",
+                "delay_ms": 7600
+              }
+            ]
+          },
+          "clues": {
+            "free": "no_contact_record",
+            "costly": "call_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "call-voix-dirigeant",
+      "template": "call",
+      "difficulty": 3,
+      "tags": [
+        "vishing",
+        "deepfake vocal",
+        "fraude au virement"
+      ],
+      "choices": [
+        {
+          "id": "validate",
+          "label": "Je valide : c'est bien sa voix, je la reconnais",
+          "safe": false
+        },
+        {
+          "id": "reduced",
+          "label": "Je valide un montant réduit pour débloquer",
+          "safe": false
+        },
+        {
+          "id": "second_channel",
+          "label": "Je confirme par le second canal convenu avant de valider",
+          "safe": true
+        }
+      ],
+      "debrief": "Une voix se clone avec quelques secondes d'audio public. « Je ne peux pas écrire » supprime précisément la trace vérifiable. La reconnaissance vocale n'est plus une preuve : toute demande financière se confirme par un canal convenu à l'avance.",
+      "variants": [
+        {
+          "scene": {
+            "caller_name": "Direction",
+            "number": "numéro masqué",
+            "details": "Appel entrant sans numéro identifiable. Aucune correspondance dans vos contacts.",
+            "lines": [
+              {
+                "text": "— C'est moi, je suis en réunion, je ne peux pas écrire.",
+                "delay_ms": 0
+              },
+              {
+                "text": "— Le virement que la compta t'a transmis, il faut le valider maintenant.",
+                "delay_ms": 2400
+              },
+              {
+                "text": "— C'est bloquant pour l'opération, je compte sur toi, on en reparle après.",
+                "delay_ms": 5000
+              },
+              {
+                "text": "[silence]",
+                "delay_ms": 8000
+              }
+            ]
+          },
+          "clues": {
+            "free": "no_contact_record",
+            "costly": "call_details"
+          }
+        }
+      ]
+    },
+    {
+      "id": "situation-pret-de-compte",
+      "template": "situation",
+      "difficulty": 3,
+      "tags": [
+        "partage de compte",
+        "contournement",
+        "traçabilité"
+      ],
+      "choices": [
+        {
+          "id": "lend",
+          "label": "J'accepte : c'est un collègue et c'est urgent",
+          "safe": false
+        },
+        {
+          "id": "do_it",
+          "label": "Je fais la manipulation moi-même et je lui donne le fichier",
+          "safe": false
+        },
+        {
+          "id": "rights",
+          "label": "Je sors le fichier si j'y ai droit, sinon je passe par l'IT",
+          "safe": true
+        }
+      ],
+      "debrief": "Prêter un compte transfère vos droits, et toute action restera à votre nom. Faire la manipulation à sa place semble élégant mais contourne exactement le contrôle d'accès qui a bloqué : la question n'est pas qui tape, c'est qui a le droit.",
+      "variants": [
+        {
+          "scene": {
+            "place": "OPEN SPACE",
+            "time": "09:52",
+            "lines": [
+              "Un collègue s'arrête à votre bureau.",
+              "« J'ai un souci d'accès et la réunion démarre. »",
+              "« Tu peux me passer ton compte deux minutes ? »"
+            ],
+            "observation": {
+              "button": "OBSERVER LA SCÈNE",
+              "items": [
+                "Vous ne l'avez jamais croisé à cet étage.",
+                "Son badge est celui des visiteurs.",
+                "Il regarde l'écran, pas vous."
+              ]
+            }
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "observation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "message-colis-sous-domaine-nom",
+      "template": "message",
+      "difficulty": 3,
+      "tags": [
+        "smishing",
+        "sous-domaine trompeur",
+        "personnalisation"
+      ],
+      "choices": [
+        {
+          "id": "trust_name",
+          "label": "J'ouvre : le lien est à mon nom, c'est bien pour moi",
+          "safe": false
+        },
+        {
+          "id": "read_start",
+          "label": "Je lis le début de l'adresse, mon nom y est, donc je continue",
+          "safe": false
+        },
+        {
+          "id": "official",
+          "label": "Je vérifie le suivi depuis le site du transporteur, sans toucher au lien",
+          "safe": true
+        }
+      ],
+      "debrief": "Votre nom au début de l'adresse ne prouve rien : n'importe qui peut le mettre en sous-domaine pour faire personnel. Le vrai domaine est le dernier bloc avant le premier slash — ici, une chaîne aléatoire sans rapport avec un transporteur. On lit une URL de droite à gauche, pas de gauche à droite.",
+      "variants": [
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "+33 7 65 33 15 76",
+            "sender_note": "numéro inconnu",
+            "thread": [],
+            "text": "Colis en attente à votre nom. Complétez la réexpédition pour éviter le retour à l'expéditeur :",
+            "time": "13:02",
+            "image": {
+              "asset": "colis_camion",
+              "alt": "Des colis empilés dans un véhicule de livraison",
+              "caption": null
+            },
+            "link_display": "votre-nom.livraison-suivi.pro",
+            "link_real": "https://votre-nom.t7xkqpzwv.pro/reexp"
+          },
+          "clues": {
+            "free": "sender_unknown",
+            "costly": "link_real"
+          }
+        },
+        {
+          "scene": {
+            "channel": "sms",
+            "sender": "+33 6 52 09 71 44",
+            "sender_note": "numéro inconnu",
+            "thread": [],
+            "text": "Votre colis n'a pas pu être livré. Des frais de réexpédition de 2,90 € sont à régler à votre nom :",
+            "time": "09:47",
+            "image": null,
+            "link_display": "prenom.nom.suivi-livraison.fr",
+            "link_real": "https://prenom.nom.livr-8x2f.top/pay"
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "link_real"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mail-alerte-connexion",
+      "template": "mail",
+      "difficulty": 1,
+      "tags": [
+        "phishing",
+        "vol d'identifiants",
+        "fausse alerte sécurité"
+      ],
+      "choices": [
+        {
+          "id": "secure",
+          "label": "Je clique sur « Sécuriser mon compte » tout de suite",
+          "safe": false
+        },
+        {
+          "id": "ignore",
+          "label": "Je ne fais rien, ce n'était pas moi de toute façon",
+          "safe": false
+        },
+        {
+          "id": "own_check",
+          "label": "Je vérifie mes connexions depuis l'outil, sans passer par le mail",
+          "safe": true
+        }
+      ],
+      "debrief": "Une alerte « connexion suspecte » retourne la peur contre vous : elle pousse à cliquer vite pour se protéger. Ne rien faire laisse le doute entier. On vérifie toujours ses connexions récentes depuis l'application elle-même, jamais depuis le lien de l'alerte : c'est le lien qui est le piège.",
+      "variants": [
+        {
+          "scene": {
+            "from_name": "Sécurité NOVA",
+            "from_addr": "alerte@nova-workspace.securite-compte.co",
+            "time": "03:24",
+            "subject": "Nouvelle connexion détectée sur votre compte",
+            "body": "Bonjour,\n\nUne connexion depuis un appareil inconnu (Kiev, Ukraine) vient d'être détectée sur votre compte. Si ce n'était pas vous, sécurisez votre compte immédiatement.\n\nSécuriser mon compte"
+          },
+          "clues": {
+            "free": "time_odd",
+            "costly": "addr_subdomain"
+          }
+        },
+        {
+          "scene": {
+            "from_name": "NOVA Workspace",
+            "from_addr": "no-reply@nova-workspace-alertes.com",
+            "time": "12:05",
+            "subject": "Tentative de connexion bloquée",
+            "body": "Bonjour,\n\nNous avons bloqué une tentative de connexion à votre compte. Confirmez votre identité sous 12 h pour éviter le verrouillage définitif de votre accès.\n\nConfirmer mon identité"
+          },
+          "clues": {
+            "free": "urgency_wording",
+            "costly": "addr_subdomain"
+          }
+        }
+      ]
+    }
+  ]
+}
