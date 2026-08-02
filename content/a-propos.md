@@ -34,19 +34,19 @@ Mon parcours couvre l'ensemble de la chaîne : de la gouvernance SSI à la répo
 </div>
 
 <div style="margin-bottom:1.8rem">
-<p style="margin:0;font-size:.8rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.05em">2019, 2021</p>
+<p style="margin:0;font-size:.8rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.05em">2019 à 2021</p>
 <strong>Responsable SSI</strong>, Région South West Europe (France, Espagne, Portugal, Suisse, Maroc)<br/>
 <small>Gouvernance SSI, SMSI ISO 27001, gestion des risques EBIOS RM, homologation ANSSI (II1300 / II901), TISAX, sensibilisation collaborateurs.</small>
 </div>
 
 <div style="margin-bottom:1.8rem">
-<p style="margin:0;font-size:.8rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.05em">2017, 2019</p>
+<p style="margin:0;font-size:.8rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.05em">2017 à 2019</p>
 <strong>Responsable Sécurité & Infrastructures</strong><br/>
 <small>Mise en place du SMSI, programmes sécurité et infrastructure, migration Cloud Azure, audits ISO 27001.</small>
 </div>
 
 <div>
-<p style="margin:0;font-size:.8rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.05em">2005, 2017</p>
+<p style="margin:0;font-size:.8rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.05em">2005 à 2017</p>
 <strong>Directeur Technique</strong>, 35 ingénieurs, budget 3 M€<br/>
 <small>Architecture SI, infrastructures haute disponibilité, avant-vente, gestion de prestataires.</small>
 </div>
