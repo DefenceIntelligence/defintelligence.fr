@@ -39,7 +39,10 @@ copyright = "Defence Intelligence"
   dark = "#212529"
 
 [footer]
-  license = "none"
+  license = ""
+
+[opengraph]
+  locale = "fr_FR"
 
 [sharing]
   enabled = true

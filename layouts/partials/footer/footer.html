@@ -3,11 +3,14 @@
         <small>
             {{- $copyright := printf "%s © %s %s %s." (T "copyright") (dateFormat "2006" now) .Site.Title (T "rights") }}
             {{ cond (gt (len .Site.Copyright) 0) .Site.Copyright $copyright }}
-            {{ .Site.Params.footer.license | safeHTML }} |
-            {{ if .Site.Params.main.endorse }}
-                {{ $link := partial "assets/link.html" (dict "destination" (index site.Params.links "hinode") "text" "Hinode" "class" "link-bg-footer" "page" .Page) }}
+            {{- $license := .Site.Params.footer.license | default "" -}}
+            {{- if and (gt (len $license) 0) (ne $license "none") }}
+                | {{ $license | safeHTML }}
+            {{- end }}
+            {{- if .Site.Params.main.endorse }}
+                | {{ $link := partial "assets/link.html" (dict "destination" (index site.Params.links "hinode") "text" "Hinode" "class" "link-bg-footer" "page" .Page) }}
                 {{ T "poweredBy" $link | safeHTML }}
-            {{ end }}
+            {{- end }}
         </small>
     </div>
 </footer>
