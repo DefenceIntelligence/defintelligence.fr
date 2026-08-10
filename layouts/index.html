@@ -119,6 +119,34 @@
 </div>
 {{ end }}
 
+<!-- CTI DIGEST -->
+{{ $digests := where .Site.RegularPages "Section" "cti" }}
+{{ $digestCount := len $digests }}
+{{ if gt $digestCount 0 }}
+<div class="container-xxl px-4 mb-5">
+  <div class="d-flex align-items-baseline gap-3 mb-4 flex-wrap">
+    <h2 class="fw-bold text-white mb-0">CTI Digest</h2>
+    <span class="text-secondary small">{{ $digestCount }} digests publiés</span>
+  </div>
+  <div class="row g-4">
+    {{ range first 3 $digests }}
+    <div class="col-md-4">
+      <div class="card bg-dark border-secondary h-100 p-4" style="border-left:3px solid #00c97a !important">
+        <p class="text-secondary small mb-2" style="color:#00c97a !important">{{ .Date.Format "02 Jan 2006" }}</p>
+        <h5 class="fw-bold mb-2" style="font-size:.95rem">
+          <a href="{{ .RelPermalink }}" class="text-white text-decoration-none">{{ .Title }}</a>
+        </h5>
+        <p class="text-secondary small mb-0">{{ .Description | truncate 110 }}</p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  <div class="mt-4">
+    <a href="/cti/" class="text-decoration-none fw-semibold" style="color:#00c97a">Tous les digests →</a>
+  </div>
+</div>
+{{ end }}
+
 <!-- CTA CONTACT -->
 <div class="container-xxl px-4 mb-5">
   <div class="text-center py-5 px-4 border border-secondary rounded-3 bg-dark">
