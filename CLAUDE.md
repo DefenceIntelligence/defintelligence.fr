@@ -23,8 +23,11 @@ Les données illustratives (métriques ARGOS, exemples de findings, volumes CTI)
 `data/facts.yml` est la source canonique. Toute donnée factuelle en passe par là.
 `content/a-propos.md` tire ses données de `data/facts.yml` via des shortcodes (`{{< facts-experience >}}`, `{{< facts-certifications >}}`, `{{< facts-frameworks >}}`). Ne pas remettre de données en dur dans le markdown.
 
-Données explicitement absentes de la source (ne pas les inventer) :
-- Date de création / début d'activité indépendante de Defence Intelligence
+Données vérifiées (ne pas contredire) :
+- Année de fondation Defence Intelligence : 2026
+- Forme juridique : auto-entrepreneur, SIRET actif
+
+Données absentes de la source (ne pas inventer) :
 - Localisation (ville, région)
 - Forme juridique exacte (auto-entrepreneur, SIRET en cours d'immatriculation — déclaré hors documentation)
 - Revenus, tarifs, nombre de clients

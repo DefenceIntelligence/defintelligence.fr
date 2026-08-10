@@ -6,7 +6,8 @@
 # Ce qui est ABSENT de la source et doit rester absent de tout template :
 #   - Date de création / début d'activité de Defence Intelligence → INCONNUE
 #   - Localisation (ville, région) → NON DOCUMENTÉE
-#   - Forme juridique exacte → auto-entrepreneur (SIRET en cours, déclaré hors doc)
+#   - Forme juridique : auto-entrepreneur, SIRET actif
+#   - Localisation → NON DOCUMENTÉE
 #   - Revenus, tarifs, nombre de clients → ABSENTS
 #   - Tout chiffre ARGOS (actifs, findings, scores) → fictif sauf si extrait de l'app
 
@@ -18,7 +19,8 @@ identite:
   fonction_courte: "Consultant indépendant en cybersécurité"
   experience_it_annees: 30   # source : frontmatter + corps a-propos.md
   experience_dekra_annees: 7 # source : "plus de 7 ans à la tête de programmes de cybersécurité au sein du groupe DEKRA"
-  # ABSENT : date de fondation Defence Intelligence
+  forme_juridique: "Auto-entrepreneur, SIRET actif"
+  annee_fondation: 2026
   # ABSENT : localisation
 
 experience:
