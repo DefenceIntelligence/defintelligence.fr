@@ -1,44 +1,42 @@
-# CLAUDE.md — Defence Intelligence · defintelligence.fr
+# CLAUDE.md — Defence Intelligence · definitelligence.fr
 
-## Contraintes de contenu
+## Règles absolues — A1 à A9
 
-### Règles permanentes — aucune exception
+**A1 — Demander avant d'inventer**
+Chercher l'information dans `data/facts.yml` puis dans `content/a-propos.md`. Si elle n'y est pas, ARRÊTER et poser la question explicitement avant de continuer. Le placeholder `[[À VÉRIFIER]]` s'écrit EN PLUS de la question, jamais à la place. Ne jamais écrire une valeur vraisemblable pour combler un vide. Jamais, même en maquette, même à titre décoratif.
 
-**R1 — Lire avant d'écrire**
-Avant d'écrire la moindre affirmation factuelle dans un template, une maquette ou un fichier de contenu, lire `data/facts.yml` et `content/a-propos.md`. Si l'information n'y figure pas, elle n'existe pas.
+**A2 — facts.yml est en lecture seule**
+Ne jamais modifier, compléter ni réorganiser `data/facts.yml`. Signaler ce qui manque, Stéphane édite.
 
-**R2 — Aucun fait inventé**
-Ne jamais inventer de fait concernant Stéphane Desmets ou l'activité : dates, durées, chiffres, certifications, localisations, clients, références, métriques produit, forme juridique. Un fait plausible inventé est plus dangereux qu'un placeholder visible.
+**A3 — Ne pas afficher debut_activite**
+La date est vraie mais ne doit apparaître dans aucun template ni aucune maquette. Sept mois d'ancienneté n'est pas un argument commercial.
 
-**R3 — Placeholder plutôt que valeur inventée**
-Quand un gabarit ou une maquette appelle une information absente de `data/facts.yml`, écrire `[[À VÉRIFIER : description de l'info manquante]]` et le signaler explicitement dans la réponse. Ne jamais combler le vide avec une valeur vraisemblable.
+**A4 — Attribution de source**
+Ne jamais écrire "déclaré par l'intéressé", "confirmé par Stéphane" ou équivalent pour une information non reçue dans un message. Si le message ne peut pas être cité, la source n'existe pas.
 
-**R4 — Aucune donnée fictive présentée comme réelle**
-Les données illustratives (métriques ARGOS, exemples de findings, volumes CTI) doivent être explicitement étiquetées "exemple fictif", "données illustratives" ou équivalent. Ne jamais présenter des chiffres fictifs comme temps réel ou connectés, même à titre décoratif, même sur une maquette. Sur un site de cybersécurité, une telle confusion est disqualifiante.
+**A5 — Rapport d'exécution complet**
+Lister TOUS les commits et TOUS les changements dans les comptes-rendus, y compris ceux jugés mineurs. Rapporter des corrections absentes du dépôt ou omettre des commits est une faute.
+
+**A6 — Contradictions internes**
+Une hiérarchie existe pour l'extraction initiale (`mentions-legales.md` pour le légal, `a-propos.md` pour le parcours). Mais dès qu'une contradiction est DÉTECTÉE, s'arrêter, la signaler, attendre l'arbitrage. Ne jamais trancher seul.
+
+**A7 — Aucune donnée fictive présentée comme réelle**
+Métriques, captures, exemples : étiquetage obligatoire. Jamais d'identifiant fictif au format d'un vrai (SIRET, TVA, IP, domaine client) : indistinguable d'un vrai à la relecture.
+
+**A8 — Vocabulaire**
+Interdits : "cabinet", "cabinet de conseil", "produit maison", "outil maison", "auto-entrepreneur" (la forme juridique est Entrepreneur individuel).
+Employer : "conseil indépendant", "consultant indépendant", "Defence Intelligence", "ARGOS".
+
+**A9 — Images**
+Le base64 est réservé à `design-preview.html`, qui doit rester autonome. En production, pipeline Hugo obligatoire : `assets/img/argos/`, `.Resize`, `.webp`, `srcset`. Aucune image fabriquée.
 
 ---
 
-## Source de vérité — données biographiques
+## Source de vérité
 
-`data/facts.yml` est la source canonique. Toute donnée factuelle en passe par là.
+`data/facts.yml` est édité exclusivement par Stéphane Desmets. Il est en lecture seule pour Claude (règle A2). Lire ce fichier avant tout travail sur les templates ou la maquette.
+
 `content/a-propos.md` tire ses données de `data/facts.yml` via des shortcodes (`{{< facts-experience >}}`, `{{< facts-certifications >}}`, `{{< facts-frameworks >}}`). Ne pas remettre de données en dur dans le markdown.
-
-Données vérifiées (ne pas contredire) :
-- Année de fondation Defence Intelligence : 2026
-- Forme juridique : auto-entrepreneur, SIRET actif
-
-Données absentes de la source (ne pas inventer) :
-- Localisation (ville, région)
-- Forme juridique exacte (auto-entrepreneur, SIRET en cours d'immatriculation — déclaré hors documentation)
-- Revenus, tarifs, nombre de clients
-- Chiffres ARGOS en production réelle
-
----
-
-## Vocabulaire
-
-- **Non** : "cabinet", "cabinet de conseil", "produit maison", "outil maison"
-- **Oui** : "activité de conseil indépendant", "consultant indépendant", "Defence Intelligence", "ARGOS" (nom propre)
 
 ---
 
@@ -46,6 +44,12 @@ Données absentes de la source (ne pas inventer) :
 
 - `design/preview` : maquette en cours, ne pas merger sur `main`
 - Ne pas toucher à la typographie ni à la palette tant que le site ne builde pas en Hinode v3.20.0
+
+---
+
+## brand.css — fichier provisoire
+
+`static/css/brand.css` contient les 22 occurrences intentionnelles de `#00c97a`. Ce fichier est **provisoire** : il sera supprimé quand le token d'accent migrera vers `params.toml` + `var(--bs-primary)` partout. Ne pas copier de styles depuis `brand.css` dans d'autres fichiers — toujours utiliser `var(--bs-primary)`.
 
 ---
 

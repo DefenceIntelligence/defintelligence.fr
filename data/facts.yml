@@ -1,107 +1,29 @@
 # data/facts.yml — SOURCE UNIQUE DE VÉRITÉ
-# Extrait exclusivement de content/a-propos.md.
-# Toute donnée factuelle sur Stéphane Desmets et Defence Intelligence passe ici.
-# Pour ajouter ou corriger un fait, éditer CE fichier, pas les templates ni les markdown.
-#
-# Ce qui est ABSENT de la source et doit rester absent de tout template :
-#   - Date de création / début d'activité de Defence Intelligence → INCONNUE
-#   - Localisation (ville, région) → NON DOCUMENTÉE
-#   - Forme juridique : auto-entrepreneur, SIRET actif
-#   - Localisation → NON DOCUMENTÉE
-#   - Revenus, tarifs, nombre de clients → ABSENTS
-#   - Tout chiffre ARGOS (actifs, findings, scores) → fictif sauf si extrait de l'app
+# Édité exclusivement par Stéphane Desmets.
+# Claude ne modifie JAMAIS ce fichier. Il le lit, et signale
+# ce qui manque. Toute donnée absente ici est absente du site.
 
 identite:
   nom: "Stéphane Desmets"
-  titres:
-    - "Head of Global Cyber Defence, DEKRA SE"
-    - "Fondateur, Defence Intelligence"
-  fonction_courte: "Consultant indépendant en cybersécurité"
-  experience_it_annees: 30   # source : frontmatter + corps a-propos.md
-  experience_dekra_annees: 7 # source : "plus de 7 ans à la tête de programmes de cybersécurité au sein du groupe DEKRA"
-  forme_juridique: "Auto-entrepreneur"
+  denomination: "Defence Intelligence"
+  forme_juridique: "Entrepreneur individuel (EI)"
   siren: "993562446"
-  annee_fondation: 2026
-  # ABSENT : localisation
+  adresse: "[[À DÉFINIR : domiciliation, adresse personnelle exclue]]"
+  email: "defintelligence@proton.me"
+  linkedin: "https://www.linkedin.com/in/stephane-desmets/"
+  localisation: "Gironde, Nouvelle-Aquitaine"
+  intervention: "nationale"
+  debut_activite: "2026-01-01"   # NE PAS AFFICHER — voir règle A3
 
 experience:
-  - periode: "Depuis 2021"
-    titre: "Head of Global Cyber Defence"
-    organisation: "DEKRA SE (45 000 collaborateurs, périmètre monde)"
-    detail: >
-      Management d'une équipe internationale de 7 personnes.
-      Attack Surface Management, Threat Intelligence, Brand & Data Leak Monitoring,
-      Red Team, réponse à incidents, ISO 27001 & TISAX.
+  it_annees: 30
+  cyber_groupe_annees: 7
+  poste_actuel: "Head of Global Cyber Defence, DEKRA SE"
+  depuis: 2021
 
-  - periode: "2019 à 2021"
-    titre: "Responsable SSI"
-    organisation: "Région South West Europe (France, Espagne, Portugal, Suisse, Maroc)"
-    detail: >
-      Gouvernance SSI, SMSI ISO 27001, gestion des risques EBIOS RM,
-      homologation ANSSI (II1300 / II901), TISAX, sensibilisation collaborateurs.
+argos:
+  legende_capture: "Interface ARGOS · environnement de démonstration"
 
-  - periode: "2017 à 2019"
-    titre: "Responsable Sécurité & Infrastructures"
-    organisation: ""
-    detail: >
-      Mise en place du SMSI, programmes sécurité et infrastructure,
-      migration Cloud Azure, audits ISO 27001.
-
-  - periode: "2005 à 2017"
-    titre: "Directeur Technique"
-    organisation: "35 ingénieurs, budget 3 M€"
-    detail: >
-      Architecture SI, infrastructures haute disponibilité,
-      avant-vente, gestion de prestataires.
-
-certifications:
-  - label: "ISO/IEC 27001 Lead Auditor"
-    organisme: "PECB"
-    annee: "mai 2025"
-    recente: true
-  - label: "Intelligence Research I : Scoping"
-    organisme: "Mandiant / Google Cloud"
-    annee: "oct. 2024"
-    recente: true
-  - label: "Certified Lead Cybersecurity Manager"
-    organisme: "PECB"
-    annee: "août 2024"
-    recente: true
-  - label: "Lead Incident Manager ISO 27035"
-    organisme: "PECB"
-    annee: null
-    recente: true
-  - label: "ISO/IEC 27001 Lead Implementer"
-    organisme: "PECB"
-    annee: "2021"
-    recente: false
-  - label: "ISO/IEC 27005 Risk Manager"
-    organisme: "PECB"
-    annee: "2021"
-    recente: false
-  - label: "ITIL v3 Foundation & PPO"
-    organisme: null
-    annee: null
-    recente: false
-  - label: "ScrumMaster"
-    organisme: "ScrumAlliance"
-    annee: null
-    recente: false
-
-frameworks:
-  normes:
-    - "ISO 27001"
-    - "ISO 27002"
-    - "ISO 27005"
-    - "TISAX"
-  risques:
-    - "EBIOS Risk Manager"
-    - "NIST CSF"
-  reglementaire:
-    - "RGPD"
-    - "ANSSI (II1300 · II901)"
-    - "ETG"
-  langues:
-    - "Français"
-    - "Anglais C1"
-    - "Espagnol B2"
+# Certifications, parcours détaillé, frameworks et langues :
+# extraits de content/a-propos.md via les shortcodes facts-*.
+# Ne pas dupliquer ici.
