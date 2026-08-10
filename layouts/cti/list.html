@@ -12,7 +12,7 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem">
         {{ range $pages }}
         <a href="{{ .RelPermalink }}" style="text-decoration:none;color:inherit">
-            <div style="border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1.4rem;height:100%;transition:border-color .2s" onmouseover="this.style.borderColor='#00c97a'" onmouseout="this.style.borderColor='var(--bs-border-color)'">
+            <div style="border:1px solid var(--bs-border-color);border-radius:.75rem;padding:1.4rem;height:100%;transition:border-color .2s" onmouseover="this.style.borderColor='var(--bs-primary)'" onmouseout="this.style.borderColor='var(--bs-border-color)'">
                 <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
                     <span style="font-size:1.4rem">📡</span>
                     <span style="font-size:.75rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.06em">{{ .Date.Format "02 Jan 2006" }}</span>

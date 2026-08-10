@@ -14,6 +14,6 @@ showToc: false
 Nous vous répondrons à l'adresse indiquée sous 48h.
 </p>
 
-<a href="/" style="padding:.65rem 1.6rem;background:#00c97a;color:#000;border-radius:.4rem;font-weight:700;text-decoration:none;font-size:.95rem">Retour à l'accueil →</a>
+<a href="/" style="padding:.65rem 1.6rem;background:var(--bs-primary);color:#000;border-radius:.4rem;font-weight:700;text-decoration:none;font-size:.95rem">Retour à l'accueil →</a>
 
 </section>

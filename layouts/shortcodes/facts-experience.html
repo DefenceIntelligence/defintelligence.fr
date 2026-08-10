@@ -1,6 +1,6 @@
 {{/* facts-experience.html — Parcours professionnel depuis data/facts.yml */}}
 <div style="border-left:2px solid var(--bs-primary);padding-left:1.5rem;margin:1.5rem 0">
-{{ range .Site.Data.facts.experience }}
+{{ range hugo.Data.facts.experience }}
   <div style="margin-bottom:1.8rem">
     <p style="margin:0;font-size:.8rem;color:var(--bs-secondary-color);text-transform:uppercase;letter-spacing:.05em">{{ .periode }}</p>
     <strong>{{ .titre }}</strong>{{ if .organisation }}, {{ .organisation }}{{ end }}<br/>

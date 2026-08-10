@@ -16,7 +16,9 @@ copyright = "Defence Intelligence"
 [main]
   separator = "·"
   endorCTA = true
-  customCSS = ["css/brand.css"]
+  [main.build]
+    transpiler = "dartsass"
+    silenceDeprecations = true
 
 [favicon]
   logo = "img/favicon.png"

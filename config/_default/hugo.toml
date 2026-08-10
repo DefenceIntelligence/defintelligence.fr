@@ -10,9 +10,13 @@ summaryLength = 30
 [module]
   [module.hugoVersion]
     extended = true
-    min = "0.120.0"
+    min = "0.146.0"
   [[module.imports]]
-    path = "github.com/gethinode/hinode"
+    path = "github.com/gethinode/hinode/v3"
+  [[module.imports]]
+    path = "github.com/gethinode/mod-blocks/v2"
+
+ignoreLogs = ['warn-invalid-arguments']
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

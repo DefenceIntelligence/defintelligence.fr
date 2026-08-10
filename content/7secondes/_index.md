@@ -105,7 +105,7 @@ La plupart des cyberattaques ne visent pas les machines : elles visent les gens.
 
 Cabinet de conseil en cybersécurité, nous accompagnons les PME et ETI sur la menace cyber au quotidien : audit, Attack Surface Management, Threat Intelligence, gestion des risques.
 
-<a href="/" class="btn mt-2" style="border:1px solid #00c97a;color:#00c97a;font-weight:600">En savoir plus sur Defence Intelligence →</a>
+<a href="/" class="btn mt-2" style="border:1px solid var(--bs-primary);color:var(--bs-primary);font-weight:600">En savoir plus sur Defence Intelligence →</a>
 
 ---
 

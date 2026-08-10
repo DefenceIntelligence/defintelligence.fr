@@ -8,7 +8,7 @@
                 | {{ $license | safeHTML }}
             {{- end }}
             {{- if .Site.Params.main.endorse }}
-                | {{ $link := partial "assets/link.html" (dict "destination" (index site.Params.links "hinode") "text" "Hinode" "class" "link-bg-footer" "page" .Page) }}
+                | {{ $link := partial "assets/link.html" (dict "href" (index site.Params.links "hinode") "text" "Hinode" "class" "link-bg-footer" "page" .Page) }}
                 {{ T "poweredBy" $link | safeHTML }}
             {{- end }}
         </small>
@@ -33,7 +33,7 @@ function diSetupBrand() {
     name.style.cssText = "font-weight:700;font-size:.95rem;color:#fff;letter-spacing:.02em";
     var slogan = document.createElement("span");
     slogan.textContent = "Cybersécurité & Renseignement";
-    slogan.style.cssText = "font-size:.58rem;color:#00c97a;letter-spacing:.1em;text-transform:uppercase;margin-top:3px";
+    slogan.style.cssText = "font-size:.58rem;color:var(--bs-primary);letter-spacing:.1em;text-transform:uppercase;margin-top:3px";
     wrap.appendChild(name);
     wrap.appendChild(slogan);
     brand.appendChild(logo);

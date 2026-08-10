@@ -8,6 +8,8 @@
     "prebuild": "npx -y @gethinode/hinode/prebuild.js 2>/dev/null || true"
   },
   "dependencies": {
-    "@gethinode/hinode": "^0.27.0"
+    "@gethinode/hinode": "^1.0.0",
+    "sass": "^1.102.0",
+    "sass-embedded": "^1.100.0"
   }
 }

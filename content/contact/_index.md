@@ -38,7 +38,7 @@ Décrivez votre projet ou votre besoin, nous vous répondons sous 48h.
     <textarea id="message" name="message" rows="5" required style="width:100%;padding:.6rem .8rem;background:var(--color-neutral-700,#374151);border:1px solid var(--color-neutral-600,#4b5563);border-radius:.5rem;color:inherit;font-size:1rem;resize:vertical"></textarea>
   </div>
 
-  <button type="submit" style="padding:.75rem 2rem;border-radius:.5rem;font-weight:700;font-size:1rem;cursor:pointer;background:#00c97a;color:#000;border:none">
+  <button type="submit" style="padding:.75rem 2rem;border-radius:.5rem;font-weight:700;font-size:1rem;cursor:pointer;background:var(--bs-primary);color:#000;border:none">
     Envoyer le message
   </button>
 </form>

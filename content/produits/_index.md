@@ -18,9 +18,9 @@ Des outils conçus sur le terrain, pour les équipes sécurité et les RSSI qui 
   <div style="font-size:2.8rem">🛡️</div>
   <div>
     <p style="margin:0 0 .25rem;font-size:1.5rem;font-weight:700">ARGOS</p>
-    <p style="margin:0;color:#00c97a;font-weight:600;font-size:.95rem">Attack Surface Management · EASM</p>
+    <p style="margin:0;color:var(--bs-primary);font-weight:600;font-size:.95rem">Attack Surface Management · EASM</p>
   </div>
-  <span style="margin-left:auto;padding:.3rem .8rem;background:#00c97a;color:#000;border-radius:2rem;font-size:.75rem;font-weight:700">PRODUCTION</span>
+  <span style="margin-left:auto;padding:.3rem .8rem;background:var(--bs-primary);color:#000;border-radius:2rem;font-size:.75rem;font-weight:700">PRODUCTION</span>
 </div>
 </div>
 
@@ -54,7 +54,7 @@ Partez d'un simple nom de domaine, ARGOS reconstitue automatiquement l'intégral
 </div>
 
 <div style="display:flex;gap:.75rem;flex-wrap:wrap">
-  <a href="/produits/argos/" style="padding:.6rem 1.4rem;background:#00c97a;color:#000;border-radius:.4rem;font-weight:700;text-decoration:none;font-size:.9rem">Découvrir ARGOS →</a>
+  <a href="/produits/argos/" style="padding:.6rem 1.4rem;background:var(--bs-primary);color:#000;border-radius:.4rem;font-weight:700;text-decoration:none;font-size:.9rem">Découvrir ARGOS →</a>
   <a href="/contact/" style="padding:.6rem 1.4rem;border:1px solid var(--bs-border-color);color:inherit;border-radius:.4rem;font-weight:600;text-decoration:none;font-size:.9rem">Demander une démo</a>
 </div>
 
