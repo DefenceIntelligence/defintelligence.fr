@@ -50,28 +50,22 @@ Aucune décision de présentation (couleur, ordre, mise en avant, badge) n'est e
 
 ---
 
-## brand.css — fichier provisoire
+## Accent couleur
 
-`static/css/brand.css` contient les 22 occurrences intentionnelles de `#00c97a`. Ce fichier est **provisoire** : il sera supprimé quand le token d'accent migrera vers `params.toml` + `var(--bs-primary)` partout. Ne pas copier de styles depuis `brand.css` dans d'autres fichiers — toujours utiliser `var(--bs-primary)`.
+Défini dans `config/_default/params.toml` → `[style] primary`. Valeur active : `#b89450` (or/ambre, Étape 2).
+Tous les templates utilisent `var(--bs-primary)` — ne jamais hardcoder la valeur hex dans les layouts ou le contenu.
+
+`static/css/brand.css` a été supprimé en Étape 1 (commit ce51ddb).
 
 ---
 
-## Inventaire de dette technique (#00c97a hardcodé)
+## Lancer le serveur local
 
-Occurrences de `#00c97a` hors `brand.css` et `params.toml` à remplacer par `var(--bs-primary)` lors du passage au nouveau token d'accent. Par fichier (compté au 2026-08-10) :
+Homebrew Hugo n'embarque pas Dart Sass — il faut pointer vers le binaire npm :
 
-| Fichier | Occurrences |
-|---|---|
-| `content/a-propos.md` | 9 → **0** (migré vers `var(--bs-primary)` et shortcodes) |
-| `content/produits/_index.md` | 3 |
-| `content/services/_index.md` | 10 |
-| `content/7secondes/_index.md` | 1 |
-| `content/contact/_index.md` | 1 |
-| `content/merci.md` | 1 |
-| `layouts/index.html` | 10 |
-| `layouts/blog/list.html` | 2 |
-| `layouts/cti/list.html` | 1 |
-| `layouts/partials/footer/footer.html` | 1 |
-| `static/css/brand.css` | 22 (intentionnel — source) |
+```bash
+cd /Users/stephane/defintelligence
+PATH="node_modules/sass-embedded-darwin-arm64/dart-sass:$PATH" /opt/homebrew/bin/hugo server --port 1313 --bind 127.0.0.1
+```
 
-Total hors brand.css : **30 occurrences** à migrer lors du changement d'accent.
+Accès : `http://127.0.0.1:1313/`
