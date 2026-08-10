@@ -19,7 +19,8 @@ identite:
   fonction_courte: "Consultant indépendant en cybersécurité"
   experience_it_annees: 30   # source : frontmatter + corps a-propos.md
   experience_dekra_annees: 7 # source : "plus de 7 ans à la tête de programmes de cybersécurité au sein du groupe DEKRA"
-  forme_juridique: "Auto-entrepreneur, SIRET actif"
+  forme_juridique: "Auto-entrepreneur"
+  siren: "993562446"
   annee_fondation: 2026
   # ABSENT : localisation
 
