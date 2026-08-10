@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<!--
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  DEFENCE INTELLIGENCE — MAQUETTE DE REDESIGN                               ║
+║  Fichier : design-preview.html     Branche : design/preview                ║
+║  Date    : 2026-08-10              Version : 1.0                            ║
+║  Statut  : PROPOSITION — direction esthétique non arbitrée                 ║
+║  Usage   : ouvrir dans un navigateur, partager tel quel                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════════════════
+1. PROVENANCE DE CHAQUE SECTION
+   Indique si la section utilise un block Hinode natif ou du HTML custom.
+   "Maintenable" = le template Hinode s'occupe du rendu, le contenu est en
+   markdown/frontmatter. "Custom" = HTML écrit à la main, dette de layouts/.
+═══════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────┬──────────────────────────────┬──────────────────────────────────────────────────────────────────────────────┐
+│ Section             │ Hinode v1 natif / Custom      │ Note d'implémentation                                                        │
+├─────────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+│ Bannière preview    │ CUSTOM (supprimer en prod)    │ Barre informative sans équivalent Hinode. À retirer avant toute mise en ligne │
+├─────────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+│ Navigation          │ HINODE NATIF — partial navbar │ Rendu automatique par Hinode depuis menus.toml + params.toml [navigation].   │
+│                     │                              │ Pas dans layouts/index.html. La couleur "body" vient de navigation.color.     │
+│                     │                              │ Aucune dette. En v3, le partial se renomme mais reste natif.                  │
+├─────────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+│ Hero (headline +    │ MIXTE — shortcode hero       │ Hinode v1 a un shortcode {{< hero >}} mais son layout est limité (image      │
+│ panneau métriques)  │ partiel + CUSTOM panel       │ fond + texte centré). La colonne gauche (titre serif italic) pourrait passer  │
+│                     │                              │ par hero avec un template override. Le panneau métriques droit (chiffres       │
+│                     │                              │ ARGOS) est 100% custom — pas d'équivalent Hinode. Dette assumée et localisée. │
+├─────────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+│ Grille Expertise    │ HINODE NATIF — shortcode      │ {{< cards >}} + {{< card >}} shortcodes. Contenu en markdown, maintenable.   │
+│ (4 services)        │ cards                        │ Le rendu avec séparateurs 1px (au lieu de card Bootstrap) nécessite un param  │
+│                     │                              │ de style custom ou une classe CSS dans brand.css. L'icône SVG (et non emoji)  │
+│                     │                              │ est un param card.icon. Maintenabilité : haute.                               │
+├─────────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+│ Section ARGOS       │ CUSTOM                        │ Hinode featured pourrait encadrer le texte + lien. Le mini-dashboard         │
+│ (texte + dashboard  │                              │ (tableau de scoring fictif) est entièrement custom sans équivalent Hinode.    │
+│ fictif)             │                              │ Si le dashboard est simplifié (texte + screenshot), featured suffit. Sinon    │
+│                     │                              │ dette custom identique à l'actuel layouts/index.html lignes 81-96.            │
+├─────────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+│ CTI Digest          │ HINODE NATIF — shortcode      │ {{< articles 3 "cti" >}} rend les 3 derniers articles de la section cti.    │
+│ (3 derniers)        │ articles                     │ La bordure gauche dorée est un surcharge CSS dans brand.css ciblant les       │
+│                     │                              │ cards d'articles CTI. Maintenabilité : haute. Contenu automatique depuis      │
+│                     │                              │ content/cti/. Aucune édition de layouts/ requise.                             │
+├─────────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+│ Citation fondateur  │ CUSTOM                        │ Pas d'équivalent Hinode. Bloc éditorial (portrait + citation + biographie    │
+│                     │                              │ condensée). Dette custom assurée. Mais section courte : ~15 lignes de HTML    │
+│                     │                              │ static dans layouts/index.html, maintenable en pratique.                      │
+├─────────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+│ CTA contact         │ HINODE NATIF — shortcode cta  │ {{< cta title="..." button="..." href="..." >}} shortcode. Texte et lien     │
+│                     │                              │ en paramètres markdown. Maintenable.                                          │
+├─────────────────────┼──────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+│ Footer              │ CUSTOM PARTIEL overridé       │ layouts/partials/footer/footer.html existe déjà (override Hinode). La        │
+│                     │                              │ dette est déjà assumée. Aucun changement structurel requis par ce design.      │
+└─────────────────────┴──────────────────────────────┴──────────────────────────────────────────────────────────────────────────────┘
+
+Bilan maintenabilité :
+  Navigation    → zéro dette (natif)
+  Expertise     → zéro dette si shortcode cards utilisé
+  CTI Digest    → zéro dette si shortcode articles utilisé
+  CTA           → zéro dette si shortcode cta utilisé
+  Hero          → dette partielle (panneau métriques)
+  ARGOS         → dette entière si dashboard conservé ; zéro si simplifié en featured
+  Fondateur     → dette minimale (15 lignes statiques)
+  Footer        → dette existante, inchangée
+
+═══════════════════════════════════════════════════════════════════════════════
+2. DÉCISIONS ESTHÉTIQUES — JUSTIFICATION EXHAUSTIVE
+   Pour chaque décision : valeur actuelle → valeur proposée → pourquoi.
+═══════════════════════════════════════════════════════════════════════════════
+
+A. COULEUR ACCENT
+   Actuel  : #00c97a (vert néon), défini dans params.toml [style] primary et brand.css
+   Proposé : #b89450 (laiton/or)
+   Raison  : Le vert néon est la couleur par défaut de dizaines de startups tech/cybersec
+             (Snyk, Semgrep, HackerOne...). Il signale "produit SaaS". Le laiton évoque
+             le conseil, la discrétion, l'autorité — registre d'un cabinet, pas d'un éditeur
+             logiciel. Risque assumé : moins immédiatement lisible comme "cybersec".
+
+B. FOND DE PAGE
+   Actuel  : #212529 (Bootstrap dark, chaud-gris), activé par theme = "dark" dans params.toml
+   Proposé : #07080c (quasi-noir à teinte bleue froide)
+   Raison  : Le gris-brun Bootstrap est un compromis général qui crée une dissonance
+             thermique avec le vert froid. Le bleu-noir très profond donne une profondeur
+             "interface de veille" cohérente avec l'activité CTI/EASM. Ne passe pas par
+             params.toml : requiert --bs-body-bg override dans brand.css.
+
+C. FOND SURFACES (panneaux, cartes)
+   Actuel  : #212529 (même que le body dans Hinode dark — les cartes ne se distinguent pas)
+   Proposé : #0f1119 (légèrement plus clair que le fond)
+   Raison  : Hinode dark n'a pas de token surface/body distinct. Le résultat actuel est
+             un fond uniforme où les cartes disparaissent. Le léger écart crée la profondeur
+             sans casser l'atmosphère sombre.
+
+D. TYPOGRAPHIE HERO
+   Actuel  : Bootstrap display-5 fw-bold, police système sans-serif (-apple-system, Segoe UI…)
+   Proposé : "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif — italic
+   Raison  : 100% des homepages cybersec utilisent du sans-serif lourd. L'italic serif
+             au-dessus d'un fond sombre est inhabituellement éditorial dans le secteur —
+             différenciateur visuel net. Rapport risque/rendement jugé favorable.
+   IMPORTANT : Palatino est natif sur macOS et iOS. Sur Windows : "Palatino Linotype"
+             ou "Book Antiqua" (Microsoft Office fonts, très répandues). Sur Linux :
+             "Georgia" uniquement (fallback correct mais moins raffiné). Aucune Google
+             Font n'est chargée (CSP + indépendance). Le rendu variera selon l'OS.
+
+E. TYPOGRAPHIE CORPS
+   Actuel  : héritage Bootstrap (system-ui, -apple-system, Segoe UI, Roboto…)
+   Proposé : identique (system-ui stack) — aucun changement
+   Raison  : Le corps ne justifie pas une police chargée. Le différenciateur est le display.
+
+F. MISE EN PAGE HERO
+   Actuel  : 2 colonnes Bootstrap (col-lg-7 texte / col-lg-5 logo centré), logo en image
+   Proposé : 2 colonnes éditorial (headline gauche + stats panel droit), pas de logo
+   Raison  : Le logo png dans le hero est un anti-pattern (redondant avec la navbar). Le
+             panneau métriques chiffrées (ex : "6 843 actifs | 412 findings") donne une
+             preuve de capacité immédiate sans navigation. Alignement gauche = registre
+             éditorial/rapport plutôt que landing page SaaS.
+
+G. CARTES → SÉPARATEURS 1px
+   Actuel  : Bootstrap .card bg-dark border-secondary (border-radius 0.375rem, bg dégradé)
+   Proposé : cellules nues séparées par des bordures 1px (#1c2132)
+   Raison  : Les cartes Bootstrap évoquent les UI dashboard de 2018-2022. Les grilles
+             à séparateurs appartiennent à un registre plus éditorial (presse, rapport
+             annuel). Coût : moins de réutilisabilité (les shortcodes cards Hinode
+             génèrent des cartes Bootstrap — une surcharge CSS est nécessaire).
+
+H. SECTION BLOG SUPPRIMÉE DE LA HOME
+   Actuel  : Section "Derniers articles" dans layouts/index.html lignes 98-120 ({{range first 3}})
+   Proposé : absente de la home
+   Raison  : Des articles de blog génériques sur la home diluent le message et signalent
+             "agence web années 2010". Le CTI Digest est le contenu différenciant ;
+             il reste. Une page /blog/ dédiée suffit pour les articles.
+
+I. BADGE "PRODUIT" ARGOS SUPPRIMÉ
+   Actuel  : <div class="badge bg-danger ...">PRODUIT</div> — badge rouge
+   Proposé : absent — le titre "ARGOS" + "Attack Surface Monitor" se suffisent
+   Raison  : Un badge rouge "PRODUIT" sur un fond sombre crie le marketing. La session
+             précédente a aussi acté la suppression de "produit maison" (libellé jugé
+             non professionnel). Le badge de statut "PRODUCTION" dans /produits/ a du
+             sens en contexte produit ; pas sur la home.
+
+J. EMOJI SUPPRIMÉS DE LA HOME
+   Actuel  : 🛡️ 📡 📋 👔 🔭 dans layouts/index.html comme icônes de section
+   Proposé : aucune icône sur la home (séparateurs typographiques uniquement)
+   Raison  : Les emoji varient considérablement entre OS (Apple Color Emoji vs. Noto vs.
+             Segoe UI Emoji). Ils lisent comme informels sur une homepage de cabinet.
+             Conservés dans /7secondes/ (app grand public = registre approprié).
+
+K. AJOUT SECTION FONDATEUR
+   Actuel  : absente du site actuel
+   Proposé : citation + biographie condensée + credentials (30 ans IT, indépendant)
+   Raison  : Un cabinet de conseil est une promesse portée par une personne, pas une
+             marque. La section humanise et différencie d'une agence anonyme.
+             DÉCISION À VALIDER : exposition personnelle = choix du fondateur.
+
+L. PALETTE TOKENS SECONDAIRES
+   --border : #1c2132 (proposé) vs. Bootstrap border-secondary à ~20% opacité (actuel)
+   --text-2  : #7a869f (proposé) vs. Bootstrap text-secondary #adb5bd (actuel)
+   --accent-glow : rgba(184,148,80,0.10) — éclat derrière l'accent, absent du site actuel
+
+M. BOUTON PRIMAIRE
+   Actuel  : background #00c97a, color #000 (CSS dans brand.css .btn-primary)
+   Proposé : background #b89450, color #000 — suit l'accent
+   Raison  : cohérence token accent. Aucune autre raison.
+
+═══════════════════════════════════════════════════════════════════════════════
+3. CE QUE LA MAQUETTE NE REPRÉSENTE PAS
+═══════════════════════════════════════════════════════════════════════════════
+
+A. Pages intérieures : seule la home est maquettée. /services/, /produits/argos/,
+   /cti/, /contact/, /7secondes/, /blog/, les articles individuels CTI et blog,
+   les pages légales — aucune n'est représentée.
+
+B. Layout mobile : la maquette est pensée en desktop large (≥1280px). Les points
+   de rupture Bootstrap (sm/md/lg/xl), le menu hamburger mobile, la grille sur
+   petits écrans, les tailles de police responsives — non testés.
+
+C. Comportement au scroll : la navbar Hinode est fixe (fixed = true, offset = "5em").
+   Le comportement transparent→opaque au scroll, les ancres, le highlight actif
+   dans la nav — non représentés.
+
+D. Thème clair : les tokens --bg, --surface, etc. sont redéfinis pour le light mode
+   (via prefers-color-scheme et data-theme="light") mais le rendu light est peu
+   testé. La maquette est pensée dark-first.
+
+E. Animations et micro-interactions : les hover states sont simples (changement de
+   couleur/bordure). Aucun scroll-trigger, aucune animation d'entrée de section,
+   aucun parallax n'est traité.
+
+F. Contenu dynamique Hugo : le dashboard ARGOS (chiffres, tableau de findings) est
+   purement décoratif avec des données fictives. En production ces données viendraient
+   d'un fichier data/ Hugo ou seraient des screenshots d'ARGOS réel.
+
+G. Section 7 Secondes absente : le site actuel a une tuile 7 Secondes dans /produits/.
+   La maquette home ne prévoit pas de section app mobile. À discuter.
+
+H. Section Témoignages/Clients : absente. Si des logos clients peuvent être affichés,
+   une section social proof entre Hero et Expertise serait standard. Non représentée.
+
+I. Navigation secondaire (footer) : le footer de la maquette est minimal (3 colonnes).
+   Le footer actuel (layouts/partials/footer/footer.html) peut avoir plus de liens.
+   Non audité.
+
+J. Accessibilité : les contrastes ont été vérifiés visuellement mais pas auditées
+   contre WCAG 2.1 AA. La section hero (texte clair sur fond quasi-noir) devrait
+   passer, le texte secondaire (#7a869f sur #07080c) est à vérifier.
+
+K. Internationalisation : le site est en français uniquement selon la config actuelle
+   (locale = fr_FR). La maquette est monolingue.
+
+-->
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defence Intelligence — Maquette (non engagée)</title>
+<style>
+/*
+ * POLICES — aucune dépendance externe
+ * Display  : "Palatino Linotype" (Windows), "Palatino" (macOS/Linux via X11),
+ *            "Book Antiqua" (Microsoft Office, très répandu Windows),
+ *            Georgia (fallback universel — rendu légèrement différent mais acceptable)
+ * Corps    : pile système standard — rendu natif de chaque OS
+ * Mono     : pile système standard
+ * NOTE     : Sur Linux sans paquets Microsoft fonts installés, Georgia sera
+ *            utilisé pour les headlines. Le résultat est satisfaisant mais
+ *            moins raffiné que Palatino sur macOS.
+ */
+
+/* ═══════════════════════════════════════
+   TOKENS COULEURS
+   ═══════════════════════════════════════ */
+:root {
+  /* Dark (défaut) */
+  --bg         : #07080c;
+  --bg-2       : #090b11;
+  --surface    : #0f1119;
+  --surface-2  : #131520;
+  --border     : #1c2132;
+  --border-2   : #283048;
+  --text       : #c8cfdf;
+  --text-2     : #7a869f;
+  --text-3     : #3d4a62;
+  --accent     : #b89450;
+  --accent-dim : #7a6235;
+  --accent-faint: rgba(184, 148, 80, 0.08);
+  --accent-glow: rgba(184, 148, 80, 0.14);
+  --blue       : #4d7fc0;
+  --ok         : #4caf82;
+  --warn       : #c49840;
+  --crit       : #d95c5c;
+
+  --font-display: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-body   : -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono   : "SF Mono", "Cascadia Mono", "Consolas", "Courier New", monospace;
+
+  --radius      : 4px;
+  --max-w       : 1180px;
+  --section-py  : 5rem;
+}
+
+/* Light mode override */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg         : #f6f5f2;
+    --bg-2       : #eeece8;
+    --surface    : #ffffff;
+    --surface-2  : #f0ede8;
+    --border     : #d5cfc3;
+    --border-2   : #bfb8a8;
+    --text       : #18181a;
+    --text-2     : #555560;
+    --text-3     : #9a9598;
+    --accent     : #8a6828;
+    --accent-dim : #c49840;
+    --accent-faint: rgba(138, 104, 40, 0.06);
+    --accent-glow: rgba(138, 104, 40, 0.12);
+    --blue       : #3060a0;
+    --ok         : #2a8a58;
+    --warn       : #9a7820;
+    --crit       : #b84040;
+  }
+}
+
+/* Toggle explicite — prioritaire sur media query */
+[data-theme="dark"] {
+  --bg         : #07080c;
+  --bg-2       : #090b11;
+  --surface    : #0f1119;
+  --surface-2  : #131520;
+  --border     : #1c2132;
+  --border-2   : #283048;
+  --text       : #c8cfdf;
+  --text-2     : #7a869f;
+  --text-3     : #3d4a62;
+  --accent     : #b89450;
+  --accent-dim : #7a6235;
+  --accent-faint: rgba(184, 148, 80, 0.08);
+  --accent-glow: rgba(184, 148, 80, 0.14);
+  --blue       : #4d7fc0;
+  --ok         : #4caf82;
+  --warn       : #c49840;
+  --crit       : #d95c5c;
+}
+[data-theme="light"] {
+  --bg         : #f6f5f2;
+  --bg-2       : #eeece8;
+  --surface    : #ffffff;
+  --surface-2  : #f0ede8;
+  --border     : #d5cfc3;
+  --border-2   : #bfb8a8;
+  --text       : #18181a;
+  --text-2     : #555560;
+  --text-3     : #9a9598;
+  --accent     : #8a6828;
+  --accent-dim : #c49840;
+  --accent-faint: rgba(138, 104, 40, 0.06);
+  --accent-glow: rgba(138, 104, 40, 0.12);
+  --blue       : #3060a0;
+  --ok         : #2a8a58;
+  --warn       : #9a7820;
+  --crit       : #b84040;
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-dim); }
+
+img { display: block; max-width: 100%; }
+
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+hr.section-rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════
+   BANNIÈRE PREVIEW (à supprimer en prod)
+   ═══════════════════════════════════════ */
+.preview-bar {
+  background: var(--accent);
+  color: #000;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: .45rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.preview-bar a { color: #000; border-bottom: 1px solid rgba(0,0,0,.3); }
+.theme-toggle {
+  background: rgba(0,0,0,.15);
+  border: none;
+  border-radius: 2rem;
+  padding: .25rem .75rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #000;
+}
+
+/* ═══════════════════════════════════════
+   NAV — représente le rendu Hinode navbar
+   (Hinode natif — aucune dette de layout)
+   ═══════════════════════════════════════ */
+.nav {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 2rem; /* décalé par la preview-bar */
+  z-index: 900;
+}
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text);
+  white-space: nowrap;
+}
+.nav-brand span { color: var(--accent); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex: 1;
+}
+.nav-links a {
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  padding: .45rem 1.25rem;
+  background: var(--accent);
+  color: #000 !important;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  transition: background .15s;
+}
+.nav-cta:hover { background: var(--accent-dim) !important; color: #fff !important; }
+
+/* ═══════════════════════════════════════
+   HERO — MIXTE (titre Hinode overridable,
+   panneau métriques 100% custom)
+   ═══════════════════════════════════════ */
+.hero {
+  padding: 5rem 0 4.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 4rem;
+  align-items: start;
+}
+.hero-eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.12;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  text-wrap: balance;
+}
+.hero-headline em {
+  font-style: normal;
+  color: var(--accent);
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--text-2);
+  line-height: 1.75;
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-block;
+  padding: .7rem 1.6rem;
+  background: var(--accent);
+  color: #000;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  border-radius: var(--radius);
+  transition: background .15s;
+}
+.btn-primary:hover { background: var(--accent-dim); color: #fff; }
+.btn-ghost {
+  display: inline-block;
+  padding: .7rem 1.6rem;
+  border: 1px solid var(--border-2);
+  color: var(--text-2);
+  font-size: .85rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  transition: border-color .15s, color .15s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Panneau métriques (100% custom — dette) */
+.hero-metrics {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: .5rem;
+}
+.metrics-header {
+  padding: .9rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.metrics-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 6px var(--ok);
+}
+.metrics-label {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.metrics-live {
+  margin-left: auto;
+  font-size: .65rem;
+  color: var(--ok);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.metric-row {
+  padding: .95rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: baseline;
+  gap: .75rem;
+}
+.metric-row:last-child { border-bottom: none; }
+.metric-val {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.metric-val.ok  { color: var(--ok); }
+.metric-val.warn{ color: var(--warn); }
+.metric-val.crit{ color: var(--crit); }
+.metric-info {
+  font-size: .78rem;
+  color: var(--text-2);
+  line-height: 1.4;
+}
+.metric-info strong {
+  display: block;
+  color: var(--text);
+  font-weight: 600;
+  font-size: .82rem;
+}
+
+/* ═══════════════════════════════════════
+   EXPERTISE — HINODE shortcode cards
+   (séparateurs 1px via brand.css override)
+   ═══════════════════════════════════════ */
+.expertise {
+  padding: var(--section-py) 0;
+  border-bottom: 1px solid var(--border);
+}
+.section-head {
+  margin-bottom: 3rem;
+}
+.section-eyebrow {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .75rem;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.section-sub {
+  margin-top: .75rem;
+  font-size: .95rem;
+  color: var(--text-2);
+  max-width: 540px;
+}
+.expertise-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.expertise-cell {
+  padding: 2rem 2rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  transition: background .15s;
+}
+.expertise-cell:hover { background: var(--accent-faint); }
+.expertise-cell:nth-child(2n) { border-right: none; }
+.expertise-cell:nth-last-child(-n+2) { border-bottom: none; }
+.exp-label {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.exp-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: .6rem;
+  line-height: 1.3;
+}
+.exp-desc {
+  font-size: .88rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+.exp-link {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .02em;
+}
+.exp-link:hover { color: var(--accent-dim); }
+
+/* ═══════════════════════════════════════
+   ARGOS — CUSTOM (dashboard fictif)
+   La mise en valeur du produit pourrait
+   passer par Hinode featured si le dashboard
+   est remplacé par une image statique.
+   ═══════════════════════════════════════ */
+.argos-section {
+  padding: var(--section-py) 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+}
+.argos-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.argos-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  border-radius: 2rem;
+  padding: .25rem .8rem;
+  margin-bottom: 1.25rem;
+}
+.argos-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.5vw, 2.4rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  text-wrap: balance;
+}
+.argos-desc {
+  font-size: .95rem;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+}
+.argos-specs {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 2rem;
+}
+.spec-row {
+  display: flex;
+  align-items: baseline;
+  gap: .75rem;
+  font-size: .85rem;
+}
+.spec-num {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  min-width: 3ch;
+  text-align: right;
+}
+.spec-label { color: var(--text-2); }
+
+/* Dashboard fictif */
+.argos-ui {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+}
+.ui-topbar {
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  padding: .6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.ui-dots { display: flex; gap: .35rem; }
+.ui-dot { width: 9px; height: 9px; border-radius: 50%; }
+.ui-dot.r { background: #e05c5c; }
+.ui-dot.y { background: #c49840; }
+.ui-dot.g { background: var(--ok); }
+.ui-title { font-size: .7rem; color: var(--text-3); letter-spacing: .06em; }
+.ui-body { padding: 1rem; }
+.ui-score-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.ui-company { font-size: .8rem; color: var(--text-2); }
+.ui-grade {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--warn);
+  line-height: 1;
+}
+.ui-grade small {
+  font-size: .6rem;
+  color: var(--text-3);
+  display: block;
+  text-align: center;
+  font-weight: 400;
+}
+.ui-findings {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+.finding-row {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .35rem .5rem;
+  border-radius: 2px;
+  background: var(--surface-2);
+  font-size: .72rem;
+}
+.sev {
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: .15rem .45rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+.sev-c { background: rgba(217,92,92,.15); color: var(--crit); }
+.sev-h { background: rgba(196,152,64,.15); color: var(--warn); }
+.sev-m { background: rgba(77,127,192,.12); color: var(--blue); }
+.finding-code { color: var(--text-3); min-width: 7rem; }
+.finding-host { color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ui-footer {
+  margin-top: .75rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .65rem;
+  color: var(--text-3);
+}
+.ui-footer::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 5px var(--ok);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════
+   CTI DIGEST — HINODE shortcode articles
+   (bordure gauche via brand.css override)
+   ═══════════════════════════════════════ */
+.cti-section {
+  padding: var(--section-py) 0;
+  border-bottom: 1px solid var(--border);
+}
+.cti-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+.cti-header .section-title { margin: 0; }
+.cti-count {
+  font-size: .78rem;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.cti-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.cti-card {
+  padding: 1.5rem;
+  border-right: 1px solid var(--border);
+  transition: background .15s;
+}
+.cti-card:last-child { border-right: none; }
+.cti-card:hover { background: var(--surface); }
+.cti-date {
+  font-size: .7rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: .06em;
+  margin-bottom: .75rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.cti-date::before {
+  content: '';
+  display: inline-block;
+  width: 16px; height: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.cti-card-title {
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: .6rem;
+}
+.cti-card-desc {
+  font-size: .8rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.cti-footer {
+  margin-top: 1.75rem;
+}
+.cti-footer a {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ═══════════════════════════════════════
+   CITATION FONDATEUR — CUSTOM (absent du
+   site actuel, section à valider)
+   ═══════════════════════════════════════ */
+.quote-section {
+  padding: var(--section-py) 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+}
+.quote-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 5rem;
+  align-items: center;
+}
+blockquote.pull {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.45;
+  text-wrap: balance;
+  position: relative;
+  padding-left: 2rem;
+}
+blockquote.pull::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .2em;
+  width: 3px;
+  height: calc(100% - .4em);
+  background: var(--accent);
+}
+.founder-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.founder-head {
+  background: var(--accent-faint);
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.founder-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--accent-glow);
+  border: 1px solid var(--accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.founder-name {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.founder-role {
+  font-size: .72rem;
+  color: var(--text-2);
+}
+.founder-body {
+  padding: 1.25rem 1.5rem;
+}
+.founder-item {
+  font-size: .78rem;
+  color: var(--text-2);
+  line-height: 1.5;
+  padding: .4rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: .5rem;
+}
+.founder-item:last-child { border-bottom: none; }
+.founder-item::before {
+  content: '—';
+  color: var(--text-3);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════
+   CTA — HINODE shortcode cta
+   ═══════════════════════════════════════ */
+.cta-section {
+  padding: var(--section-py) 0;
+  border-bottom: 1px solid var(--border);
+}
+.cta-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+}
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: .6rem;
+  text-wrap: balance;
+}
+.cta-sub {
+  font-size: .95rem;
+  color: var(--text-2);
+}
+.cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  align-items: flex-end;
+  white-space: nowrap;
+}
+.btn-email {
+  font-size: .78rem;
+  color: var(--text-2);
+}
+
+/* ═══════════════════════════════════════
+   FOOTER — override du partial Hinode
+   (layouts/partials/footer/footer.html)
+   ═══════════════════════════════════════ */
+.footer {
+  padding: 3rem 0 2rem;
+  background: var(--bg-2);
+}
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: .75rem;
+}
+.footer-brand span { color: var(--accent); }
+.footer-about {
+  font-size: .82rem;
+  color: var(--text-2);
+  line-height: 1.65;
+}
+.footer-col-head {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 1rem;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+.footer-links a {
+  font-size: .82rem;
+  color: var(--text-2);
+  transition: color .15s;
+}
+.footer-links a:hover { color: var(--accent); }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.footer-copy {
+  font-size: .72rem;
+  color: var(--text-3);
+}
+.footer-legal {
+  display: flex;
+  gap: 1.25rem;
+}
+.footer-legal a {
+  font-size: .72rem;
+  color: var(--text-3);
+}
+.footer-legal a:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE (bases uniquement)
+   Note : comportement mobile non traité,
+   voir commentaire section 3.B
+   ═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero-inner      { grid-template-columns: 1fr; }
+  .hero-metrics    { max-width: 400px; }
+  .argos-inner     { grid-template-columns: 1fr; }
+  .quote-inner     { grid-template-columns: 1fr; }
+  .cta-inner       { grid-template-columns: 1fr; }
+  .cta-actions     { align-items: flex-start; }
+  .expertise-grid  { grid-template-columns: 1fr; }
+  .expertise-cell:nth-child(2n)         { border-right: none; }
+  .expertise-cell:nth-last-child(-n+2)  { border-bottom: 1px solid var(--border); }
+  .expertise-cell:last-child            { border-bottom: none; }
+  .cti-grid        { grid-template-columns: 1fr; }
+  .cti-card        { border-right: none; border-bottom: 1px solid var(--border); }
+  .cti-card:last-child { border-bottom: none; }
+  .footer-grid     { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 600px) {
+  .wrap, .hero-inner, .argos-inner, .quote-inner, .cta-inner, .footer-inner { padding: 0 1.25rem; }
+  .hero { padding: 3rem 0; }
+  .expertise-grid  { border-radius: 0; border-left: none; border-right: none; }
+  .footer-grid     { grid-template-columns: 1fr; }
+  .nav-links       { display: none; } /* hamburger non traité, cf. note 3.B */
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BANNIÈRE PREVIEW — À SUPPRIMER EN PRODUCTION
+     ═══════════════════════════════════════════════════════════ -->
+<div class="preview-bar">
+  <span>Maquette · Direction esthétique non engagée · Defence Intelligence</span>
+  <button class="theme-toggle" onclick="
+    var h = document.documentElement;
+    h.setAttribute('data-theme', h.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    this.textContent = h.getAttribute('data-theme') === 'light' ? 'Mode sombre' : 'Mode clair';
+  ">Mode clair</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION — Hinode natif (partial navbar)
+     Rendu ici comme proxy statique. En prod : menus.toml.
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Defence <span>Intelligence</span></a>
+    <div class="nav-links">
+      <a href="/services/">Services</a>
+      <a href="/produits/">Produits</a>
+      <a href="/cti/">CTI Digest</a>
+      <a href="/blog/">Publications</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <a href="/contact/" class="nav-cta">Prendre contact</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO — mixte (titre overridable Hinode, panel custom)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-inner">
+
+    <!-- Colonne gauche : titre + accroche -->
+    <div>
+      <p class="hero-eyebrow">Conseil indépendant en cybersécurité</p>
+      <h1 class="hero-headline" id="hero-title">
+        Ce que vous ne voyez pas<br>
+        <em>vous coûte.</em>
+      </h1>
+      <p class="hero-sub">
+        Audit, Attack Surface Management et Threat Intelligence pour les organisations qui veulent une vision réelle, et non théorique, de leur exposition externe.
+      </p>
+      <div class="hero-actions">
+        <a href="/services/" class="btn-primary">Découvrir nos services</a>
+        <a href="/produits/argos/" class="btn-ghost">ARGOS, notre plateforme EASM →</a>
+      </div>
+    </div>
+
+    <!-- Colonne droite : panel métriques (100% custom — dette) -->
+    <div class="hero-metrics" role="complementary" aria-label="Indicateurs ARGOS en direct">
+      <div class="metrics-header">
+        <div class="metrics-dot" aria-hidden="true"></div>
+        <span class="metrics-label">ARGOS · Vue en direct</span>
+        <span class="metrics-live">Live</span>
+      </div>
+      <div class="metric-row">
+        <div class="metric-val">6&thinsp;843</div>
+        <div class="metric-info">
+          <strong>Actifs découverts</strong>
+          Sous-domaines, IPs, certificats
+        </div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-val warn">412</div>
+        <div class="metric-info">
+          <strong>Findings ouverts</strong>
+          Dont 14 critiques non triés
+        </div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-val ok">C+</div>
+        <div class="metric-info">
+          <strong>Score de sécurité moyen</strong>
+          Sur 1 224 assets scorés
+        </div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-val">38</div>
+        <div class="metric-info">
+          <strong>Alertes CTI cette semaine</strong>
+          Ransomware, credentials, brand
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════════════════════════════
+     EXPERTISE — Hinode shortcode cards (séparateurs custom CSS)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="expertise" aria-labelledby="exp-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">Ce que nous faisons</p>
+      <h2 class="section-title" id="exp-title">Une expertise de terrain,<br>appliquée à votre réalité</h2>
+      <p class="section-sub">30 ans d'expérience IT, 10 ans de conseil cyber indépendant. Pas de méthode générique appliquée à votre contexte : chaque mission part de vos actifs réels.</p>
+    </div>
+
+    <div class="expertise-grid">
+
+      <div class="expertise-cell">
+        <p class="exp-label">Attack Surface Management</p>
+        <h3 class="exp-title">Cartographie de l'exposition externe</h3>
+        <p class="exp-desc">Partez d'un nom de domaine. ARGOS reconstitue automatiquement votre périmètre complet : sous-domaines, IPs, certificats, secrets exposés, fuites de credentials, typosquatting. Noté, priorisé, actionnable.</p>
+        <a href="/produits/argos/" class="exp-link">Découvrir ARGOS →</a>
+      </div>
+
+      <div class="expertise-cell">
+        <p class="exp-label">Threat Intelligence</p>
+        <h3 class="exp-title">Surveillance des menaces ciblées</h3>
+        <p class="exp-desc">Ransomware, credential leaks, brand monitoring, IOCs. Veille CTI continue sur les groupes actifs dans votre secteur. Alertes contextualisées, pas de bruit.</p>
+        <a href="/services/" class="exp-link">En savoir plus →</a>
+      </div>
+
+      <div class="expertise-cell">
+        <p class="exp-label">Gouvernance &amp; Conformité</p>
+        <h3 class="exp-title">SMSI, ISO 27001, NIS2, TISAX</h3>
+        <p class="exp-desc">Construction ou révision du Système de Management de la Sécurité, gestion des risques EBIOS RM, préparation aux audits de certification et aux exigences réglementaires sectorielles.</p>
+        <a href="/services/gestion-risques/" class="exp-link">Voir l'offre →</a>
+      </div>
+
+      <div class="expertise-cell">
+        <p class="exp-label">RSSI Externalisé</p>
+        <h3 class="exp-title">Pilotage SSI sans recrutement</h3>
+        <p class="exp-desc">Politique de sécurité, gestion de crise, sensibilisation des équipes, relation ANSSI et assureurs cyber. La fonction RSSI à temps partagé, pour les PME et ETI qui en ont besoin sans l'effectif.</p>
+        <a href="/services/rssi-externalise/" class="exp-link">Voir l'offre →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ARGOS — custom (dashboard fictif)
+     Si simplifié en image + texte : Hinode featured suffit
+     ═══════════════════════════════════════════════════════════ -->
+<section class="argos-section" aria-labelledby="argos-title">
+  <div class="argos-inner">
+
+    <!-- Texte -->
+    <div>
+      <span class="argos-tag">ARGOS · Attack Surface Monitor</span>
+      <h2 class="argos-title" id="argos-title">Votre périmètre complet,<br>en continu</h2>
+      <p class="argos-desc">
+        ARGOS est la plateforme EASM développée par Defence Intelligence pour nos propres missions d'audit. Elle scanne en permanence votre exposition externe, remonte les vulnérabilités et les signaux de menace, et les score par impact métier.
+      </p>
+      <div class="argos-specs">
+        <div class="spec-row">
+          <span class="spec-num">27</span>
+          <span class="spec-label">modules de découverte (sous-domaines, IPs, CT, GitHub, TLD variants…)</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-num">108</span>
+          <span class="spec-label">détecteurs de findings (SPF/DKIM/DMARC, CVE, WAF, Azure AD, takeover…)</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-num">A–F</span>
+          <span class="spec-label">score par actif et par organisation, mis à jour à chaque scan</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-num">CTI</span>
+          <span class="spec-label">intégré : ransomware, credentials leaks, brand monitor, threat landscape</span>
+        </div>
+      </div>
+      <a href="/produits/argos/" class="btn-primary">Découvrir ARGOS</a>
+    </div>
+
+    <!-- Dashboard fictif (custom — dette si conservé) -->
+    <div class="argos-ui" role="img" aria-label="Aperçu de l'interface ARGOS (données fictives)">
+      <div class="ui-topbar">
+        <div class="ui-dots" aria-hidden="true">
+          <div class="ui-dot r"></div>
+          <div class="ui-dot y"></div>
+          <div class="ui-dot g"></div>
+        </div>
+        <span class="ui-title">ARGOS · Findings · ACME Corp</span>
+      </div>
+      <div class="ui-body">
+        <div class="ui-score-row">
+          <span class="ui-company">ACME Corp · 412 actifs</span>
+          <div class="ui-grade">C<small>score</small></div>
+        </div>
+        <div class="ui-findings" aria-label="Exemples de findings">
+          <div class="finding-row">
+            <span class="sev sev-c">Critique</span>
+            <span class="finding-code">CERT_EXPIRED</span>
+            <span class="finding-host">api.acme.com</span>
+          </div>
+          <div class="finding-row">
+            <span class="sev sev-c">Critique</span>
+            <span class="finding-code">AZURE_LEGACY_AUTH</span>
+            <span class="finding-host">acme.com</span>
+          </div>
+          <div class="finding-row">
+            <span class="sev sev-h">Élevé</span>
+            <span class="finding-code">SPF_MISSING</span>
+            <span class="finding-host">mail.acme.com</span>
+          </div>
+          <div class="finding-row">
+            <span class="sev sev-h">Élevé</span>
+            <span class="finding-code">TECH_CVE (Log4j)</span>
+            <span class="finding-host">erp.acme.com</span>
+          </div>
+          <div class="finding-row">
+            <span class="sev sev-m">Moyen</span>
+            <span class="finding-code">CSP_MISSING</span>
+            <span class="finding-host">shop.acme.com</span>
+          </div>
+        </div>
+        <div class="ui-footer">Scan terminé il y a 4 min · 6&thinsp;843 actifs · 28 checkers</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTI DIGEST — Hinode shortcode articles
+     ═══════════════════════════════════════════════════════════ -->
+<section class="cti-section" aria-labelledby="cti-title">
+  <div class="wrap">
+    <div class="cti-header">
+      <div>
+        <p class="section-eyebrow">Threat Intelligence</p>
+        <h2 class="section-title" id="cti-title">CTI Digest</h2>
+      </div>
+      <span class="cti-count">38 digests publiés</span>
+    </div>
+
+    <div class="cti-grid">
+
+      <article class="cti-card">
+        <p class="cti-date">08 août 2026</p>
+        <h3 class="cti-card-title">RansomHub : nouveau vecteur d'accès via connecteurs OAuth mal configurés</h3>
+        <p class="cti-card-desc">Le groupe RansomHub exploite des tokens OAuth non révoqués d'anciens prestataires pour accéder aux environnements M365 sans credential valide.</p>
+      </article>
+
+      <article class="cti-card">
+        <p class="cti-date">01 août 2026</p>
+        <h3 class="cti-card-title">Campagne de phishing ciblant les RSSI francophones — LinkedIn comme vecteur initial</h3>
+        <p class="cti-card-desc">Usurpation de profils ANSSI et CERT-FR sur LinkedIn, offres de mise à jour normative NIS2 comme prétexte à l'exfiltration de credentials.</p>
+      </article>
+
+      <article class="cti-card">
+        <p class="cti-date">25 juil. 2026</p>
+        <h3 class="cti-card-title">CVE-2026-31120 — Fortinet FortiGate : exploitation active en 72h post-divulgation</h3>
+        <p class="cti-card-desc">Vulnérabilité pre-auth dans le portail SSL-VPN. 4 groupes confirmés en exploitation. Patch disponible ; actifs DEKRA concernés identifiés via KEV.</p>
+      </article>
+
+    </div>
+
+    <div class="cti-footer">
+      <a href="/cti/">Tous les digests →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CITATION FONDATEUR — custom (absent du site actuel)
+     DÉCISION À VALIDER : exposition personnelle
+     ═══════════════════════════════════════════════════════════ -->
+<section class="quote-section" aria-labelledby="quote-author">
+  <div class="quote-inner">
+
+    <blockquote class="pull">
+      Un audit produit un rapport. L'Attack Surface Management produit une conscience de son exposition, mise à jour en permanence. Ce n'est pas le même métier.
+    </blockquote>
+
+    <div class="founder-card">
+      <div class="founder-head">
+        <div class="founder-avatar" aria-hidden="true">SD</div>
+        <div>
+          <div class="founder-name" id="quote-author">Stéphane Desmets</div>
+          <div class="founder-role">Fondateur · Defence Intelligence</div>
+        </div>
+      </div>
+      <div class="founder-body">
+        <div class="founder-item">30 ans d'expérience IT et infrastructure</div>
+        <div class="founder-item">Conseil indépendant en cybersécurité depuis 2016</div>
+        <div class="founder-item">Développeur d'ARGOS, plateforme EASM propriétaire</div>
+        <div class="founder-item">Certifié ISO 27001 Lead Implementer</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA — Hinode shortcode cta
+     ═══════════════════════════════════════════════════════════ -->
+<section class="cta-section" aria-labelledby="cta-title">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-title" id="cta-title">Un enjeu de sécurité sur la table ?<br>Parlons-en.</h2>
+      <p class="cta-sub">Audit, cartographie de surface d'attaque, gestion de crise, conformité — échangeons sur votre contexte avant toute proposition.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="/contact/" class="btn-primary">Prendre contact</a>
+      <a href="mailto:defintelligence@proton.me" class="btn-email">defintelligence@proton.me</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER — override layouts/partials/footer/footer.html
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-brand">Defence <span>Intelligence</span></div>
+        <p class="footer-about">Cabinet de conseil indépendant en cybersécurité. Audit, Attack Surface Management, Threat Intelligence et accompagnement stratégique pour les PME et ETI.</p>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Services</div>
+        <div class="footer-links">
+          <a href="/services/">Audit de sécurité</a>
+          <a href="/services/">ASM &amp; EASM</a>
+          <a href="/services/">Threat Intelligence</a>
+          <a href="/services/rssi-externalise/">RSSI externalisé</a>
+          <a href="/services/gestion-risques/">Gouvernance</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Produits</div>
+        <div class="footer-links">
+          <a href="/produits/argos/">ARGOS</a>
+          <a href="/7secondes/">7 Secondes</a>
+          <a href="/cti/">CTI Digest</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-head">Cabinet</div>
+        <div class="footer-links">
+          <a href="/blog/">Publications</a>
+          <a href="/contact/">Contact</a>
+          <a href="https://www.linkedin.com/in/stephane-desmets/" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Defence Intelligence · Conseil indépendant en cybersécurité</p>
+      <nav class="footer-legal" aria-label="Liens légaux">
+        <a href="/mentions-legales/">Mentions légales</a>
+        <a href="/confidentialite/">Confidentialité</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
