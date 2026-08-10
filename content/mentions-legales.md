@@ -1,6 +1,6 @@
 ---
 title: "Mentions légales"
-description: "Mentions légales, Defence Intelligence"
+description: "Mentions légales, Def Intelligence"
 ---
 
 ## Éditeur du site
@@ -25,12 +25,12 @@ San Francisco, CA 94107 — États-Unis
 
 ## Propriété intellectuelle
 
-L'ensemble du contenu de ce site (textes, images, logos) est la propriété exclusive de Defence Intelligence, sauf mention contraire. Toute reproduction, même partielle, est interdite sans autorisation préalable écrite.
+L'ensemble du contenu de ce site (textes, images, logos) est la propriété exclusive de Def Intelligence, sauf mention contraire. Toute reproduction, même partielle, est interdite sans autorisation préalable écrite.
 
 ## Données personnelles (RGPD)
 
 ### Responsable du traitement
-Defence Intelligence, defintelligence@proton.me
+Def Intelligence, defintelligence@proton.me
 
 ### Données collectées
 Le formulaire de contact collecte : nom/société, adresse email, objet et message. Ces données sont utilisées uniquement pour répondre à votre demande.

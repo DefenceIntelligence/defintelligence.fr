@@ -1,6 +1,6 @@
 ---
 title: "Contact"
-description: "Prenez contact avec Defence Intelligence"
+description: "Prenez contact avec Def Intelligence"
 ---
 
 Décrivez votre projet ou votre besoin, nous vous répondons sous 48h.
