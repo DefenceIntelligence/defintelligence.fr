@@ -1,10 +1,10 @@
 {{ define "main" }}
 
 <!-- HERO -->
-<div class="bg-dark border-bottom border-1 border-secondary py-5 mb-5">
+<div class="border-bottom border-1 border-secondary py-5 mb-5" style="background:#07080c">
   <div class="container-xxl px-4">
     <div class="row align-items-center g-5 py-4">
-      <div class="col-lg-7">
+      <div class="col-lg-6">
         <div class="badge bg-danger text-uppercase mb-3 px-3 py-2 rounded-pill" style="letter-spacing:.08em;font-size:.75rem">
           Conseil indépendant en cybersécurité · 30 ans d'expérience IT
         </div>
@@ -20,8 +20,17 @@
           <a href="/contact/" class="btn btn-outline-light px-4 py-2 fw-semibold">Prendre contact</a>
         </div>
       </div>
-      <div class="col-lg-5 text-center d-none d-lg-block">
-        <img src="/img/logo.png" alt="Def Intelligence" style="max-width:320px;width:100%;filter:drop-shadow(0 0 40px rgba(0,255,128,.35))">
+      <div class="col-lg-6 d-none d-lg-block">
+        {{ $hero := resources.Get "img/argos/hero-desktop.png" }}
+        {{ if $hero }}
+        {{ $hero = $hero.Resize "720x webp" }}
+        <img src="{{ $hero.RelPermalink }}"
+             alt="{{ (hugo.Data.facts.argos).legende_capture }}"
+             style="width:100%;border-radius:.5rem;border:1px solid rgba(184,148,80,.25);box-shadow:0 0 40px rgba(184,148,80,.15)">
+        <p class="text-center mt-2" style="font-size:.7rem;color:var(--bs-secondary-color);letter-spacing:.04em">
+          {{ (hugo.Data.facts.argos).legende_capture }}
+        </p>
+        {{ end }}
       </div>
     </div>
   </div>
