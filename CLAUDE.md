@@ -30,6 +30,9 @@ Employer : "conseil indépendant", "consultant indépendant", "Defence Intellige
 **A9 — Images**
 Le base64 est réservé à `design-preview.html`, qui doit rester autonome. En production, pipeline Hugo obligatoire : `assets/img/argos/`, `.Resize`, `.webp`, `srcset`. Aucune image fabriquée.
 
+**A11 — facts.yml ne contient que des faits**
+Aucune décision de présentation (couleur, ordre, mise en avant, badge) n'est encodée dans `data/facts.yml`. La présentation vit dans les templates.
+
 ---
 
 ## Source de vérité
