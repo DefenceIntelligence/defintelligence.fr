@@ -82,19 +82,13 @@ showToc: false
 }
 .s7-screenshot-hero {
   margin: 3rem auto 0;
-  max-width: 300px;
-  background: var(--s7-surface);
-  border: 1px solid var(--s7-border);
+  max-width: 280px;
   border-radius: 2rem;
-  aspect-ratio: 9/19.5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--s7-text2);
-  font-family: var(--s7-mono);
-  font-size: .7rem;
-  letter-spacing: .05em;
+  overflow: hidden;
+  border: 1px solid var(--s7-border);
+  display: block;
 }
+.s7-screenshot-hero img { width: 100%; display: block; }
 
 /* SECTIONS */
 .s7-section { padding: 4rem 0; border-top: 1px solid var(--s7-border); }
@@ -130,20 +124,13 @@ showToc: false
 }
 .s7-card-desc { font-size: .9rem; line-height: 1.6; color: var(--s7-text2); margin: 0 0 1rem; }
 .s7-screenshot-sm {
-  background: var(--s7-bg);
-  border: 1px solid var(--s7-border);
   border-radius: .75rem;
-  aspect-ratio: 9/19;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #3a5060;
-  font-family: var(--s7-mono);
-  font-size: .62rem;
-  letter-spacing: .04em;
-  text-align: center;
-  padding: .5rem;
+  overflow: hidden;
+  border: 1px solid var(--s7-border);
+  margin-top: auto;
+  display: block;
 }
+.s7-screenshot-sm img { width: 100%; display: block; }
 
 .s7-quote {
   border-left: 2px solid var(--s7-cyan);
@@ -206,8 +193,8 @@ showToc: false
     </a>
     <p class="s7-badge-free">Gratuit · Sans compte · Sans publicité</p>
 
-    <div class="s7-screenshot-hero" role="img" aria-label="Aperçu de l'application 7 Secondes — captures à venir">
-      capture d'écran à venir
+    <div class="s7-screenshot-hero">
+      <img src="/img/7secondes/home.png" alt="Écran d'accueil de 7 Secondes — les quatre modes de jeu" loading="lazy">
     </div>
   </div>
 </section>
@@ -229,25 +216,33 @@ showToc: false
       <div class="s7-card">
         <p class="s7-card-name">Réflexe</p>
         <p class="s7-card-desc">Face à un piège du quotidien, sept secondes pour décider. On apprend à repérer ce qui cloche avant de cliquer.</p>
-        <div class="s7-screenshot-sm" role="img" aria-label="Capture mode Réflexe — à venir">capture à venir</div>
+        <div class="s7-screenshot-sm">
+          <img src="/img/7secondes/reflexe.png" alt="Mode Réflexe — un mail piégé avec pièce jointe inattendue" loading="lazy">
+        </div>
       </div>
 
       <div class="s7-card">
         <p class="s7-card-name">Crise</p>
         <p class="s7-card-desc">Dans la peau d'un dirigeant, on traverse une crise cyber décision après décision : rançongiciel, fraude au virement, fuite de données. Aucune réponse parfaite, rien que des arbitrages.</p>
-        <div class="s7-screenshot-sm" role="img" aria-label="Capture mode Crise — à venir">capture à venir</div>
+        <div class="s7-screenshot-sm">
+          <img src="/img/7secondes/crise.png" alt="Mode Crise — scénario ransomware, le DSI alerte" loading="lazy">
+        </div>
       </div>
 
       <div class="s7-card">
         <p class="s7-card-name">Quiz</p>
         <p class="s7-card-desc">Des questions pour tester, et corriger, ses idées reçues sur la sécurité.</p>
-        <div class="s7-screenshot-sm" role="img" aria-label="Capture mode Quiz — à venir">capture à venir</div>
+        <div class="s7-screenshot-sm">
+          <img src="/img/7secondes/quiz.png" alt="Mode Quiz — question à choix multiples sur les bons réflexes" loading="lazy">
+        </div>
       </div>
 
       <div class="s7-card">
         <p class="s7-card-name">Le saviez-vous</p>
         <p class="s7-card-desc">Des fiches courtes sur les menaces du moment et les bons réflexes, mises à jour régulièrement.</p>
-        <div class="s7-screenshot-sm" role="img" aria-label="Capture mode Le saviez-vous — à venir">capture à venir</div>
+        <div class="s7-screenshot-sm">
+          <img src="/img/7secondes/about.png" alt="Écran de présentation de 7 Secondes et ses quatre modes" loading="lazy">
+        </div>
       </div>
 
     </div>
