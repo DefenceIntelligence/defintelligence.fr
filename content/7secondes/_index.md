@@ -16,7 +16,7 @@ showToc: false
   --s7-mono: "SF Mono","Fira Mono","Cascadia Code","Consolas","Courier New",monospace;
 }
 
-.s7 { background: var(--s7-bg); color: var(--s7-text); font-family: system-ui,-apple-system,sans-serif; margin: -1rem -1.25rem 0; }
+.s7 { background: var(--s7-bg); color: var(--s7-text); font-family: system-ui,-apple-system,sans-serif; }
 .s7 * { box-sizing: border-box; }
 .s7 a { color: var(--s7-cyan); text-decoration: none; }
 .s7 a:hover { text-decoration: underline; }

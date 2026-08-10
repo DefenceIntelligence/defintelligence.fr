@@ -61,6 +61,51 @@ Partez d'un simple nom de domaine, ARGOS reconstitue automatiquement l'intégral
 </div>
 </div>
 
+<!-- 7 SECONDES -->
+<div style="border:1px solid var(--bs-border-color);border-radius:.75rem;overflow:hidden;margin-bottom:2rem">
+
+<div style="padding:2rem 2rem 1.5rem;background:rgba(0,200,255,.04);border-bottom:1px solid var(--bs-border-color)">
+<div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+  <div style="font-size:2.8rem">📱</div>
+  <div>
+    <p style="margin:0 0 .25rem;font-size:1.5rem;font-weight:700">7 Secondes</p>
+    <p style="margin:0;color:#00c8ff;font-weight:600;font-size:.95rem">Application iOS · Sensibilisation cybersécurité</p>
+  </div>
+  <span style="margin-left:auto;padding:.3rem .8rem;background:#00c8ff;color:#000;border-radius:2rem;font-size:.75rem;font-weight:700">GRATUIT</span>
+</div>
+</div>
+
+<div style="padding:1.5rem 2rem">
+<p style="color:var(--bs-secondary-color);margin-bottom:1.5rem">
+Un jeu de mise en situation cyber : en 7 secondes, saurez-vous reconnaître un mail piégé, gérer une crise ransomware, corriger vos idées reçues ? Conçu pour les collaborateurs et les dirigeants, sans compte, sans publicité.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin-bottom:1.5rem">
+
+<div style="padding:.9rem 1rem;border:1px solid var(--bs-border-color);border-radius:.5rem">
+<p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">⚡ 4 modes de jeu</p>
+<p style="margin:0;font-size:.82rem;color:var(--bs-secondary-color)">Réflexe, Crise, Quiz, Le saviez-vous.</p>
+</div>
+
+<div style="padding:.9rem 1rem;border:1px solid var(--bs-border-color);border-radius:.5rem">
+<p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">🔒 Aucune donnée collectée</p>
+<p style="margin:0;font-size:.82rem;color:var(--bs-secondary-color)">Pas de compte, pas de tracking, pas de publicité.</p>
+</div>
+
+<div style="padding:.9rem 1rem;border:1px solid var(--bs-border-color);border-radius:.5rem">
+<p style="margin:0 0 .2rem;font-weight:700;font-size:.9rem">🎯 Scénarios réalistes</p>
+<p style="margin:0;font-size:.82rem;color:var(--bs-secondary-color)">Basés sur des menaces réelles ciblant les entreprises.</p>
+</div>
+
+</div>
+
+<div style="display:flex;gap:.75rem;flex-wrap:wrap">
+  <a href="/7secondes/" style="padding:.6rem 1.4rem;background:#00c8ff;color:#000;border-radius:.4rem;font-weight:700;text-decoration:none;font-size:.9rem">En savoir plus →</a>
+</div>
+
+</div>
+</div>
+
 <!-- ROADMAP -->
 <div style="padding:1.5rem;border:1px solid var(--bs-border-color);border-radius:.75rem;background:rgba(255,255,255,.02)">
 <p style="margin:0 0 1rem;font-weight:700;color:var(--bs-secondary-color);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em">En développement</p>
