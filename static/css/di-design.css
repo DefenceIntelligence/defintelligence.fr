@@ -870,3 +870,121 @@ footer.di-footer {
   .expertise-grid { border-radius: 0; border-left: none; border-right: none; }
   .di-footer-grid { grid-template-columns: 1fr; }
 }
+
+/* ═══════════════════════════════════════
+   PAGES DE CONTENU — Hinode single layout
+   (mentions légales, confidentialité, services, blog…)
+   ═══════════════════════════════════════ */
+
+/* 1. Description auto-générée Hinode — masquée (redondante avec le titre) */
+.lead.text-muted.py-4 {
+  display: none;
+}
+
+/* 2. Titre h1 display-4 — ramener à une taille document sans écraser le display de la homepage */
+.main h1.display-4 {
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  font-family: var(--font-display);
+  color: #fff;
+}
+
+/* 3. Reading time — discret, pas besoin d'uppercase Bootstrap */
+small.text-body-secondary.text-uppercase {
+  font-size: .75rem;
+  letter-spacing: .04em;
+  text-transform: none !important;
+  color: var(--text-3) !important;
+}
+
+/* 4. Prose — contraindre la largeur de lecture */
+.col-12.col-md-9.col-lg-8 article,
+.col-12.col-md-9.col-lg-8 > .content {
+  max-width: 72ch;
+}
+
+/* 5. H2 dans le contenu — taille document + séparateur de section */
+.main article h2,
+.main .content h2 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: #fff;
+  border-top: 1px solid var(--border);
+  padding-top: 1.75rem;
+  margin-top: 2.25rem;
+  margin-bottom: .6rem;
+}
+.main article h2:first-of-type,
+.main .content h2:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: .5rem;
+}
+
+/* H3 dans le contenu */
+.main article h3,
+.main .content h3 {
+  font-size: .9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--text-2);
+  margin-top: 1.5rem;
+  margin-bottom: .4rem;
+  font-family: var(--font-body);
+}
+
+/* 6. TOC sidebar — encadré card */
+.toc.toc-sidebar {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  padding: 1.1rem 1.1rem .9rem !important;
+  color: var(--text-2) !important;
+}
+.toc.toc-sidebar h2 {
+  font-size: .7rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  color: var(--text-3) !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 0 .75rem !important;
+  font-family: var(--font-body) !important;
+}
+.toc-item {
+  display: block;
+  font-size: .8rem;
+  color: var(--text-2) !important;
+  text-decoration: none !important;
+  padding: .28rem .4rem;
+  border-radius: 4px;
+  line-height: 1.35;
+  transition: background .12s, color .12s;
+}
+.toc-item:hover {
+  background: var(--surface-2);
+  color: var(--text) !important;
+}
+.toc-item.toc-level-2 {
+  padding-left: 1rem;
+  font-size: .77rem;
+  color: var(--text-3) !important;
+}
+/* Bouton "Afficher X plus" */
+#btnTOCShowMore {
+  font-size: .77rem !important;
+  color: var(--accent-dim) !important;
+  padding: .3rem .4rem !important;
+  border-top: 1px solid var(--border) !important;
+  margin-top: .5rem !important;
+  width: 100%;
+  text-align: left;
+  text-decoration: none !important;
+}
+#btnTOCShowMore:hover { color: var(--accent) !important; }
