@@ -1,168 +1,247 @@
 {{ define "main" }}
 
-<!-- HERO -->
-<div class="border-bottom border-1 border-secondary py-5 mb-5" style="background:#07080c">
-  <div class="container-xxl px-4">
-    <div class="row align-items-center g-5 py-4">
-      <div class="col-lg-6">
-        <div class="badge bg-danger text-uppercase mb-3 px-3 py-2 rounded-pill" style="letter-spacing:.08em;font-size:.75rem">
-          Conseil indépendant en cybersécurité · 30 ans d'expérience IT
-        </div>
-        <h1 class="display-5 fw-bold text-white lh-sm mb-4">
-          Sécurisez votre organisation.<br>
-          <span style="color:var(--bs-primary)">Anticipez les menaces.</span>
-        </h1>
-        <p class="lead text-secondary mb-4">
-          Conseil indépendant en cybersécurité, audit de sécurité, ASM, Threat Intelligence et gestion des risques pour les PME et ETI.
-        </p>
-        <div class="d-flex gap-3 flex-wrap">
-          <a href="/services/" class="btn px-4 py-2 fw-semibold" style="background:var(--bs-primary);color:#000;border:none">Nos services</a>
-          <a href="/contact/" class="btn btn-outline-light px-4 py-2 fw-semibold">Prendre contact</a>
-        </div>
-      </div>
-      <div class="col-lg-6 d-none d-lg-block">
-        {{ $hero := resources.Get "img/argos/hero-desktop.png" }}
-        {{ if $hero }}
-        {{ $hero = $hero.Resize "720x webp" }}
-        <img src="{{ $hero.RelPermalink }}"
-             alt="{{ (hugo.Data.facts.argos).legende_capture }}"
-             style="width:100%;border-radius:.5rem;border:1px solid rgba(184,148,80,.25);box-shadow:0 0 40px rgba(184,148,80,.15)">
-        <p class="text-center mt-2" style="font-size:.7rem;color:var(--bs-secondary-color);letter-spacing:.04em">
-          {{ (hugo.Data.facts.argos).legende_capture }}
-        </p>
-        {{ end }}
+{{/* ═══════════════════════════════════════
+     HERO — colonne gauche titre + colonne droite métriques
+     ═══════════════════════════════════════ */}}
+<section class="di-hero" aria-labelledby="hero-title">
+  <div class="di-hero-inner">
+
+    <!-- Colonne gauche : titre + accroche -->
+    <div>
+      <p class="hero-eyebrow">Conseil indépendant en cybersécurité</p>
+      <h1 class="hero-headline" id="hero-title">
+        Ce que vous ne voyez pas<br>
+        <em>vous coûte.</em>
+      </h1>
+      <p class="hero-sub">
+        Audit, Attack Surface Management et Threat Intelligence pour les organisations qui veulent une vision réelle, et non théorique, de leur exposition externe.
+      </p>
+      <div class="hero-actions">
+        <a href="/services/" class="btn-primary-di">Découvrir nos services</a>
+        <a href="/produits/argos/" class="btn-ghost-di">ARGOS, notre plateforme EASM →</a>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- SERVICES -->
-<div class="container-xxl px-4 mb-5">
-  <h2 class="fw-bold mb-4 text-white">Ce que nous faisons</h2>
-  <div class="row g-4">
-
-    <div class="col-md-6 col-lg-3">
-      <a href="/produits/argos/" class="text-decoration-none">
-        <div class="card bg-dark border-secondary h-100 p-4" style="transition:border-color .2s" onmouseover="this.style.borderColor='var(--bs-primary)'" onmouseout="this.style.borderColor=''">
-          <div style="font-size:2.2rem;margin-bottom:.75rem">🛡️</div>
-          <h5 class="fw-bold text-white mb-2">Attack Surface Management</h5>
-          <p class="text-secondary small mb-0">Cartographie automatique de votre exposition externe, sous-domaines, IPs, certificats, secrets exposés, fuites. Piloté par ARGOS.</p>
+    <!-- Colonne droite : panneau métriques illustratif ARGOS -->
+    <div class="hero-metrics" role="img" aria-label="Exemple illustratif de données ARGOS — chiffres fictifs">
+      <div class="metrics-header">
+        <div class="metrics-dot metrics-dot--off" aria-hidden="true"></div>
+        <span class="metrics-label">ARGOS · Exemple illustratif</span>
+        <span class="metrics-live metrics-live--off">fictif</span>
+      </div>
+      <div class="metric-row">
+        <div class="metric-val">{{`[[N]]`}}</div>
+        <div class="metric-info">
+          <strong>Actifs découverts</strong>
+          Sous-domaines, IPs, certificats
         </div>
-      </a>
-    </div>
-
-    <div class="col-md-6 col-lg-3">
-      <a href="/services/" class="text-decoration-none">
-        <div class="card bg-dark border-secondary h-100 p-4" style="transition:border-color .2s" onmouseover="this.style.borderColor='var(--bs-primary)'" onmouseout="this.style.borderColor=''">
-          <div style="font-size:2.2rem;margin-bottom:.75rem">📡</div>
-          <h5 class="fw-bold text-white mb-2">Threat Intelligence</h5>
-          <p class="text-secondary small mb-0">Surveillance des menaces ciblant votre organisation, ransomware, credential leaks, typosquatting, IOCs. Veille continue et alertes.</p>
+      </div>
+      <div class="metric-row">
+        <div class="metric-val warn">{{`[[N]]`}}</div>
+        <div class="metric-info">
+          <strong>Findings ouverts</strong>
+          Dont {{`[[N]]`}} critiques non triés
         </div>
-      </a>
-    </div>
-
-    <div class="col-md-6 col-lg-3">
-      <a href="/services/gestion-risques/" class="text-decoration-none">
-        <div class="card bg-dark border-secondary h-100 p-4" style="transition:border-color .2s" onmouseover="this.style.borderColor='var(--bs-primary)'" onmouseout="this.style.borderColor=''">
-          <div style="font-size:2.2rem;margin-bottom:.75rem">📋</div>
-          <h5 class="fw-bold text-white mb-2">Gouvernance &amp; Conformité</h5>
-          <p class="text-secondary small mb-0">SMSI, gestion des risques EBIOS RM, ISO 27001, TISAX, NIS2 et exigences ANSSI.</p>
+      </div>
+      <div class="metric-row">
+        <div class="metric-val ok">{{`[[A–F]]`}}</div>
+        <div class="metric-info">
+          <strong>Score de sécurité moyen</strong>
+          Sur {{`[[N]]`}} assets scorés
         </div>
-      </a>
-    </div>
-
-    <div class="col-md-6 col-lg-3">
-      <a href="/services/rssi-externalise/" class="text-decoration-none">
-        <div class="card bg-dark border-secondary h-100 p-4" style="transition:border-color .2s" onmouseover="this.style.borderColor='var(--bs-primary)'" onmouseout="this.style.borderColor=''">
-          <div style="font-size:2.2rem;margin-bottom:.75rem">👔</div>
-          <h5 class="fw-bold text-white mb-2">RSSI Externalisé</h5>
-          <p class="text-secondary small mb-0">Pilotage SSI, politique de sécurité, gestion de crise cyber, sensibilisation, sans les coûts d'un recrutement.</p>
-        </div>
-      </a>
+      </div>
     </div>
 
   </div>
-  <div class="mt-4">
-    <a href="/services/" class="text-decoration-none fw-semibold" style="color:var(--bs-primary)">Voir tous nos services →</a>
-  </div>
-</div>
+</section>
 
-<!-- PRODUIT ARGOS -->
-<div class="container-xxl px-4 mb-5">
-  <div class="card bg-dark border-secondary p-4 p-lg-5">
-    <div class="row align-items-center g-4">
-      <div class="col-lg-8">
-        <div class="badge mb-2 px-2 py-1 rounded" style="font-size:.7rem;background:var(--bs-primary);color:#000">PRODUIT</div>
-        <h3 class="fw-bold text-white mb-2">ARGOS, Attack Surface Monitor</h3>
-        <p class="text-secondary mb-3">Surveillance continue de votre exposition externe : sous-domaines, IPs, certificats, vulnérabilités. Vision claire, alertes en temps réel.</p>
-        <a href="/produits/argos/" class="btn px-4" style="border:1px solid var(--bs-primary);color:var(--bs-primary)">Découvrir ARGOS</a>
+{{/* ═══════════════════════════════════════
+     EXPERTISE — grille 2×2 séparateurs 1px
+     ═══════════════════════════════════════ */}}
+{{ $syn := hugo.Data.facts.synthese }}
+<section class="expertise" aria-labelledby="exp-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="section-eyebrow">Ce que nous faisons</p>
+      <h2 class="section-title" id="exp-title">Une expertise de terrain,<br>appliquée à votre réalité</h2>
+      <p class="section-sub">{{ $syn.it_annees }} ans d'expérience IT, dont plus de {{ $syn.cyber_groupe_annees }} ans à la tête de programmes de cybersécurité au sein d'un groupe international. Pas de méthode générique appliquée à votre contexte : chaque mission part de vos actifs réels.</p>
+    </div>
+
+    <div class="expertise-grid">
+
+      <div class="expertise-cell">
+        <p class="exp-label">Attack Surface Management</p>
+        <h3 class="exp-title">Cartographie de l'exposition externe</h3>
+        <p class="exp-desc">Partez d'un nom de domaine. ARGOS reconstitue automatiquement votre périmètre complet : sous-domaines, IPs, certificats, secrets exposés, fuites de credentials, typosquatting. Noté, priorisé, actionnable.</p>
+        <a href="/produits/argos/" class="exp-link">Découvrir ARGOS →</a>
       </div>
-      <div class="col-lg-4 text-center d-none d-lg-block">
-        <div style="font-size:5rem;filter:drop-shadow(0 0 20px rgba(234,179,8,.3))">🔭</div>
+
+      <div class="expertise-cell">
+        <p class="exp-label">Threat Intelligence</p>
+        <h3 class="exp-title">Surveillance des menaces ciblées</h3>
+        <p class="exp-desc">Ransomware, credential leaks, brand monitoring, IOCs. Veille CTI continue sur les groupes actifs dans votre secteur. Alertes contextualisées, pas de bruit.</p>
+        <a href="/services/" class="exp-link">En savoir plus →</a>
       </div>
+
+      <div class="expertise-cell">
+        <p class="exp-label">Gouvernance &amp; Conformité</p>
+        <h3 class="exp-title">SMSI, ISO 27001, NIS2, TISAX</h3>
+        <p class="exp-desc">Construction ou révision du Système de Management de la Sécurité, gestion des risques EBIOS RM, préparation aux audits de certification et aux exigences réglementaires sectorielles.</p>
+        <a href="/services/gestion-risques/" class="exp-link">Voir l'offre →</a>
+      </div>
+
+      <div class="expertise-cell">
+        <p class="exp-label">RSSI Externalisé</p>
+        <h3 class="exp-title">Direction SSI à temps partagé</h3>
+        <p class="exp-desc">Pilotage SSI, politique de sécurité, gestion de crise cyber, sensibilisation — sans les coûts d'un recrutement. Missions ponctuelles ou engagement durable.</p>
+        <a href="/services/rssi-externalise/" class="exp-link">En savoir plus →</a>
+      </div>
+
+    </div>
+
+    <div class="exp-footer">
+      <a href="/services/" class="exp-link">Voir tous nos services →</a>
     </div>
   </div>
-</div>
+</section>
 
-<!-- BLOG RÉCENT -->
-{{ $posts := where .Site.RegularPages "Section" "blog" }}
-{{ if $posts }}
-<div class="container-xxl px-4 mb-5">
-  <h2 class="fw-bold mb-4 text-white">Derniers articles</h2>
-  <div class="row g-4">
-    {{ range first 3 $posts }}
-    <div class="col-md-4">
-      <div class="card bg-dark border-secondary h-100 p-4">
-        <p class="text-secondary small mb-2">{{ .Date.Format "02 Jan 2006" }}</p>
-        <h5 class="fw-bold mb-2">
-          <a href="{{ .RelPermalink }}" class="text-white text-decoration-none">{{ .Title }}</a>
-        </h5>
-        <p class="text-secondary small mb-0">{{ .Summary | truncate 120 }}</p>
+{{/* ═══════════════════════════════════════
+     ARGOS — texte + dashboard screenshot
+     ═══════════════════════════════════════ */}}
+<section class="argos-section" aria-labelledby="argos-title">
+  <div class="argos-inner">
+
+    <!-- Texte + specs -->
+    <div>
+      <span class="argos-tag">ARGOS · Attack Surface Monitor</span>
+      <h2 class="argos-title" id="argos-title">Votre périmètre complet,<br>en continu</h2>
+      <p class="argos-desc">
+        ARGOS est la plateforme EASM développée par Defence Intelligence pour nos propres missions d'audit. Elle scanne en permanence votre exposition externe, remonte les vulnérabilités et les signaux de menace, et les score par impact métier.
+      </p>
+      <div class="argos-specs">
+        <div class="spec-row">
+          <span class="spec-num">27</span>
+          <span class="spec-label">modules de découverte (sous-domaines, IPs, CT, GitHub, TLD variants…)</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-num">108</span>
+          <span class="spec-label">détecteurs de findings (SPF/DKIM/DMARC, CVE, WAF, Azure AD, takeover…)</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-num">A–F</span>
+          <span class="spec-label">score par actif et par organisation, mis à jour à chaque scan</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-num">CTI</span>
+          <span class="spec-label">intégré : ransomware, credentials leaks, brand monitor, threat landscape</span>
+        </div>
       </div>
+      <a href="/produits/argos/" class="btn-primary-di">Découvrir ARGOS</a>
     </div>
+
+    <!-- Screenshot ARGOS -->
+    {{ $hero := resources.Get "img/argos/hero-desktop.png" }}
+    {{ if $hero }}{{ $hero = $hero.Resize "760x webp" }}
+    <figure class="argos-ui">
+      <div class="ui-topbar">
+        <div class="ui-dots" aria-hidden="true">
+          <div class="ui-dot r"></div>
+          <div class="ui-dot y"></div>
+          <div class="ui-dot g"></div>
+        </div>
+        <span class="ui-title">ARGOS · Interface de démonstration</span>
+      </div>
+      <img class="argos-screenshot"
+           src="{{ $hero.RelPermalink }}"
+           alt="{{ (hugo.Data.facts.argos).legende_capture }}">
+      <figcaption class="argos-caption">{{ (hugo.Data.facts.argos).legende_capture }}</figcaption>
+    </figure>
     {{ end }}
-  </div>
-  <div class="mt-4">
-    <a href="/blog/" class="text-decoration-none fw-semibold" style="color:var(--bs-primary)">Tous les articles →</a>
-  </div>
-</div>
-{{ end }}
 
-<!-- CTI DIGEST -->
+  </div>
+</section>
+
+{{/* ═══════════════════════════════════════
+     CTI DIGEST — 3 derniers
+     ═══════════════════════════════════════ */}}
 {{ $digests := where .Site.RegularPages "Section" "cti" }}
 {{ $digestCount := len $digests }}
 {{ if gt $digestCount 0 }}
-<div class="container-xxl px-4 mb-5">
-  <div class="d-flex align-items-baseline gap-3 mb-4 flex-wrap">
-    <h2 class="fw-bold text-white mb-0">CTI Digest</h2>
-    <span class="text-secondary small">{{ $digestCount }} digests publiés</span>
-  </div>
-  <div class="row g-4">
-    {{ range first 3 $digests }}
-    <div class="col-md-4">
-      <div class="card bg-dark border-secondary h-100 p-4" style="border-left:3px solid var(--bs-primary) !important">
-        <p class="text-secondary small mb-2" style="color:var(--bs-primary) !important">{{ .Date.Format "02 Jan 2006" }}</p>
-        <h5 class="fw-bold mb-2" style="font-size:.95rem">
-          <a href="{{ .RelPermalink }}" class="text-white text-decoration-none">{{ .Title }}</a>
-        </h5>
-        <p class="text-secondary small mb-0">{{ .Description | truncate 110 }}</p>
+<section class="cti-section" aria-labelledby="cti-title">
+  <div class="wrap">
+    <div class="cti-header">
+      <div>
+        <p class="section-eyebrow">Threat Intelligence</p>
+        <h2 class="section-title" id="cti-title">CTI Digest</h2>
       </div>
+      <span class="cti-count">{{ $digestCount }} digests publiés</span>
     </div>
-    {{ end }}
+
+    <div class="cti-grid">
+      {{ range first 3 $digests }}
+      <a href="{{ .RelPermalink }}" class="cti-card">
+        <p class="cti-date">{{ .Date.Format "02 Jan 2006" }}</p>
+        <h3 class="cti-card-title">{{ .Title }}</h3>
+        <p class="cti-card-desc">{{ .Description | truncate 110 }}</p>
+      </a>
+      {{ end }}
+    </div>
+
+    <div class="cti-footer">
+      <a href="/cti/">Tous les digests →</a>
+    </div>
   </div>
-  <div class="mt-4">
-    <a href="/cti/" class="text-decoration-none fw-semibold" style="color:var(--bs-primary)">Tous les digests →</a>
-  </div>
-</div>
+</section>
 {{ end }}
 
-<!-- CTA CONTACT -->
-<div class="container-xxl px-4 mb-5">
-  <div class="text-center py-5 px-4 border border-secondary rounded-3 bg-dark">
-    <h2 class="fw-bold text-white mb-3">Un projet ? Une question ?</h2>
-    <p class="text-secondary lead mb-4">Échangeons sur vos enjeux de cybersécurité.</p>
-    <a href="/contact/" class="btn btn-lg px-5 fw-semibold" style="background:var(--bs-primary);color:#000;border:none">Contactez-nous</a>
+{{/* ═══════════════════════════════════════
+     FONDATEUR — citation + carte
+     ═══════════════════════════════════════ */}}
+{{ $id   := hugo.Data.facts.identite }}
+{{ $syn2 := hugo.Data.facts.synthese }}
+{{ $cert := hugo.Data.facts.certifications }}
+<section class="quote-section" aria-labelledby="quote-author">
+  <div class="quote-inner">
+
+    <blockquote class="pull">
+      Un audit produit un rapport. L'Attack Surface Management produit une conscience de son exposition, mise à jour en permanence. Ce n'est pas le même métier.
+    </blockquote>
+
+    <div class="founder-card">
+      <div class="founder-head">
+        <div class="founder-avatar" aria-hidden="true">SD</div>
+        <div>
+          <div class="founder-name" id="quote-author">{{ $id.nom }}</div>
+          <div class="founder-role">Fondateur · {{ $id.denomination }}</div>
+        </div>
+      </div>
+      <div class="founder-body">
+        <div class="founder-item">{{ $syn2.it_annees }} ans d'expérience IT — dont {{ $syn2.cyber_groupe_annees }}+ ans Head of Cyber Defence, DEKRA SE</div>
+        <div class="founder-item">Fondateur de {{ $id.denomination }}</div>
+        <div class="founder-item">Fondateur d'ARGOS, plateforme EASM</div>
+        {{ with index $cert 0 }}{{ $c := . }}
+        <div class="founder-item">Certifié {{ $c.label }}{{ with $c.organisme }} ({{ . }}{{ with $c.annee }}, {{ . }}{{ end }}){{ end }}</div>
+        {{ end }}
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
+
+{{/* ═══════════════════════════════════════
+     CTA — contact
+     ═══════════════════════════════════════ */}}
+<section class="cta-section" aria-labelledby="cta-title">
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-title" id="cta-title">Un enjeu de sécurité sur la table ?<br>Parlons-en.</h2>
+      <p class="cta-sub">Audit, cartographie de surface d'attaque, gestion de crise, conformité — échangeons sur votre contexte avant toute proposition.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="/contact/" class="btn-primary-di">Prendre contact</a>
+      <a href="mailto:{{ (hugo.Data.facts.identite).email }}" class="btn-email">{{ (hugo.Data.facts.identite).email }}</a>
+    </div>
+  </div>
+</section>
 
 {{ end }}

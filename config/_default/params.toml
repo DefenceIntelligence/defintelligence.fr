@@ -16,6 +16,7 @@ copyright = "Defence Intelligence"
 [main]
   separator = "·"
   endorCTA = true
+  customCSS = ["css/di-design.css"]
   [main.build]
     transpiler = "dartsass"
     silenceDeprecations = true

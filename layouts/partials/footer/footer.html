@@ -1,22 +1,59 @@
-<footer class="container-fluid footer text-center p-3">
-    <div class="container-xxl text-center">
-        <small>
-            {{- $copyright := printf "%s © %s %s %s." (T "copyright") (dateFormat "2006" now) .Site.Title (T "rights") }}
-            {{ cond (gt (len .Site.Copyright) 0) .Site.Copyright $copyright }}
-            {{- $license := .Site.Params.footer.license | default "" -}}
-            {{- if and (gt (len $license) 0) (ne $license "none") }}
-                | {{ $license | safeHTML }}
-            {{- end }}
-            {{- if .Site.Params.main.endorse }}
-                | {{ $link := partial "assets/link.html" (dict "href" (index site.Params.links "hinode") "text" "Hinode" "class" "link-bg-footer" "page" .Page) }}
-                {{ T "poweredBy" $link | safeHTML }}
-            {{- end }}
-        </small>
+<footer class="di-footer">
+  <div class="di-footer-inner">
+    <div class="di-footer-grid">
+
+      <div>
+        <div class="di-footer-brand">Defence <span>Intelligence</span></div>
+        <p class="di-footer-about">Conseil indépendant en cybersécurité · Audit, Attack Surface Management, Threat Intelligence et accompagnement stratégique pour les PME et ETI.</p>
+      </div>
+
+      <div>
+        <div class="di-footer-col-head">Services</div>
+        <div class="di-footer-links">
+          <a href="/services/">Audit de sécurité</a>
+          <a href="/services/">ASM &amp; EASM</a>
+          <a href="/services/">Threat Intelligence</a>
+          <a href="/services/rssi-externalise/">RSSI externalisé</a>
+          <a href="/services/gestion-risques/">Gouvernance</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="di-footer-col-head">Produits</div>
+        <div class="di-footer-links">
+          <a href="/produits/argos/">ARGOS</a>
+          <a href="/7secondes/">7 Secondes</a>
+          <a href="/cti/">CTI Digest</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="di-footer-col-head">À propos</div>
+        <div class="di-footer-links">
+          <a href="/a-propos/">Stéphane Desmets</a>
+          <a href="/blog/">Publications</a>
+          <a href="/contact/">Contact</a>
+          <a href="https://www.linkedin.com/in/stephane-desmets/" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
     </div>
+
+    <div class="di-footer-bottom">
+      <p class="di-footer-copy">&copy; {{ dateFormat "2006" now }} Defence Intelligence</p>
+      <nav aria-label="Liens légaux">
+        <ul class="di-footer-legal">
+          <li><a href="/mentions-legales/">Mentions légales</a></li>
+          <li><a href="/confidentialite/">Confidentialité</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </footer>
 
 <script>
-function diSetupBrand() {
+(function () {
+  function setupBrand() {
     var brand = document.querySelector("a.navbar-brand");
     if (!brand || brand.dataset.diDone) return;
     brand.dataset.diDone = "1";
@@ -33,15 +70,16 @@ function diSetupBrand() {
     name.style.cssText = "font-weight:700;font-size:.95rem;color:#fff;letter-spacing:.02em";
     var slogan = document.createElement("span");
     slogan.textContent = "Cybersécurité & Renseignement";
-    slogan.style.cssText = "font-size:.58rem;color:var(--bs-primary);letter-spacing:.1em;text-transform:uppercase;margin-top:3px";
+    slogan.style.cssText = "font-size:.58rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-top:3px";
     wrap.appendChild(name);
     wrap.appendChild(slogan);
     brand.appendChild(logo);
     brand.appendChild(wrap);
-}
-diSetupBrand();
-document.addEventListener("DOMContentLoaded", diSetupBrand);
-window.addEventListener("load", diSetupBrand);
+  }
+  setupBrand();
+  document.addEventListener("DOMContentLoaded", setupBrand);
+  window.addEventListener("load", setupBrand);
+}());
 </script>
 
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "664b3b170f004f998aafad1ee4bbdb3e"}'></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "664b3b170f004f998aafad1ee4bbdb3e"}'></script>
