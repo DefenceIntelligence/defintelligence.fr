@@ -892,12 +892,6 @@ footer.di-footer {
   color: #fff;
 }
 
-/* Colonne vide gauche Hinode single layout (sidebar spacer) — supprimée
-   pour aligner le contenu au bord gauche, comme les list pages.
-   .sidebar-overflow est suffisant — classe sémantique unique à ce slot. */
-.sidebar-overflow {
-  display: none !important;
-}
 
 /* 3. Reading time — discret, pas besoin d'uppercase Bootstrap */
 small.text-body-secondary.text-uppercase {

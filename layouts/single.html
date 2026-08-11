@@ -1,0 +1,28 @@
+{{ define "main" -}}
+    {{- $breakpoint := partialCached "utilities/GetBreakpoint.html" site -}}
+    {{- $padding := partial "utilities/GetPadding.html" -}}
+    {{- $sidebar := partial "page/sidebar" . -}}
+
+    {{- partial "page/sidebar-offcanvas.html" (dict "section" $.Section "raw" $sidebar) -}}
+
+    {{- partial "page/blocks.html" (dict
+        "page"          .
+        "heading-level" (cond (gt (len .RawContent) 0) 2 1)
+    ) -}}
+
+    {{ if (gt (len .RawContent) 0) }}
+        <div class="container-xxl flex-fill {{ partial "utilities/PaddingClasses.html" (dict "padding" $padding "axis" "y") }} {{ partial "utilities/PaddingClasses.html" (dict "padding" $padding "axis" "x") }} px-xxl-0">
+            {{/* 2 colonnes : contenu + TOC — colonne vide gauche supprimée */}}
+            <div class="row row-cols-1 row-cols-{{ $breakpoint.current }}-2">
+                <div class="col-12 col-{{ $breakpoint.current }}-9 col-{{ $breakpoint.next }}-10 mb-5">
+                    {{ .Render "header" }}
+                    {{ .Render "body" }}
+                    {{ .Render "footer" }}
+                </div>
+                <div class="col col-{{ $breakpoint.current }}-3 col-{{ $breakpoint.next }}-2 d-none d-{{ $breakpoint.current }}-block">
+                    {{ .Render "toc" }}
+                </div>
+            </div>
+        </div>
+    {{ end }}
+{{ end -}}
