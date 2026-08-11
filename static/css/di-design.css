@@ -893,8 +893,9 @@ footer.di-footer {
 }
 
 /* Colonne vide gauche Hinode single layout (sidebar spacer) — supprimée
-   pour aligner le contenu au bord gauche, comme les list pages */
-.col.col-lg-2.d-none.d-lg-block.sidebar-overflow {
+   pour aligner le contenu au bord gauche, comme les list pages.
+   .sidebar-overflow est suffisant — classe sémantique unique à ce slot. */
+.sidebar-overflow {
   display: none !important;
 }
 
