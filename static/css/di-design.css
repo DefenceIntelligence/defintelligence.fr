@@ -881,14 +881,21 @@ footer.di-footer {
   display: none;
 }
 
-/* 2. Titre h1 display-4 — ramener à une taille document sans écraser le display de la homepage */
-.main h1.display-4 {
+/* 2. Titre display-4 (h1 sur single pages, p sur list pages) — Palatino uniforme */
+.main h1.display-4,
+.main p.display-4 {
   font-size: clamp(1.75rem, 3.5vw, 2.4rem);
   font-weight: 400;
   letter-spacing: -.02em;
   line-height: 1.2;
   font-family: var(--font-display);
   color: #fff;
+}
+
+/* Colonne vide gauche Hinode single layout (sidebar spacer) — supprimée
+   pour aligner le contenu au bord gauche, comme les list pages */
+.col.col-lg-2.d-none.d-lg-block.sidebar-overflow {
+  display: none !important;
 }
 
 /* 3. Reading time — discret, pas besoin d'uppercase Bootstrap */
@@ -988,3 +995,95 @@ small.text-body-secondary.text-uppercase {
   text-decoration: none !important;
 }
 #btnTOCShowMore:hover { color: var(--accent) !important; }
+
+/* ═══════════════════════════════════════
+   LIST PAGES — grille de cards (CTI digest, Blog)
+   ═══════════════════════════════════════ */
+
+.lp-header-desc {
+  color: var(--text-2);
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+
+.lp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.lp-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.lp-card {
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  padding: 1.4rem;
+  height: 100%;
+  transition: border-color .2s;
+}
+.lp-card-link:hover .lp-card { border-color: var(--accent); }
+
+.lp-card-meta {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .75rem;
+}
+.lp-card-icon { font-size: 1.4rem; }
+.lp-card-date {
+  font-size: .75rem;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.lp-card-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: .5rem;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.lp-card-desc {
+  font-size: .85rem;
+  color: var(--text-2);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.lp-card-tags {
+  margin-top: .75rem;
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+.lp-tag {
+  font-size: .7rem;
+  padding: .2rem .55rem;
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  color: var(--text-2);
+}
+
+/* Blog : variantes légères */
+.lp-grid--blog { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+.lp-grid--blog .lp-card-date { margin-bottom: .6rem; }
+.lp-grid--blog .lp-card-title { font-size: 1.05rem; margin-bottom: .6rem; }
+
+.lp-card-cta {
+  margin-top: 1rem;
+  font-size: .85rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.lp-empty { color: var(--text-2); }
+
+@media (max-width: 600px) {
+  .lp-grid, .lp-grid--blog { grid-template-columns: 1fr; }
+}
